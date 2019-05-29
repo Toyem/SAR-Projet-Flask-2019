@@ -16,17 +16,23 @@ div {
     padding: 30px 10px 50px 10px;
 
 }
-/*
+
+#premierElement {
+    margin-top:  200px;
+    margin-left: 400px;
+}
+
 @media (max-width: 1200px) {
-    .engineerChoice {
-        width: calc(50% - 20px);
+    #premierElement {
+        margin-top: 0px;
+        margin-left: 0px;
   }
 }
 
 @media (max-width: 600px) {
-    .engineerChoice {
-        width: calc(100% - 20px);
+    #premierElement {
+        margin-top: 0px;
+        margin-left: 0px;
   }
 }
 
- */
