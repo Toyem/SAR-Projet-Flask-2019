@@ -8,23 +8,25 @@ PROJET SAR IMH-BD (French v1.0)
 ★ ★ Tuto Agathe
 ★  Commandes pour les nuls :
 
-Telecharge les MAJ effectuées : 		git fetch  
-Bouge sur une branch :				git checkout "nomdelabranch"  
-Met à jour ta branch : 				git pull  
-Ajouter tout le dossier actuel : 		git add .  
-Commit : 					git commit -m "message"  
-Push le code commit : 				git push  
-Position dest, Merge branch : 			git merge "branch"  
-Je suis perdu(e) maman ! : 			git status  
-Supprime la branch locale : 			git branch -d "nomdelabranch"  
+Installe les fichiers Git nécessaire      git init
+Telecharge les MAJ effectuées : 		      git fetch  
+Bouge sur une branch :				            git checkout "nomdelabranch"  
+Met à jour ta branch : 				            git pull  
+Ajouter tout le dossier actuel : 		      git add .  
+Commit et affiche un p'tit "message": 		git commit -m "message"  
+Push le code commit : 				            git push
+Push le code dans master :                git push origin master
+Position dest, Merge branch : 		  	    git merge "branch"  
+Je suis perdu(e) maman ! : 			          git status  
+Supprime la branch locale : 		    	    git branch -d "nomdelabranch"  
 
 ★  Markdown pour les nuls :
 
-Double espace : 				Retour a la ligne  
-Double entré : 					New paragraph  
+Double espace : 			               	   Retour a la ligne  
+Double entré : 					                 New paragraph  
 
 ★  Espace :
-Titre : 					Autant qu'on veut !!
+Titre : 					                       Autant qu'on veut !!
 
 
 /****************************************************************
