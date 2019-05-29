@@ -1,19 +1,24 @@
 body {
-  margin: 0;
+    margin: 0;
+    background-color: #6E6E6E;
+
 }
 
 .engineerChoice {
-  width: calc(25% - 20px);
+    width: calc(25% - 20px);
+    border: 1px solid black;
+    background-color: #819FF7;
+    text-align: center;
 }
 
 @media (max-width: 1200px) {
-  .engineerChoice {
-    width: calc(50% - 20px);
+    .engineerChoice {
+        width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 600px) {
-  .engineerChoice {
-    width: calc(100% - 20px);
+    .engineerChoice {
+        width: calc(100% - 20px);
   }
 }
