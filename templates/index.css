@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+
+.engineerChoice {
+  width: calc(25% - 20px);
+}
+
+@media (max-width: 1200px) {
+  .engineerChoice {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .engineerChoice {
+    width: calc(100% - 20px);
+  }
+}
