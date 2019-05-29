@@ -15,14 +15,13 @@
 			<!-- Script JS -->
 
 
-			function change_menu(){
-				var curseur = document.getElementById("list");
+			function change_menu(type_engineer){
+				var curseur = document.getElementById("menuD");
 				var location = curseur.options[curseur.selectedIndex].index;
-				var tablImg = new Array("images/Arcadia.png", "images/escargotViolet.png", "images/etoileViolette.png", "images/fleur3.png", "images/fouetBleu2.png", "images/rose.png", "images/Spirale.png", "images/triFoliumBleu.png");
-				document.getElementById("change").src = tablImg[location];
-				// Version alternative :
-				// document.getElementById("change").src = "Images/"+curseur.options[curseur.selectedIndex].value+".png";
-				// It only works when the names in the list match the file names
+				// On envoie le "type_engineer" et l'index de sélection du menu à l'api et elle nous renvoie le fichier à load
+
+				// document.getElementById("change").src = tablName[location];
+				
 			}
 
 		</script>
@@ -30,7 +29,7 @@
     <body>
         <div class="engineerChoice col-xl-3 col-sm-6 col-12">
             <h2>Je suis ingénieur d'affaire</h2>
-            <select>
+            <select id="menuD" onchange="change_menu('affaire');">
 				<option>Option 1</option>
 				<option selected>Option 2</option>
 				<option>Option 3</option>
@@ -40,7 +39,7 @@
         </div>
         <div class="engineerChoice col-xl-3 col-sm-6 col-12">
             <h2>Je suis ingénieur d'étude</h2>
-            <select id="list" size="1" onchange="change_image();">
+            <select id="menuD" onchange="change_menu('etude');">
 				<option>Option 1</option>
 				<option>Option 2</option>
 				<option>Option 3</option>
