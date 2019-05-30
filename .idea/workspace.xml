@@ -56,15 +56,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="503">
+              <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
               <folding>
-                <element signature="n#style#0;n#span#0;n#div#3;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#2;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#9;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#9;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#10;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#2514#2522#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,10 +112,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="398" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="402" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -247,15 +242,15 @@
       <workItem from="1559154793527" duration="57000" />
       <workItem from="1559156503540" duration="4281000" />
       <workItem from="1559161789935" duration="3446000" />
-      <workItem from="1559218885313" duration="17033000" />
+      <workItem from="1559218885313" duration="17529000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24817000" />
+    <option name="totallyTimeSpent" value="25313000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="398" width="1280" height="402" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
@@ -365,15 +360,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="503">
+          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#div#3;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#9;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#9;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#10;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#2514#2522#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
