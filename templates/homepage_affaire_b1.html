@@ -2,26 +2,47 @@
 
 {% block body %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <!-- Ce link puex causer ces soucis sur la bar de navigation à gauche de l'écran (onglet cote à cote) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <div class="container">
-        <!-- Nav pills -->
-        <ul class="nav nav-pills" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="pill" href="#home">A affecter</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#menu1">Affectées</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#menu2">Closes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#menu2">Toutes</a>
-            </li>
-        </ul>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="container">
+                <!-- Nav pills -->
+                <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#home">A affecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#menu1">Affectées</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#menu2">Closes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#menu2">Toutes</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container">
+                <nav class="navbar navbar-expand-sm bg navbar">
+                    <form class="form-inline" action="/action_page.php">
+                        <p>Q</p>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="well">
+                <p>Text</p>
+          </div>
+        </div>
     </div>
 {% endblock %}
