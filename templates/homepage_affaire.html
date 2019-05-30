@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <!-- Mise à l'echelle pour les navigateurs mobiles -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- CSS de Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<title>Acceuil</title>
-		<meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite" />
-		<link rel="stylesheet" href="../static/css/homepage.css" />
-		<link rel="icon" type="image/png" href="../static/img/favicon.png" />
-		<meta name="description" content="Page web crée dans l'UE SAR Flask de l'IMT Atlantique Campus Nantes." />
+        <title>Ingénieur d'affaire - Home</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite" />
+        <meta name="description" content="Page web crée dans l'UE SAR Flask de l'IMT Atlantique Campus Nantes." />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="../static/img/favicon.png" />
+        <link rel="stylesheet" href="../static/css/homepage.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {height: 550px}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* On small screens, set height to 'auto' for the grid */
+            @media screen and (max-width: 767px) {
+                .row.content {height: auto;}
+            }
+        </style>
 		<script>
 			<!-- Script JS -->
 		</script>
     </head>
-    <body>
-        <div class="menu_left">
-            <p class="option_menu">mission</p>
-            <p class="option_menu">carrière</p>
-        </div>
+<body>
 
-    </body>
+<nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Dashboard</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">
+                <li><a href="#">Missions</a></li>
+                <li><a href="#">Carrières</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <h2>DAAAsh</h2>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active">
+                <li><a href="#section2">Missions</a></li>
+                <li><a href="#section3">Carrières</a></li>
+            </ul><br>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+            <div class="well">
+                <h4>GESTION DES MISSONS</h4>
+            </div>
+            <div class="row">
+                {% block body %}
+                    <!-- TOFILL with API -->
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
 </html>
