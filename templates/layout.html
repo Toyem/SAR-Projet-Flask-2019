@@ -5,8 +5,8 @@
         <!-- Mise à l'echelle pour les navigateurs mobiles -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- CSS de Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<title>Acceuil</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <title>Acceuil</title>
 		<meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite" />
 		<link rel="stylesheet" href="../static/css/index.css" />
 		<link rel="icon" type="image/png" href="../static/img/favicon.png" />
@@ -30,6 +30,24 @@
     <body>
         <div class="engineerChoice col-xl-3 col-sm-3 col-11 rounded" id="premierElement">
             <h2>Je suis ingénieur <span class="bold">d'affaire</span></h2>
+
+            <div class="container mt-3">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+    	    </div>
+            </div>
+
             <select id="menuD" onchange="change_menu('affaire');">
 				<option>Option 1</option>
 				<option selected>Option 2</option>
@@ -53,5 +71,10 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     </body>
 </html>
