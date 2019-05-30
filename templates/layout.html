@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<title>Acceuil</title>
 		<meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite" />
-		<link rel="stylesheet" href="index.css" />
-		<!--<link rel="icon" type="image/png" href="index_images/favicon.png" /> -->
+		<link rel="stylesheet" href="../static/css/index.css" />
+		<link rel="icon" type="image/png" href="../static/img/favicon.png" />
 		<meta name="description" content="Page d'acceuil et Index des pages web crées dans l'UE SAR Flask de l'IMT Atlantique Campus Nantes." />
 		<script>
 			<!-- Script JS -->
@@ -19,7 +19,8 @@
 				var curseur = document.getElementById("menuD");
 				var location = curseur.options[curseur.selectedIndex].index;
 				// On envoie le "type_engineer" et l'index de sélection du menu à l'api et elle nous renvoie le fichier à load
-                window.location.href="http://"
+                // Quelques test :
+                // window.location.href="http://"
 				// document.getElementById("change").src = tablName[location];
 
 			}
