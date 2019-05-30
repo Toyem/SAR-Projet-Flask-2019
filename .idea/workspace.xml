@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_b1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_b1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
     </list>
@@ -14,11 +13,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state relative-caret-position="24">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <folding>
+                <element signature="e#976#982#0#HTML" expanded="true" />
+                <element signature="e#1527#1535#0#HTML" expanded="true" />
+                <element signature="e#1561#1567#0#HTML" expanded="true" />
+                <element signature="e#1567#1575#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -26,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-23">
+            <state relative-caret-position="305">
               <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
               <folding>
                 <element signature="e#2415#2423#0#HTML" expanded="true" />
@@ -38,10 +43,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_b1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+            <state relative-caret-position="240">
+              <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
               <folding>
-                <element signature="e#1084#1092#0#HTML" expanded="true" />
                 <element signature="e#1251#1259#0#HTML" expanded="true" />
                 <element signature="e#1945#2024#0#HTML" expanded="true" />
               </folding>
@@ -54,7 +58,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="518">
@@ -88,8 +92,8 @@
         <option value="$PROJECT_DIR$/templates/index.css" />
         <option value="$PROJECT_DIR$/static/css/homepage.css" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
-        <option value="$PROJECT_DIR$/templates/homepage_affaire_b1.html" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire.html" />
+        <option value="$PROJECT_DIR$/templates/homepage_affaire_b1.html" />
         <option value="$PROJECT_DIR$/templates/layout.html" />
       </list>
     </option>
@@ -224,12 +228,12 @@
       <workItem from="1559154793527" duration="57000" />
       <workItem from="1559156503540" duration="4281000" />
       <workItem from="1559161789935" duration="3446000" />
-      <workItem from="1559218885313" duration="13855000" />
+      <workItem from="1559218885313" duration="14047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21639000" />
+    <option name="totallyTimeSpent" value="21831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -295,16 +299,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html">
+    <entry file="file://$PROJECT_DIR$/static/css/homepage.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        <state relative-caret-position="518">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
+        <state relative-caret-position="305">
           <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
           <folding>
             <element signature="e#2415#2423#0#HTML" expanded="true" />
@@ -314,23 +321,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_b1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+        <state relative-caret-position="240">
+          <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
           <folding>
-            <element signature="e#1084#1092#0#HTML" expanded="true" />
             <element signature="e#1251#1259#0#HTML" expanded="true" />
             <element signature="e#1945#2024#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/homepage.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/index.css">
+    <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        <state relative-caret-position="24">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding>
+            <element signature="e#976#982#0#HTML" expanded="true" />
+            <element signature="e#1527#1535#0#HTML" expanded="true" />
+            <element signature="e#1561#1567#0#HTML" expanded="true" />
+            <element signature="e#1567#1575#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
