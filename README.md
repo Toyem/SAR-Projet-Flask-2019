@@ -28,6 +28,12 @@ Double entré : 					                 New paragraph
 ★  Espace :
 Titre : 					                       Autant qu'on veut !!
 
+★ ★ Quelques Sites Utiles :
+
+W3School sur Bootstrap 4 :                  http://www.w3schools.com/bootstrap4/default.asp
+Entitées HTML :                             http://alexandre.alapetite.fr/doc-alex/alx_special.html
+Bouttons Bootstrap 4 :                      http://getbootstrap.com/docs/4.1/components/buttons/
+Ce Github :                                 http://github.com/Toyem/SAR-Projet-Flask-2019
 
 /****************************************************************
  *
