@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/homepage_etude_potuler_action.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage_etude_potuler_action.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude_potuler_action.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +15,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/homepage_etude_potuler_action.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="52" column="14" lean-forward="true" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+            <state relative-caret-position="315">
+              <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding>
-                <element signature="e#1811#1819#0#HTML" expanded="true" />
-                <element signature="e#2765#2773#0#HTML" expanded="true" />
+                <element signature="e#1819#1827#0#HTML" expanded="true" />
+                <element signature="e#1845#1853#0#HTML" expanded="true" />
+                <element signature="e#1909#1917#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -28,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="23" selection-start-line="17" selection-end-line="18" />
+            <state relative-caret-position="520">
+              <caret line="45" column="42" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -214,12 +215,12 @@
       <workItem from="1559161789935" duration="3446000" />
       <workItem from="1559218885313" duration="17997000" />
       <workItem from="1559301306968" duration="1872000" />
-      <workItem from="1559312690061" duration="546000" />
+      <workItem from="1559312690061" duration="1286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28199000" />
+    <option name="totallyTimeSpent" value="28939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -361,18 +362,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="23" selection-start-line="17" selection-end-line="18" />
+        <state relative-caret-position="520">
+          <caret line="45" column="42" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_potuler_action.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="52" column="14" lean-forward="true" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+        <state relative-caret-position="315">
+          <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding>
-            <element signature="e#1811#1819#0#HTML" expanded="true" />
-            <element signature="e#2765#2773#0#HTML" expanded="true" />
+            <element signature="e#1819#1827#0#HTML" expanded="true" />
+            <element signature="e#1845#1853#0#HTML" expanded="true" />
+            <element signature="e#1909#1917#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
