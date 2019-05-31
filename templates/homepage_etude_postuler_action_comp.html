@@ -1,0 +1,37 @@
+{% extends "homepage_etude_postuler_action.html" %}
+
+{% block competence %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- IMPORTANT POUR LE RANGE !!! -->
+    <style>
+        .custom-range {
+            width: 300px;
+            height: 10px;
+        }
+    </style>
+
+    }
+    {% for competence in competences %}
+        <form>
+            <label>Comp&eacute;tence {{ competence.name }} :</label>
+            <!-- par la suite on peux mettre {{ competence.id }} a la place du name -->
+            <input type="range" name="{{ competence.name }}" class="custom-range" min="0" max="100" step="1"
+                   value="100"
+                   oninput="result{{ competence.name }}.value=parseInt({{ competence.name }}.value)"/>
+            <output name="result{{ competence.name }}">--</output>
+
+        </form>
+        <script type="text/javascript">
+            $(function () {
+                $('.range').next().text('--'); // Valeur par défaut
+                $('.range').on('input', function () {
+                    var $set = $(this).val();
+                    $(this).next().text($set);
+                });
+            });
+        </script>
+    {% endfor %}
+{% endblock %}
