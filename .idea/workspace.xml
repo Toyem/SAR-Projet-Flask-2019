@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html" afterDir="false" />
-    </list>
+    <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,11 +10,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_action.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="26" column="94" selection-start-line="26" selection-start-column="94" selection-end-line="26" selection-end-column="94" />
+            <state relative-caret-position="233">
+              <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="67" column="26" lean-forward="true" selection-start-line="65" selection-start-column="12" selection-end-line="67" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -207,16 +222,15 @@
       <workItem from="1559218885313" duration="17997000" />
       <workItem from="1559301306968" duration="1872000" />
       <workItem from="1559312690061" duration="3841000" />
-      <workItem from="1559325209908" duration="665000" />
+      <workItem from="1559325209908" duration="873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32159000" />
+    <option name="totallyTimeSpent" value="32367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27382874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -277,13 +291,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/homepage.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="67" column="26" lean-forward="true" selection-start-line="65" selection-start-column="12" selection-end-line="67" selection-end-column="26" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -367,17 +374,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_edit.html">
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_action.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
+        <state relative-caret-position="233">
+          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_action.html">
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="26" column="94" selection-start-line="26" selection-start-column="94" selection-end-line="26" selection-end-column="94" />
+        <state relative-caret-position="480">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="65" selection-start-column="12" selection-end-line="67" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
         </state>
       </provider>
     </entry>
