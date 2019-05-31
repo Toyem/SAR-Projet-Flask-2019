@@ -5,14 +5,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- IMPORTANT POUR LE RANGE !!! -->
+    <!-- IMPORTANT POUR LA MISE EN PAGE DU RANGE !!! -->
+    <!-- c'est l'équivalent d'une feuille css mais javais la flemme d'en faire une -->
     <style>
         .custom-range {
             width: 300px;
             height: 10px;
         }
     </style>
-
+    <!-- Fin du truc important -->
     }
     {% for competence in competences %}
         <form>
@@ -21,7 +22,7 @@
             <input type="range" name="{{ competence.name }}" class="custom-range" min="0" max="100" step="1"
                    value="100"
                    oninput="result{{ competence.name }}.value=parseInt({{ competence.name }}.value)"/>
-            <output name="result{{ competence.name }}">--</output>
+            <output name="result{{ competence.name }}">--</output><span>%</span>
 
         </form>
         <script type="text/javascript">
