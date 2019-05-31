@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Ingénieur d'affaire - Home</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite"/>
+    <meta name="description" content="Page web crée dans l'UE SAR Flask de l'IMT Atlantique Campus Nantes."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../static/img/favicon.png"/>
+    <link rel="stylesheet" href="../static/css/homepage.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 550px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* On small screens, set height to 'auto' for the grid */
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+    <script>
+        <!-- Script JS -->
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row content">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Dashboard</span>
+                </h6>
+                <ul class="nav flex-column md-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#TODO">
+                            <span data-feather="home"></span>
+                            Postuler
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#TODO">
+                            <span data-feather="file"></span>
+                            Suivi
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+
+        <div class="col-sm-9">
+            {% block body %}
+                <!-- TODOL with API -->
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
