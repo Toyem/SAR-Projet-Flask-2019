@@ -26,9 +26,20 @@ def remove_object_from_db(db_object):
 def find_mission_by_id(id):
     return Mission.query.filter_by(id=id).first()
 
+def jouer():
+    
+
 @app.route('/')
 def layout():
     return render_template("layout.html.jinja2")
+
+@app.route('/Michel_affaire')
+def Michel_affaire():
+    return render_template("homepage_affaire_carriere_grille.html.jinja2")
+
+@app.route('/Rene_etude')
+def Rene_etude():
+    return render_template("homepage_etude_postuler_grille.html.jinja2")
 
 
 if __name__ == '__main__':
