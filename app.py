@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from database.database import db, init_database
 
 from database.models import Mission
@@ -25,7 +26,10 @@ def remove_object_from_db(db_object):
 def find_mission_by_id(id):
     return Mission.query.filter_by(id=id).first()
 
-@app.route('/view/a') #a faire ?? Théoo
+@app.route('/')
+def layout():
+    return render_template("layout.html.jinja2")
+
 
 if __name__ == '__main__':
     app.run()
