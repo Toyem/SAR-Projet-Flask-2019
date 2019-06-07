@@ -11,6 +11,7 @@ class Ingenieur(db.Model):
     taux_journalier = db.Column(db.Float)
     statut = db.Column(db.Text) #a traiter, ajouté par mes soins
     estCommercial = db.Column(db.Boolean) #ajouté par mes soins
+
     certifications = db.relationship('Certification', backref='ingenieur', lazy='dynamic')
     souhaits = db.relationship('Souhait', backref='ingenieur', lazy='dynamic')
     affectations = db.relationship('Affectation', backref='ingenieur', lazy='dynamic')
@@ -27,6 +28,7 @@ class Competence(db.Model):
 
 class Certification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    niveau = db.Column(db.Integer)
 
     ingenieur_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
     competence_id = db.Column(db.Integer, db.ForeignKey('competence.id'))
@@ -39,35 +41,21 @@ class Besoin(db.Model):
     mission_id = db.Column(db.Integer, db.ForeignKey('mission.id'))
     competence_id = db.Column(db.Integer, db.ForeignKey('competence.id'))
 
-
-#
-# class Mission(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     nom = db.Column(db.Text)
-#     dateCreation = db.Column(db.Text) # date
-#     description = db.Column(db.Text)
-#     effectifMax = db.Column(db.Integer)
-#     coutJournalier = db.Column(db.Float)
-
 class Mission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titre = db.Column(db.String(64), unique=True)
-
     description = db.Column(db.Text, unique=True)
-
+    effectifs_max = db.Column(db.Integer)
     prix_vente = db.Column(db.Integer)
 
     besoins = db.relationship('Besoin', backref='mission', lazy='dynamic')
     affectations = db.relationship('Affectation', backref='mission', lazy='dynamic')
-
     responsable_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
-
     souhaits = db.relationship('Souhait', backref='mission', lazy='dynamic')
 
 
 class Affectation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-
     date_debut = db.Column(db.DateTime, nullable=False)
     date_fin = db.Column(db.DateTime, nullable=False)
 
@@ -77,5 +65,7 @@ class Affectation(db.Model):
 
 class Souhait(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    date_candidature = db.Column(db.DateTime, nullable=False)
+
     ingenieur_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
     mission_id = db.Column(db.Integer, db.ForeignKey('mission.id'))
