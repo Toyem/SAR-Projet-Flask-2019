@@ -4,7 +4,6 @@ from app import db
 
 def get_all_engineers():
     return database.models.Ingenieur.query.all()
-    return database.models.Ingenieur.query.all()
 
 
 def get_engineer_by_id(engineer_id):
