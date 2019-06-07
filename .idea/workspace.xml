@@ -54,7 +54,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html.jinja2">
+        <entry file="file://$PROJECT_DIR$/database/database.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
               <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
@@ -111,9 +111,10 @@
         <option value="$PROJECT_DIR$/templates/homepage_etude_suivi.html" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_grille.html" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html" />
+        <option value="$PROJECT_DIR$/database/file.py" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/database/database.py" />
-        <option value="$PROJECT_DIR$/database/file.py" />
         <option value="$PROJECT_DIR$/database/models.py" />
         <option value="$PROJECT_DIR$/templates/layout.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" />
@@ -302,20 +303,6 @@
     <entry file="file://$PROJECT_DIR$/sar2019/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sar2019/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sar2019/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -417,7 +404,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/database.py">
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
@@ -482,6 +469,34 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2888">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#2#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+
     </entry>
   </component>
 </project>
