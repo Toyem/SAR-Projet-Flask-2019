@@ -1,13 +1,19 @@
-{% extends "homepage_affaire.html.jinja2" %}
+{% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <div class="container rounded border">
-        <h4>GESTION DES MISSONS</h4>
+
+    <div class="p-3 mb-2 bg-info text-white size-6 font-weight-bold text-center">
+        <h2>Ingénieur d'études</h2>
     </div>
+
+    <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
+         <h4>Suivi des demandes</h4>
+    </div>
+
     <div class="row">
         <div class="col-sm-9">
             <div class="container">
@@ -15,48 +21,26 @@
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="pill" href="#TODO">
-                            &Agrave; affecter
-                            <span class="badge badge-secondary badge-pill">4</span>
+                            Accept&egrave;es
+                            <span class="badge badge-secondary badge-pill">6</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Affect&eacute;es
-                            <span class="badge badge-secondary badge-pill">10</span>
+                            En attente
+                            <span class="badge badge-secondary badge-pill">5</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Closes
-                            <span class="badge badge-secondary badge-pill">24</span>
+                            Non abouties
+                            <span class="badge badge-secondary badge-pill">1</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="pill" href="#TODO">
                             Toutes
-                            <span class="badge badge-secondary badge-pill">38</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">Select all</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
-                            <img src="../static/img/trash.png"
-                                 style="width:24px;height:24px;"
-                                 alt="icone d&apos;une poubelle">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" href="#TODOTODO">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-plus-circle" alt="signe + entour&eacute; d&apos;un cercle ">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="8" x2="12" y2="16"></line>
-                                <line x1="8" y1="12" x2="16" y2="12"></line>
-                            </svg>
+                            <span class="badge badge-secondary badge-pill">13</span>
                         </a>
                     </li>
                 </ul>
@@ -76,4 +60,5 @@
         {% block gridMission %}
         {% endblock %}
     </div>
+
 {% endblock %}
