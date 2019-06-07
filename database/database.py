@@ -35,6 +35,9 @@ def populate_database():
         nom_court = prenom.lower()[0] + nom_famille.lower()
         site = random.choice(BUREAUX)
         taux_journalier = round(random.uniform(240, 560), 2)
+        statut = "disponible"
+        estCommercial = bool(random.getrandbit(1))
+
         email = "%s.%s@%s_agency.bigcompany.fr" % (prenom.lower(),
                                                    nom_famille.lower(),
                                                    site.lower())
@@ -43,7 +46,9 @@ def populate_database():
                                                  nom_famille=nom_famille,
                                                  site=site,
                                                  email=email,
-                                                 taux_journalier=taux_journalier)
+                                                 taux_journalier=taux_journalier,
+                                                 statut=statut,
+                                                 estCommercial=estCommercial)
 
         db.session.add(new_engineer)
         try:
