@@ -2,12 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 import inspect
 import random
 
+
 db = SQLAlchemy()
 
 
 def init_database():
     db.create_all()
-    populate_database()
+    #populate_database()
 
 
 def populate_database():
