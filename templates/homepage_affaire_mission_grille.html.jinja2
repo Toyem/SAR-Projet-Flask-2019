@@ -14,6 +14,9 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" placeholder="{{ mission.name }}">
+                <div class="mb-3">
+                    <button type="button" class="btn btn-danger" onclick="location.href='{{ url_for("edit_mission", mission="test") }}';" >Edit</button>
+                </div>
             </div>
         {% endfor %}
     </form>
