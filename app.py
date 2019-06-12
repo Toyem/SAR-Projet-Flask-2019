@@ -64,6 +64,10 @@ def edit_mission(mission):
 def carriere_vue(name):
     return render_template("homepage_affaire_carriere_vue_grille.html.jinja2")
 
+@app.route('/<mission>') #On ne réccupère plus le nom du mec dans l'url !!!!
+def postuler(mission):
+    return render_template("homepage_etude_postuler_action_comp.html.jinja2")
+
 
 if __name__ == '_main_':
     app.run()

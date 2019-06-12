@@ -13,7 +13,7 @@
                         <input type="checkbox">
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="{{ mission.name }}">
+                <input type="text" class="form-control" onclick="location.href='{{ url_for("postuler", mission="test") }}';" placeholder="{{ mission.name }}">
             </div>
         {% endfor %}
     </form>

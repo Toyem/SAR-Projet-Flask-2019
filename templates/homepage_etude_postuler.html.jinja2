@@ -45,6 +45,15 @@
         </div>
     </div>
     <div class="container rounded border">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox">
+                </div>
+            </div>
+            <input type="text" class="form-control" onclick="location.href='{{ url_for("postuler", mission="test") }}';"
+                   placeholder="Mission1 Name #TODO">
+        </div>
         {% block gridMission %}
         {% endblock %}
     </div>
