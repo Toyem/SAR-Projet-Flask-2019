@@ -77,7 +77,7 @@ def populate_database():
             db.session.rollback()
 
     ##########################################
-    # Creation de missions
+    # Creation de missions + Responsables missions
     ##########################################
     ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny"]
     NOMS = ["revolution", "moon", "breakthrough", "landscape"]
@@ -92,8 +92,10 @@ def populate_database():
         responsable = random.choice(ingenieurs)
         description = "Description de la mission '%s'" % (nouveau_titre)
         prix_vente = random.randint(10000, 100000)
+        effectifs_max = 4
         new_mission = database.models.Mission(titre=nouveau_titre,
                                               description=description,
+                                              effectifs_max=effectifs_max,
                                               prix_vente=prix_vente,
                                               responsable_id=responsable.id)
         db.session.add(new_mission)
@@ -116,7 +118,7 @@ def populate_database():
         competences_choisies = random.sample(competences, 2)
 
         for competence in competences_choisies:
-            besoin_en_ingenieurs = random.randint(15, 50)
+            besoin_en_ingenieurs = random.randint(15, 0)
 
             nouveau_besoin = database.models.Besoin(quantite_jour_homme=besoin_en_ingenieurs,
                                                     mission_id=mission.id,
@@ -139,7 +141,9 @@ def populate_database():
     for ingenieur in ingenieurs:
         competences_choisies = random.sample(competences, 4)
         for competence_choisie in competences_choisies:
-            nouvelle_certification = database.models.Certification(ingenieur_id=ingenieur.id,
+            niveau = random.randint(10, 90)
+            nouvelle_certification = database.models.Certification(niveau=niveau,
+                                                                   ingenieur_id=ingenieur.id,
                                                                    competence_id=competence_choisie.id)
 
             db.session.add(nouvelle_certification)
@@ -184,10 +188,10 @@ def populate_database():
                                        + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
                 date_fin_timestamp = date_debut_timestamp + duree_projet_en_semaine * 7 * 24 * 3600
 
-                nouvelle_affectation = Affectation(ingenieur_id=ingenieur_affecte.id,
-                                                   mission_id=mission.id,
-                                                   date_debut=datetime.fromtimestamp(date_debut_timestamp),
-                                                   date_fin=datetime.fromtimestamp(date_fin_timestamp))
+                nouvelle_affectation = Affectation(date_debut=datetime.fromtimestamp(date_debut_timestamp),
+                                                   date_fin=datetime.fromtimestamp(date_fin_timestamp),
+                                                   ingenieur_id=ingenieur_affecte.id,
+                                                   mission_id=mission.id)
 
                 db.session.add(nouvelle_affectation)
 
@@ -214,8 +218,13 @@ def populate_database():
                 .all()
 
             mission_souhaite = random.choice(missions_avec_une_competence)
+            candidature =
 
-            nouveau_souhait = Souhait(ingenieur_id=ingenieur.id,
+            decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
+            date_debut_timestamp = common_timestamp \
+                                   + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
+            nouveau_souhait = Souhait(date_candidature=date_candidature,
+                                      ingenieur_id=ingenieur.id,
                                       mission_id=mission_souhaite.id)
 
             db.session.add(nouveau_souhait)
