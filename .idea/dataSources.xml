@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="database" uuid="3a50ced4-ef80-4089-8f1a-8a92f72c04cf">
+    <data-source source="LOCAL" name="database" uuid="7479a4bb-e43f-478d-9442-831dd882cbca">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/database/database.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Ophelie\Documents\GitHub\SAR-Projet-Flask-2019\database\database.db</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
