@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
-         <h4>Gestion des carrières</h4>
+        <h4>Gestion des carrières</h4>
     </div>
 
     <div class="row">
@@ -24,6 +24,16 @@
         </div>
     </div>
     <div class="container rounded border">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox">
+                </div>
+            </div>
+            <input type="text" class="form-control"
+                   onclick="location.href='{{ url_for("carriere_vue", name="test") }}';"
+                   placeholder="Name LastName #TODO">
+        </div>
         {% block gridEngineer %}
         {% endblock %}
     </div>

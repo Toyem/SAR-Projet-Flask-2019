@@ -60,6 +60,10 @@ def onglet_etude(onglet):
 def edit_mission(mission):
     return render_template("homepage_affaire_mission_edit.html.jinja2")
 
+@app.route('/<name>') #On ne réccupère plus le nom du mec dans l'url !!!!
+def carriere_vue(name):
+    return render_template("homepage_affaire_carriere_vue_grille.html.jinja2")
+
 
 if __name__ == '_main_':
     app.run()

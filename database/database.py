@@ -218,10 +218,9 @@ def populate_database():
                 .all()
 
             mission_souhaite = random.choice(missions_avec_une_competence)
-            candidature =
 
             decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
-            date_debut_timestamp = common_timestamp \
+            date_candidature = common_timestamp \
                                    + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
             nouveau_souhait = Souhait(date_candidature=date_candidature,
                                       ingenieur_id=ingenieur.id,
