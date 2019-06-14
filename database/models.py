@@ -4,10 +4,10 @@ from database.database import db
 class Ingenieur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nom_court = db.Column(db.Text, unique=True) #unique ??
-    email = db.Column(db.Text, unique=True)
     prenom = db.Column(db.Text)
     nom_famille = db.Column(db.Text)
     site = db.Column(db.Text)
+    email = db.Column(db.Text, unique=True)
     taux_journalier = db.Column(db.Float)
     statut = db.Column(db.Text) #a traiter, ajouté par mes soins
     estCommercial = db.Column(db.Boolean) #ajouté par mes soins
@@ -26,12 +26,19 @@ class Competence(db.Model):
     besoins = db.relationship('Besoin', backref='competence', lazy='dynamic')
 
 
-class Certification(db.Model):
+class Mission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    niveau = db.Column(db.Integer)
+    titre = db.Column(db.String(64), unique=True)
+    description = db.Column(db.Text, unique=True)
+    effectifs_max = db.Column(db.Integer)
+    prix_vente = db.Column(db.Integer)
+    statut = db.Column(db.Text)
+    date_creation = db.Column(db.DateTime)
 
-    ingenieur_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
-    competence_id = db.Column(db.Integer, db.ForeignKey('competence.id'))
+    responsable_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
+    souhaits = db.relationship('Souhait', backref='mission', lazy='dynamic')
+    besoins = db.relationship('Besoin', backref='mission', lazy='dynamic')
+    affectations = db.relationship('Affectation', backref='mission', lazy='dynamic')
 
 
 class Besoin(db.Model):
@@ -41,17 +48,13 @@ class Besoin(db.Model):
     mission_id = db.Column(db.Integer, db.ForeignKey('mission.id'))
     competence_id = db.Column(db.Integer, db.ForeignKey('competence.id'))
 
-class Mission(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    titre = db.Column(db.String(64), unique=True)
-    description = db.Column(db.Text, unique=True)
-    effectifs_max = db.Column(db.Integer)
-    prix_vente = db.Column(db.Integer)
 
-    besoins = db.relationship('Besoin', backref='mission', lazy='dynamic')
-    affectations = db.relationship('Affectation', backref='mission', lazy='dynamic')
-    responsable_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
-    souhaits = db.relationship('Souhait', backref='mission', lazy='dynamic')
+class Certification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    niveau = db.Column(db.Integer)
+
+    ingenieur_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
+    competence_id = db.Column(db.Integer, db.ForeignKey('competence.id'))
 
 
 class Affectation(db.Model):

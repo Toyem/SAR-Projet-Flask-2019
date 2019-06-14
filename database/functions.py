@@ -1,28 +1,60 @@
-import database.models
+from database.models import *
 from app import db
 
 
 def get_all_engineers():
-    return database.models.Ingenieur.query.all()
+    return Ingenieur.query.all()
+
+
+def get_all_engineers_affaire():
+    return Ingenieur.query.filter_by(estCommercial=True).all()
+
+
+def get_all_missions():
+    return Mission.query.all()
+
+
+def get_all_short_name_engineers():
+    return Ingenieur.query(Ingenieur.nom_court).all().first()
+
+
+def get_all_full_name_engineers():
+    return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all().first()
+
+
+def get_mission_by_id(mission_id):
+    return Mission.query.filter_by(id=mission_id).first()
+
+
+def get_missions_a_affecter(): #doit être filtré par le prix (par exemple)
+    return Mission.query.all()
+
+
+def get_missions_affecte(): #doit être filtré par les souhaits
+    return Mission.query.all()
+
+
+def get_missions_close(): #doit être filtré par le statut
+    return Mission.query.filter_by(statut='close').all()
 
 
 def get_engineer_by_id(engineer_id):
-    return database.models.Ingenieur.query.filter_by(id=engineer_id).first()
+    return Ingenieur.query.filter_by(id=engineer_id).first()
 
 
 def get_engineers_in_site(site_name):
-    return database.models.Ingenieur.query.filter_by(site=site_name).all()
+    return Ingenieur.query.filter_by(site=site_name).all()
 
 
 def add_skill_to_engineer(engineer_id, skill_id):
-    engineer = database.models.Ingenieur.query.filter_by(id=engineer_id).first()
-    skill = database.models.Competence.query.filter_by(id=skill_id).first()
+    engineer = Ingenieur.query.filter_by(id=engineer_id).first()
+    skill = Competence.query.filter_by(id=skill_id).first()
 
     has_already_the_skill = skill.id in [skill_entry.skill.id for skill_entry in engineer.skill_entries]
 
     if not has_already_the_skill:
-        new_skill_entry = database.models.ComptenceIndividuelle(engineer_id=engineer.id,
-                                                                skill_id=skill.id)
+        new_skill_entry = Certification(engineer_id=engineer.id,
+                                        skill_id=skill.id)
         db.session.add(new_skill_entry)
         db.session.commit()
 

@@ -3,6 +3,7 @@ from flask import render_template
 from database.database import db, init_database
 
 from database.models import *
+from database.functions import *
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database/database.db"
@@ -28,9 +29,9 @@ def remove_object_from_db(db_object):
 def find_mission_by_id(id):
     return Mission.query.filter_by(id=id).first()
 
-
 @app.route('/')
 def layout():
+<<<<<<< HEAD
     return render_template("homepage_affaire.html.jinja2")
 
 
@@ -42,6 +43,45 @@ def michel_affaire():
 @app.route('/Rene_etude')
 def rene_etude():
     return render_template("homepage_etude_postuler_grille.html.jinja2")
+=======
+    return render_template("layout.html.jinja2")
+
+
+@app.route('/Name/<classe>')
+def classe(classe):
+    if(classe == "affaire"):
+        return render_template("homepage_affaire_mission_grille.html.jinja2", classe=classe)
+    if (classe == "etude"):
+        return render_template("homepage_etude_postuler_grille.html.jinja2", classe=classe)
+
+@app.route('/Name/affaire/<onglet>')
+def onglet_affaire(onglet):
+    if (onglet == "missions"):
+        return render_template("homepage_affaire_mission_grille.html.jinja2")
+    if (onglet == "carrieres"):
+        return render_template("homepage_affaire_carriere_grille.html.jinja2")
+
+
+@app.route('/Name/etude/<onglet>')
+def onglet_etude(onglet):
+    if (onglet == "postuler"):
+        return render_template("homepage_etude_postuler_grille.html.jinja2")
+    if (onglet == "suivi"):
+        return render_template("homepage_etude_suivi_grille.html.jinja2")
+
+@app.route('/Name/affaire/missions/<mission>')
+def edit_mission(mission):
+    # Il faut varier les trucs en sortie en fonction de la mission
+    return render_template("homepage_affaire_mission_edit.html.jinja2")
+
+@app.route('/Name/affaire/carriere/<name>')
+def carriere_vue(name):
+    return render_template("homepage_affaire_carriere_vue_grille.html.jinja2")
+
+@app.route('/Name/etude/postuler/<mission>')
+def postuler(mission):
+    return render_template("homepage_etude_postuler_action_comp.html.jinja2")
+>>>>>>> cc3646c0a20ded94681ca1c0eba1ee3e1c7555db
 
 
 if __name__ == '_main_':
