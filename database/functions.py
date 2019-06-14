@@ -41,6 +41,9 @@ def get_missions_close():
 def get_engineer_by_id(engineer_id):
     return Ingenieur.query.filter_by(id=engineer_id).first()
 
+def get_engineer_by_short_name(engineer_short_name):
+    return Ingenieur.query.filter_by(nom_court=engineer_short_name).first()
+
 
 def get_engineers_in_site(site_name):
     return Ingenieur.query.filter_by(site=site_name).all()

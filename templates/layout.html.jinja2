@@ -20,11 +20,11 @@
 <div class="engineerChoice col-sm-4 col-11 rounded" id="premierElement">
     <h2>Je suis ing&eacute;nieur <span class="bold">d&apos;affaire</span></h2>
     <button type="button" class="btn btn-outline-secondary dropdown-toggle btn-light" data-toggle="dropdown">
-        Dropdown button
+        Identifiant
     </button>
     <div class="dropdown-menu">
-        {% for name in listOfName %}
-            <a class="dropdown-item" href="/{{ name }}/affaire">{{ name }}</a>
+        {% for shortName in listOfShortName %}
+            <a class="dropdown-item" href="/{{ shortName }}/affaire/missions/">{{ shortName }}</a>
             <!--<a class="dropdown-item" href="#TODO">Link 2</a>
             <a class="dropdown-item" href="#TODO">Link 3</a>-->
         {% endfor %}
@@ -33,12 +33,12 @@
 <div class="engineerChoice col-sm-4 col-11 rounded">
     <h2>Je suis ing&eacute;nieur <span class="bold">d&apos;&eacute;tude</span></h2>
     <button type="button" class="btn btn-outline-secondary dropdown-toggle btn-light" data-toggle="dropdown">
-        Dropdown button
+        Identifiant
     </button>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="/Name/etude">Rene</a>
-        <a class="dropdown-item" href="/Name/etude">Albert</a>
-        <a class="dropdown-item" href="#TODO">Link 3</a>
+        {% for shortName in listOfShortName %}
+            <a class="dropdown-item" href="/{{ shortName }}/etude/postuler/">{{ shortName }}</a>
+        {% endfor %}
     </div>
 </div>
 

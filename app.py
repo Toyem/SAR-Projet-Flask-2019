@@ -31,45 +31,51 @@ def find_mission_by_id(id):
 
 @app.route('/')
 def layout():
-    listOfName = get_all_short_name_engineers()
-    return render_template("layout.html.jinja2",listOfName=listOfName)
+    listOfShortName = get_all_short_name_engineers()
+    #listOfShortName = get_all_engineers()
+    return render_template("layout.html.jinja2",
+                           listOfShortName=listOfShortName)
 
-
-@app.route('/<name>/<classe>')
-def classe(name,classe):
-
-    if(classe == "affaire"):
-        return render_template("homepage_affaire_mission_grille.html.jinja2", name=name ,classe=classe)
-    if (classe == "etude"):
-        return render_template("homepage_etude_postuler_grille.html.jinja2", classe=classe)
-
-@app.route('/<name>/affaire/<onglet>')
-def onglet_affaire(name,onglet):
+@app.route('/<shortName>/affaire/<onglet>/')
+def onglet_affaire(shortName,onglet):
     if (onglet == "missions"):
-        return render_template("homepage_affaire_mission_grille.html.jinja2",name=name)
+        return render_template("homepage_affaire_mission_grille.html.jinja2",
+                               shortName=shortName)
     if (onglet == "carrieres"):
-        return render_template("homepage_affaire_carriere_grille.html.jinja2",name=name)
+        listOfEngineer = Ingenieur.query.all()
+        return render_template("homepage_affaire_carriere_grille.html.jinja2",
+                               shortName=shortName,
+                               listOfEngineer=listOfEngineer)
 
 
-@app.route('/<name>/etude/<onglet>')
-def onglet_etude(name, onglet):
+@app.route('/<shortName>/etude/<onglet>/')
+def onglet_etude(shortName, onglet):
     if (onglet == "postuler"):
-        return render_template("homepage_etude_postuler_grille.html.jinja2",name=name)
+        return render_template("homepage_etude_postuler_grille.html.jinja2",
+                               shortName=shortName)
     if (onglet == "suivi"):
-        return render_template("homepage_etude_suivi_grille.html.jinja2")
+        return render_template("homepage_etude_suivi_grille.html.jinja2",
+                               shortName=shortName)
 
-@app.route('/<name>/affaire/missions/<mission>')
-def edit_mission(mission):
+@app.route('/<shortName>/affaire/missions/<mission>/')
+def edit_mission(shortName, mission):
     # Il faut varier les trucs en sortie en fonction de la mission
-    return render_template("homepage_affaire_mission_edit.html.jinja2",name=name)
+    return render_template("homepage_affaire_mission_edit.html.jinja2",
+                           shortName=shortName)
 
-@app.route('/<name>/affaire/carriere/<namePeople>')
-def carriere_vue(name,namePeople):
-    return render_template("homepage_affaire_carriere_vue_grille.html.jinja2",name=name)
+@app.route('/<shortName>/affaire/carrieres/<shortNameCarriere>/')
+def carriere_vue(shortName,shortNameCarriere):
+    engineerObserve = get_engineer_by_short_name(shortNameCarriere)
+    return render_template("homepage_affaire_carriere_vue_grille.html.jinja2",
+                           shortName=shortName,
+                           engineerObserveFirstName=engineerObserve.prenom,
+                           engineerObserveLastName=engineerObserve.nom_famille,
+                           engineerObserveEmail=engineerObserve.email)
 
-@app.route('/<name>/etude/postuler/<mission>')
-def postuler(mission):
-    return render_template("homepage_etude_postuler_action_comp.html.jinja2",name=name)
+@app.route('/<shortName>/etude/postuler/<mission>/')
+def postuler(shortName, mission):
+    return render_template("homepage_etude_postuler_action_comp.html.jinja2",
+                           shortName=shortName)
 
 
 if __name__ == '_main_':
