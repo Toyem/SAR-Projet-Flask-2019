@@ -1,50 +1,53 @@
 {% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <div class="container rounded border">
         <h4>POSTULER &Agrave; DES MISSIONS</h4>
     </div>
     <div class="row">
-        <div class="col-sm-9">
-            <div class="container">
-                <!-- Nav pills -->
-                <ul class="nav nav-pills" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#TODO">
-                            Disponibles
-                            <span class="badge badge-secondary badge-pill">12</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Non disponibles
-                            <span class="badge badge-secondary badge-pill">4</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Toutes
-                            <span class="badge badge-secondary badge-pill">16</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="container">
-                <nav class="navbar navbar-expand-sm bg navbar">
-                    <form class="form-inline" action="/TODO.php">
-                        <button type="button" class="btn btn-link" disabled>Q</button>
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                    </form>
-                </nav>
-            </div>
+        <div class="container">
+            <!-- Nav pills -->
+            <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#TODO">
+                        Disponibles
+                        <span class="badge badge-secondary badge-pill">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                        Non disponibles
+                        <span class="badge badge-secondary badge-pill">4</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                        Toutes
+                        <span class="badge badge-secondary badge-pill">16</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg navbar">
+                <form class="form-inline" action="/TODO.php">
+                    <button type="button" class="btn btn-link" disabled>Q</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </nav>
         </div>
     </div>
     <div class="container rounded border">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox">
+                </div>
+            </div>
+            <input type="text" class="form-control" onclick="location.href='/Name/etude/postuler/mission2';"
+                   placeholder="Mission1 Name #TODO">
+        </div>
         {% block gridMission %}
         {% endblock %}
     </div>

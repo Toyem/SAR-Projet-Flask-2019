@@ -228,6 +228,7 @@ def populate_database():
             decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
             date_candidature = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
             nouveau_souhait = Souhait(date_candidature=datetime.fromtimestamp(date_candidature),
+
                                       ingenieur_id=ingenieur.id,
                                       mission_id=mission_souhaite.id)
 
