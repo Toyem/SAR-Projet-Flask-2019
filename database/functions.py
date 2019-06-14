@@ -15,7 +15,7 @@ def get_all_missions():
 
 
 def get_all_short_name_engineers():
-    return Ingenieur.query(Ingenieur.nom_court).all().first()
+    return [n for (n,) in db.session.query(Ingenieur.nom_court).all()]
 
 
 def get_all_full_name_engineers():
@@ -34,7 +34,7 @@ def get_missions_affecte(): #doit être filtré par les souhaits
     return Mission.query.all()
 
 
-def get_missions_close(): #doit être filtré par le statut
+def get_missions_close():
     return Mission.query.filter_by(statut='close').all()
 
 
