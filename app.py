@@ -31,7 +31,7 @@ def find_mission_by_id(id):
 
 @app.route('/')
 def layout():
-    return render_template("homepage_affaire_mission.html.jinja2")
+    return render_template("homepage_affaire.html.jinja2")
 
 
 @app.route('/Michel_affaire')
