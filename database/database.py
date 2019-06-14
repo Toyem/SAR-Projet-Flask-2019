@@ -40,7 +40,7 @@ def populate_database():
         site = random.choice(BUREAUX)
         taux_journalier = round(random.uniform(240, 560), 2)
         statut = "disponible"
-        estCommercial = bool(random.getrandbit(1))
+        estCommercial = bool(random.getrandbits(1))
 
         email = "%s.%s@%s_agency.bigcompany.fr" % (prenom.lower(),
                                                    nom_famille.lower(),
