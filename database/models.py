@@ -32,6 +32,8 @@ class Mission(db.Model):
     description = db.Column(db.Text, unique=True)
     effectifs_max = db.Column(db.Integer)
     prix_vente = db.Column(db.Integer)
+    statut = db.Column(db.Text)
+    date_creation = db.Column(db.DateTime)
 
     responsable_id = db.Column(db.Integer, db.ForeignKey('ingenieur.id'))
     souhaits = db.relationship('Souhait', backref='mission', lazy='dynamic')

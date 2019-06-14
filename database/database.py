@@ -8,11 +8,14 @@ db = SQLAlchemy()
 
 def init_database():
     db.create_all()
-    #populate_database()
+    populate_database()
 
 
 def populate_database():
     import database.models
+
+    from datetime import datetime
+    common_timestamp = 1559905910  # 07/06/2019 13:12:50
 
     model_classes = [model_class for (model_name, model_class) in inspect.getmembers(database.models, inspect.isclass)]
     do_populate = sum([len(c.query.all()) for c in model_classes]) == 0
@@ -81,7 +84,7 @@ def populate_database():
     ##########################################
     ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny"]
     NOMS = ["revolution", "moon", "breakthrough", "landscape"]
-
+    STATUS = ["ouverte", "close"]
     ingenieurs = database.models.Ingenieur.query.all()
 
     for i in range(0, 5):
@@ -93,10 +96,15 @@ def populate_database():
         description = "Description de la mission '%s'" % (nouveau_titre)
         prix_vente = random.randint(10000, 100000)
         effectifs_max = 4
+        statut = random.choice(STATUS)
+        decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
+        date_creation = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
         new_mission = database.models.Mission(titre=nouveau_titre,
                                               description=description,
                                               effectifs_max=effectifs_max,
                                               prix_vente=prix_vente,
+                                              statut=statut,
+                                              date_creation=datetime.fromtimestamp(date_creation),
                                               responsable_id=responsable.id)
         db.session.add(new_mission)
 
@@ -161,13 +169,11 @@ def populate_database():
     missions = database.models.Mission.query.all()
 
     from database.models import Ingenieur, Certification, Competence, Affectation
-    from datetime import datetime
 
     # Un timestamp est une representation d'un couple date/heure. Une representation
     # courante est d'utiliser un entier representant le nombre de secondes ecoulees
     # depuis le 1er janvier 1970. Le nombre suivant represente le nombre de secondes
     # ecoulees entre le 1er janvier 1970 et le 07 juin 2019 à 13h12 et 50 secondes
-    common_timestamp = 1559905910 # 07/06/2019 13:12:50
 
     for mission in missions:
         for besoin in mission.besoins:
@@ -214,16 +220,14 @@ def populate_database():
                 .join(Besoin) \
                 .join(Competence) \
                 .join(Certification) \
-                .filter(Certification.ingenieur_id==ingenieur.id) \
+                .filter(Certification.ingenieur_id == ingenieur.id) \
                 .all()
 
             mission_souhaite = random.choice(missions_avec_une_competence)
-            candidature =
 
             decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
-            date_debut_timestamp = common_timestamp \
-                                   + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
-            nouveau_souhait = Souhait(date_candidature=date_candidature,
+            date_candidature = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
+            nouveau_souhait = Souhait(date_candidature=datetime.fromtimestamp(date_candidature),
                                       ingenieur_id=ingenieur.id,
                                       mission_id=mission_souhaite.id)
 
