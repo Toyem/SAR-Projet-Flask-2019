@@ -1,4 +1,4 @@
-from flask import Flask
+﻿from flask import Flask
 from flask import render_template
 from database.database import db, init_database
 
@@ -168,6 +168,7 @@ def postuler(shortName, mission, etat):
 def error_page_404(error):
     # return render_template("404.html.jinja2")
     return render_template("404_glitch.html.jinja2")
+
 
 
 if __name__ == '_main_':
