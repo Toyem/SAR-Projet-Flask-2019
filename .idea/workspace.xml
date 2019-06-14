@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_etude.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude.html.jinja2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,33 +27,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/layout.html.jinja2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-93">
-              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -72,6 +34,24 @@
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -129,18 +109,18 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/database/models.py" />
         <option value="$PROJECT_DIR$/database/database.py" />
-        <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire.html.jinja2" />
-        <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2" />
         <option value="$PROJECT_DIR$/database/functions.py" />
         <option value="$PROJECT_DIR$/templates/layout.html.jinja2" />
+        <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" />
+        <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2" />
       </list>
     </option>
   </component>
@@ -283,12 +263,12 @@
       <workItem from="1559907278168" duration="11952000" />
       <workItem from="1559932111798" duration="23000" />
       <workItem from="1560081807250" duration="1210000" />
-      <workItem from="1560517681886" duration="8649000" />
+      <workItem from="1560517681886" duration="10376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55862000" />
+    <option name="totallyTimeSpent" value="57589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -467,26 +447,12 @@
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_grille.html.jinja2">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_suivi.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-172">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_suivi_grille.html.jinja2">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_action_comp.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-146" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="47" column="85" selection-start-line="47" selection-start-column="85" selection-end-line="47" selection-end-column="85" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_mission.html.jinja2">
@@ -518,24 +484,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="167" selection-start-line="11" selection-start-column="167" selection-end-line="11" selection-end-column="167" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="75">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -544,15 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
+        <state relative-caret-position="130">
           <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
@@ -566,10 +525,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html.jinja2">
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_suivi.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="45">
+          <caret line="3" column="74" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding>
+            <element signature="e#164#172#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_carriere.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
         </state>
       </provider>
     </entry>
