@@ -9,19 +9,19 @@
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#TODO">
+                    <a class="nav-link active" data-toggle="pill" href="/TODO.php">
                         Disponibles
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsAvalable|length }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Non disponibles
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsNotAvalable|length }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Toutes
                         <span class="badge badge-secondary badge-pill">{{ listOfAllMissions|length }}</span>
                     </a>
@@ -45,7 +45,7 @@
                     <input type="checkbox">
                 </div>
             </div>
-            <input type="text" class="form-control" onclick="location.href='mission2/';"
+            <input type="text" class="form-control" onclick="location.href='TODO/';"
                    placeholder="Mission1 Name #TODO">
         </div>
         {% block gridMission %}
