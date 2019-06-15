@@ -1,25 +1,33 @@
 {% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
-    <div class="container rounded border">
-        <div class="row">
-            <div class="mb-3">
-                <button type="button" class="btn btn-info" onclick="location.href='/{{ shortName }}/etude/postuler';">&lt;&lt;</button>
-            </div>
+    <div class="row">
+        <div class="mb-3 text-left">
+            <button type="button" class="btn btn-info" onclick="location.href='/{{ shortName }}/etude/postuler';">&lt;&lt;</button>
+        </div>
+        <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
             <h4>POSTULER</h4>
         </div>
     </div>
     <div class="col-md-8 order-md-1">
+        <div class="alert alert-success" id="success-message" style="display: none;">
+            <strong>Le formulaire a été envoyé avec succes !</strong>
+        </div>
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Name">Nom de la mission :</label>
                 <span>NOM TODO</span>
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-danger" onclick="location.href='/{{ shortName }}/etude/postuler';" >annuler</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/{{ shortName }}/etude/postuler';">
+                    annuler
+                </button>
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-success" onclick="location.href='#TODO';" >envoyer</button>
+                <button type="button" class="btn btn-success" onclick="location.href='#TODO';
+                                                                       document.getElementById('success-message').style.display='block';">
+                    envoyer
+                </button>
             </div>
         </div>
 

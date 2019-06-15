@@ -39,8 +39,14 @@ def layout():
 @app.route('/<shortName>/affaire/<onglet>/')
 def onglet_affaire(shortName,onglet):
     if (onglet == "missions"):
+        listOfMissionsToAssign = ["misions"]
         return render_template("homepage_affaire_mission_grille.html.jinja2",
-                               shortName=shortName)
+                               shortName=shortName
+                               ,listOfMissionsToAssign=listOfMissionsToAssign
+                               #,listOfMissionsAssigned=listOfMissionsAssigned
+                               #,listOfMissionsClosed=listOfMissionsClosed
+                               #,listOfAllMissions=listOfAllMissions
+                                )
     if (onglet == "carrieres"):
         listOfEngineer = Ingenieur.query.all()
         return render_template("homepage_affaire_carriere_grille.html.jinja2",
@@ -52,10 +58,19 @@ def onglet_affaire(shortName,onglet):
 def onglet_etude(shortName, onglet):
     if (onglet == "postuler"):
         return render_template("homepage_etude_postuler_grille.html.jinja2",
-                               shortName=shortName)
+                               shortName=shortName
+                               #,listOfMissionsAvalable=listOfMissionsAvalable,
+                               #listOfMissionsNotAvalable=listOfMissionsNotAvalable,
+                               #listOfAllMissions=listOfAllMissions
+                                )
     if (onglet == "suivi"):
         return render_template("homepage_etude_suivi_grille.html.jinja2",
-                               shortName=shortName)
+                               shortName=shortName
+                               #,listOfMissionsAccepted=listOfMissionsAccepted,
+                               #listOfMissionsWaiting=listOfMissionsWaiting,
+                               #listOfMissionsUnsuccessful=listOfMissionsUnsuccessful,
+                               #listOfAllMissions=listOfAllMissions
+                                )
 
 @app.route('/<shortName>/affaire/missions/<mission>/')
 def edit_mission(shortName, mission):
@@ -76,6 +91,11 @@ def carriere_vue(shortName,shortNameCarriere):
 def postuler(shortName, mission):
     return render_template("homepage_etude_postuler_action_comp.html.jinja2",
                            shortName=shortName)
+
+@app.errorhandler(404)
+def error_page_404(error):
+    return render_template("404.html.jinja2")
+
 
 
 if __name__ == '_main_':
