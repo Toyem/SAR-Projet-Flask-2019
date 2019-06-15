@@ -1,0 +1,23 @@
+body {
+    font-family: 'Indie Flower', Calibri;
+    font-size: 22px;
+    color: LightGrey;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../img/board.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
+.title {
+    font-size: 60px;
+}
