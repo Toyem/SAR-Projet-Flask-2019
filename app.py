@@ -94,7 +94,8 @@ def postuler(shortName, mission):
 
 @app.errorhandler(404)
 def error_page_404(error):
-    return render_template("404.html.jinja2")
+    #return render_template("404.html.jinja2")
+    return render_template("404_glitch.html.jinja2")
 
 
 
