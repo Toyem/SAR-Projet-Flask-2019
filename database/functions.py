@@ -30,10 +30,6 @@ def get_all_engineers_affaire():
     return Ingenieur.query.filter_by(estCommercial=True).all()
 
 
-def get_all_short_name_engineers():
-    return Ingenieur.query(Ingenieur.nom_court).all()
-
-
 def get_all_full_name_engineers():
     return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all()
 
