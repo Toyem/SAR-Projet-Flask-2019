@@ -10,20 +10,20 @@ def get_all_engineers():
 
 
 # GET ALL Specific
-def get_missions_a_affecter(): #doit être filtré par le prix (par exemple)
+def get_missions_a_affecter(): #doit être filtré par condidature
     return Mission.query.all()
 
 
-def get_missions_affecte(): #doit être filtré par les souhaits
-    return Affectation.query.all()
-
-
-def get_all_short_name_engineers():
-    return [n for (n,) in db.session.query(Ingenieur.nom_court).all()]
+def get_missions_affecte(): #doit être filtré par non condicdature
+    return Mission.query.all()
 
 
 def get_missions_close():
     return Mission.query.filter_by(statut='close').all()
+
+
+def get_postulant_by_mission(id_mission): #nb candidature pour cette mission
+    return 3
 
 
 def get_all_engineers_affaire():
@@ -31,15 +31,26 @@ def get_all_engineers_affaire():
 
 
 def get_all_short_name_engineers():
-    return Ingenieur.query(Ingenieur.nom_court).all()
+    return [n for (n,) in db.session.query(Ingenieur.nom_court).all()]
 
 
 def get_all_full_name_engineers():
     return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all()
 
 
-def get_engineers_in_site(site_name):
-    return Ingenieur.query.filter_by(site=site_name).all()
+def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
+    return Mission.query.all()
+
+
+def get_mission_en_cours_of_inge(inge_id): #inge mission terminé(now>date fin)
+    return Mission.query.all()
+
+
+def get_mission_en_attente_of_inge(inge_id): #inge mission condidature
+    return Mission.query.all()
+
+def get_mission_possible_of_inge(inge_id): #inge mission visible car le type est pas trop cher etc
+    return Mission.query.all()
 
 
 # GET BY (first)
@@ -49,9 +60,6 @@ def get_mission_by_id(mission_id):
 
 def get_engineer_by_id(engineer_id):
     return Ingenieur.query.filter_by(id=engineer_id).first()
-
-def get_engineer_by_short_name(engineer_short_name):
-    return Ingenieur.query.filter_by(nom_court=engineer_short_name).first()
 
 
 def get_engineer_by_nom_court(nom_court):
