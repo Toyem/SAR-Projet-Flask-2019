@@ -59,10 +59,10 @@ def onglet_affaire_mission(shortName,etat):
     return render_template("homepage_affaire_mission_grille.html.jinja2"
                            , shortName=shortName
                            , listToShow=listToShow
-                           , listOfMissionsToAssign=listOfMissionsToAssign
-                           , listOfMissionsAssigned=listOfMissionsAssigned
-                           , listOfMissionsClosed=listOfMissionsClosed
-                           , listOfAllMissions=listOfAllMissions
+                           , listOfMissionsToAssignLength=len(listOfMissionsToAssign)
+                           , listOfMissionsAssignedLength=len(listOfMissionsAssigned)
+                           , listOfMissionsClosedLength=len(listOfMissionsClosed)
+                           , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
 @app.route('/<shortName>/affaire/carrieres/')
@@ -100,15 +100,33 @@ def edit_mission(shortName, mission):
     return render_template("homepage_affaire_mission_edit.html.jinja2",
                            shortName=shortName)
 
-@app.route('/<shortName>/affaire/carrieres/<shortNameCarriere>/')
+@app.route('/<shortName>/affaire/carrieres/<shortNameCarriere>/<etat>/')
 # API pour voir les carrières des ingés
-def carriere_vue(shortName,shortNameCarriere):
+def carriere_vue(shortName,shortNameCarriere,etat):
     engineerObserve = get_engineer_by_nom_court(shortNameCarriere)
+    listOfMissionsOnGoing = get_mission_en_cours_of_inge(engineerObserve.id)
+    listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
+    listOfMissionsClosed =  get_mission_en_termine_of_inge(engineerObserve.id)
+    if (etat == "enCours"):
+        listToShow = listOfMissionsOnGoing
+    elif (etat == "termine"):
+        listToShow = listOfMissionsWaiting
+    elif (etat == "enAttente"):
+        listToShow = listOfMissionsClosed
+    #Il manque pas une ligne pour les missions refusées ?
+    #TODO ?
+    else:
+        error_page_404("tab doesn't exist")
     return render_template("homepage_affaire_carriere_vue_grille.html.jinja2",
                            shortName=shortName,
                            engineerObserveFirstName=engineerObserve.prenom,
                            engineerObserveLastName=engineerObserve.nom_famille,
-                           engineerObserveEmail=engineerObserve.email)
+                           engineerObserveEmail=engineerObserve.email,
+                           shortNameCarriere=shortNameCarriere
+                           , listOfMissionsOnGoingLength=len(listOfMissionsOnGoing)
+                           , listOfMissionsWaitingLength=len(listOfMissionsWaiting)
+                           , listOfMissionsClosedLength=len(listOfMissionsClosed)
+                           , listToShow=listToShow)
 
 @app.route('/<shortName>/etude/postuler/<mission>/')
 # API pour postuler à une mission

@@ -42,7 +42,7 @@ def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
     return Mission.query.all()
 
 
-def get_mission_en_cours_of_inge(inge_id): #inge mission terminé(now>date fin)
+def get_mission_en_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
     return Mission.query.all()
 
 
