@@ -82,12 +82,12 @@ def populate_database():
     ##########################################
     # Creation de missions + Responsables missions
     ##########################################
-    ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny"]
-    NOMS = ["revolution", "moon", "breakthrough", "landscape"]
+    ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny", "infinity", "barbatruc"]
+    NOMS = ["revolution", "moon", "breakthrough", "landscape", "impossible", "orangeade"]
     STATUS = ["ouverte", "close"]
     ingenieurs = database.models.Ingenieur.query.all()
 
-    for i in range(0, 5):
+    for i in range(0, 20):
         nouveau_titre = "%s %s" % (
             random.choice(ADJECTIFS),
             random.choice(NOMS)

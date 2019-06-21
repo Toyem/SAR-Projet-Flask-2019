@@ -61,11 +61,15 @@ def get_engineer_by_nom_prenom(nom, prenom):
 
 
 def get_mission_en_cours_of_inge(inge_id):
-    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin <= db.func.now()).all()]
+    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id)
+        .filter_by(ingenieur_id=inge_id)
+        .filter(Affectation.date_fin <= db.func.now())
+        .all()]
 
 
 def get_mission_termine_of_inge(inge_id):
-    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin > db.func.now()).all()]
+    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id)
+        .filter(Affectation.date_fin > db.func.now()).all()]
 
 
 def get_mission_en_attente_of_inge(inge_id):
@@ -107,14 +111,15 @@ def get_missions_a_affecter():
 
 
 def get_missions_affecte():
-    missions_ids = Mission.query.filter_by(statut="ouverte").all()
+    missions_ids = [m.id for m in Mission.query.filter_by(statut="ouverte").all()]
     souhaits_ids = [id for (id,) in Souhait.query.with_entities(Souhait.mission_id).distinct().all()]
     for s in souhaits_ids:
         missions_ids.remove(s)
     missions = []
     for id in missions_ids:
         missions.append(get_mission_by_id(id))
-    return missions
+    missions2 = [m for m in Mission.query.all() if m.statut=="ouverte" and len(list(m.souhaits)) == 0]
+    return missions2
 
 
 def get_missions_close():
