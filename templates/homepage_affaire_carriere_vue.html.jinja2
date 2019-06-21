@@ -2,17 +2,17 @@
 
 {% block body %}
     <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
-         <h4>Suivi des carrières</h4>
+         <h4>Suivi des carri&egrave;res</h4>
     </div>
     <div class="col-md-8 order-md-1">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Name">Nom :</label>
-                <span>NOM TODO</span>
+                <span>{{ engineerObserveFirstName }} {{ engineerObserveLastName }}</span>
             </div>
         <div class="col-md-6 mb-3">
                 <label for="Name">Email :</label>
-                <span>EMAIL TODO</span>
+                <span>{{ engineerObserveEmail }}</span>
             </div>
         </div>
     </div>
@@ -23,27 +23,21 @@
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#TODO">
+                        <a class="nav-link active" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/enCours/">
                             En cours
-                            <span class="badge badge-secondary badge-pill">6</span>
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsOnGoingLength }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Terminées
-                            <span class="badge badge-secondary badge-pill">5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
+                        <a class="nav-link" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/enAttente/">
                             En attente
-                            <span class="badge badge-secondary badge-pill">1</span>
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaitingLength }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#TODO">
-                            Refusées
-                            <span class="badge badge-secondary badge-pill">1</span>
+                        <a class="nav-link" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/termine/"><!--data-toggle="pill"-->
+                            Termin&eacute;es
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
                         </a>
                     </li>
                 </ul>

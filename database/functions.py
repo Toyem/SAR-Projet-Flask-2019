@@ -1,51 +1,113 @@
 from database.models import *
 from app import db
 
+# GET ALL
+def get_all_missions():
+    return Mission.query.all()
 
 def get_all_engineers():
     return Ingenieur.query.all()
+
+
+# GET ALL Specific
+def get_missions_a_affecter():
+    missions_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions = []
+    for id in missions_ids:
+        missions += get_mission_by_id(id)
+    return missions
+
+
+def get_missions_affecte():
+    missions_ids = get_all_mission_ids()
+    souhaits_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions_ids.removeAll(souhaits_ids)
+    missions = []
+    for id in missions_ids:
+        missions += get_mission_by_id(id)
+    return Mission.query.all()
+
+
+def get_missions_close():
+    return Mission.query.filter_by(statut='close').all()
+
+
+def get_postulant_by_mission(id_mission):
+    return Souhait.query.filter_by(id_mission=id_mission).all().length
+
+
+def get_all_mission_ids():
+    return Mission.query(id).all()
 
 
 def get_all_engineers_affaire():
     return Ingenieur.query.filter_by(estCommercial=True).all()
 
 
-def get_all_missions():
-    return Mission.query.all()
-
-
 def get_all_short_name_engineers():
-    return Ingenieur.query(Ingenieur.nom_court).all().first()
+    return [n for (n,) in db.session.query(Ingenieur.nom_court).all()]
 
 
 def get_all_full_name_engineers():
-    return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all().first()
+    return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all()
 
 
+def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
+    return Affectation.query(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin<db.func.now()).all()
+
+
+def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
+    return Mission.query.all() #Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
+
+
+def get_mission_en_attente_of_inge(inge_id):
+    missions = []
+    souhaits = Souhait.query(Souhait.mision_id).filter_by(ingenieur_id=inge_id).all()
+    for id in souhaits:
+        missions += get_mission_by_id(id)
+    return missions
+
+
+def get_participants_actuels_of_mission(mission_id):
+    return Mission.query.all() 
+
+
+def get_mission_possible_of_inge(inge_id):
+    missions = Mission.query.filter_by(statut="ouverte").all()
+    inge = get_engineer_by_id(inge_id)
+    visibles = []
+    for m in missions:
+        cout_actuel = 0
+        inges = get_participants_actuels_of_mission(m)
+        for eid in inges:
+            cout_actuel += get_engineer_by_id(eid).taux_journalier
+        if cout_actuel + inge.taux_journalier < m.prix_vente:
+            visibles += m
+    return visibles
+
+
+# GET BY (first)
 def get_mission_by_id(mission_id):
     return Mission.query.filter_by(id=mission_id).first()
 
 
-def get_missions_a_affecter(): #doit être filtré par le prix (par exemple)
-    return Mission.query.all()
-
-
-def get_missions_affecte(): #doit être filtré par les souhaits
-    return Mission.query.all()
-
-
-def get_missions_close(): #doit être filtré par le statut
-    return Mission.query.filter_by(statut='close').all()
+def get_mission_by_titre(mission_titre):
+    return Mission.query.filter_by(titre=mission_titre).first()
 
 
 def get_engineer_by_id(engineer_id):
     return Ingenieur.query.filter_by(id=engineer_id).first()
 
 
-def get_engineers_in_site(site_name):
-    return Ingenieur.query.filter_by(site=site_name).all()
+def get_engineer_by_nom_court(nom_court):
+    return Ingenieur.query.filter_by(nom_court=nom_court).first()
 
 
+def get_engineer_by_nom_prenom(nom, prenom):
+    return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
+
+
+# ADD
 def add_skill_to_engineer(engineer_id, skill_id):
     engineer = Ingenieur.query.filter_by(id=engineer_id).first()
     skill = Competence.query.filter_by(id=skill_id).first()

@@ -2,14 +2,14 @@
 
 {% block gridMission %}
     <form>
-        {% for mission in missions %}
+        {% for mission in listToShow %}
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <input type="checkbox">
                     </div>
                 </div>
-                <input type="text" class="form-control" onclick="location.href='{{ url_for("postuler", mission="test") }}';" placeholder="{{ mission.name }}">
+                <input type="text" class="form-control" onclick="location.href='/{{ shortName }}/etude/postuler/{{ etat }}/{{ mission.titre }}/';" placeholder="{{ mission.titre }}">
             </div>
         {% endfor %}
     </form>
