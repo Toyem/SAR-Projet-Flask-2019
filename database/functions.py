@@ -1,9 +1,11 @@
 from database.models import *
 from app import db
 
+
 # GET ALL
 def get_all_missions():
     return Mission.query.all()
+
 
 def get_all_engineers():
     return Ingenieur.query.all()
@@ -11,17 +13,19 @@ def get_all_engineers():
 
 # GET ALL Specific
 def get_missions_a_affecter():
-    missions_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions_ids = db.session.query(Souhait.mission_id).distinct().all()
+    missions_ids = [id for (id,) in missions_ids]
     missions = []
     for id in missions_ids:
-        missions += get_mission_by_id(id)
+        missions.append(get_mission_by_id(id))
     return missions
 
 
 def get_missions_affecte():
     missions_ids = get_all_mission_ids()
-    souhaits_ids = Souhait.query(Souhait.mission_id).disctinct().all()
-    missions_ids.removeAll(souhaits_ids)
+    souhaits_ids = [id for (id,) in Souhait.query.with_entities(Souhait.mission_id).distinct().all()]
+    for s in souhaits_ids:
+        missions_ids.remove(s)
     missions = []
     for id in missions_ids:
         missions += get_mission_by_id(id)
@@ -37,7 +41,7 @@ def get_postulant_by_mission(id_mission):
 
 
 def get_all_mission_ids():
-    return Mission.query(id).all()
+    return [n for (n,) in Mission.query.with_entities(Mission.id).all()]
 
 
 def get_all_engineers_affaire():
@@ -122,3 +126,17 @@ def add_skill_to_engineer(engineer_id, skill_id):
 
         return True
     return False
+
+
+# def save_object_to_db(db_object):
+#     db.session.add(db_object)
+#     db.session.commit()
+#
+#
+# def remove_object_from_db(db_object):
+#     db.session.delete(db_object)
+#     db.session.commit()
+#
+#
+# def find_mission_by_id(id):
+#     return Mission.query.filter_by(id=id).first()

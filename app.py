@@ -16,72 +16,9 @@ with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
     init_database()
 
 
-def save_object_to_db(db_object):
-    db.session.add(db_object)
-    db.session.commit()
-
- def remove_object_from_db(db_object):
-     db.session.delete(db_object)
-     db.session.commit()
-
-
- def find_mission_by_id(id):
-     return Mission.query.filter_by(id=id).first()
-
-
 @app.route('/')
 # API page acceuil
 def layout():
-<<<<<<< HEAD
-    return render_template("homepage_etude_postuler.html.jinja2")
-
-
- @app.route('/Michel_affaire')
- def michel_affaire():
-     return render_template("homepage_affaire_carriere_grille.html.jinja2")
-
- @app.route('/Rene_etude')
- def rene_etude():
-     return render_template("homepage_etude_postuler_grille.html.jinja2")
-     return render_template("layout.html.jinja2")
-
-
- @app.route('/Name/<classe>')
- def classe(classe):
-if(classe == "affaire"):
-         return render_template("homepage_affaire_mission_grille.html.jinja2", classe=classe)
-     if (classe == "etude"):
-         return render_template("homepage_etude_postuler_grille.html.jinja2", classe=classe)
-
- @app.route('/Name/affaire/<onglet>')
- def onglet_affaire(onglet):
-     if (onglet == "missions"):
-         return render_template("homepage_affaire_mission_grille.html.jinja2")
-     if (onglet == "carrieres"):
-         return render_template("homepage_affaire_carriere_grille.html.jinja2")
-
-
- @app.route('/Name/etude/<onglet>')
- def onglet_etude(onglet):
-     if (onglet == "postuler"):
-         return render_template("homepage_etude_postuler_grille.html.jinja2")
-     if (onglet == "suivi"):
-         return render_template("homepage_etude_suivi_grille.html.jinja2")
-
- @app.route('/Name/affaire/missions/<mission>')
- def edit_mission(mission):
-     # Il faut varier les trucs en sortie en fonction de la mission
-     return render_template("homepage_affaire_mission_edit.html.jinja2")
-
- @app.route('/Name/affaire/carriere/<name>')
- def carriere_vue(name):
-     return render_template("homepage_affaire_carriere_vue_grille.html.jinja2")
-
- @app.route('/Name/etude/postuler/<mission>')
- def postuler(mission):
-     return render_template("homepage_etude_postuler_action_comp.html.jinja2")
-
-=======
     listOfShortName = get_all_short_name_engineers()
     # listOfShortName = get_all_engineers()
     return render_template("layout.html.jinja2",
@@ -231,7 +168,6 @@ def postuler(shortName, mission, etat):
 def error_page_404(error):
     # return render_template("404.html.jinja2")
     return render_template("404_glitch.html.jinja2")
->>>>>>> 9241c7bb1712c1917d7df762ba49d16630009d6d
 
 
 if __name__ == '_main_':
