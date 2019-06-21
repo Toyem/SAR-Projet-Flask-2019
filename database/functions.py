@@ -10,11 +10,21 @@ def get_all_engineers():
 
 
 # GET ALL Specific
-def get_missions_a_affecter(): #doit être filtré par condidature
-    return Mission.query.all()
+def get_missions_a_affecter():
+    missions_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions = []
+    for id in missions_ids:
+        missions += get_mission_by_id(id)
+    return missions
 
 
-def get_missions_affecte(): #doit être filtré par non condicdature
+def get_missions_affecte():
+    missions_ids = get_all_mission_ids()
+    souhaits_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions_ids.removeAll(souhaits_ids)
+    missions = []
+    for id in missions_ids:
+        missions += get_mission_by_id(id)
     return Mission.query.all()
 
 
@@ -22,8 +32,12 @@ def get_missions_close():
     return Mission.query.filter_by(statut='close').all()
 
 
-def get_postulant_by_mission(id_mission): #nb candidature pour cette mission
-    return 3
+def get_postulant_by_mission(id_mission):
+    return Souhait.query.filter_by(id_mission=id_mission).all().length
+
+
+def get_all_mission_ids():
+    return Mission.query(id).all()
 
 
 def get_all_engineers_affaire():
@@ -49,8 +63,23 @@ def get_mission_en_cours_of_inge(inge_id): #inge mission terminé(now>date fin)
 def get_mission_en_attente_of_inge(inge_id): #inge mission condidature
     return Mission.query.all()
 
-def get_mission_possible_of_inge(inge_id): #inge mission visible car le type est pas trop cher etc
-    return Mission.query.all()
+
+def get_participants_actuels_of_mission(mission_id):
+    return Affectation.query(ingenieur_id).filter_by(mission_id=mission_id).all()
+
+
+def get_mission_possible_of_inge(inge_id):
+    missions = Mission.query.all()
+    inge = get_engineer_by_id(inge_id)
+    visibles = []
+    for m in missions :
+        cout_actuel = 0
+        inges = get_participants_actuels_of_mission(m)
+        for eid in inges:
+            cout_actuel += get_engineer_by_id(eid).taux_journalier
+        if cout_actuel + inge.taux_journalier < m.prix_vente:
+            visibles += m
+    return visibles
 
 
 # GET BY (first)
