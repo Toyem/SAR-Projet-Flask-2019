@@ -53,7 +53,7 @@ def get_all_full_name_engineers():
 
 
 def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
-    return Mission.query.all() #Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
+    return Affectation.query(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin<db.func.now()).all()
 
 
 def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
