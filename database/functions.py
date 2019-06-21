@@ -57,7 +57,7 @@ def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
 
 
 def get_mission_en_cours_of_inge(inge_id): #inge mission terminé(now>date fin)
-    return Affectation.query.filter_by().all()
+    return Affectation.query.filter_by(ingenieur_id=inge_id, Affectation.date_fin <= date.today()).all()
 
 
 def get_mission_en_attente_of_inge(inge_id):
@@ -69,7 +69,7 @@ def get_mission_en_attente_of_inge(inge_id):
 
 
 def get_participants_actuels_of_mission(mission_id):
-    return Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
+    return Mission.query.all() #Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
 
 
 def get_mission_possible_of_inge(inge_id):
