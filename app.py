@@ -66,9 +66,10 @@ def onglet_affaire_mission(shortName, etat):
                            )
 
 
-@app.route('/<shortName>/affaire/missions/vue/<mission>/')
+@app.route('/<shortName>/affaire/missions/vue/<mission_name>/')
 # API onglet missions d'un ingé d'affaire
-def onglet_affaire_mission_vue(shortName, mission):
+def onglet_affaire_mission_vue(shortName, mission_name):
+    mission = get_mission_by_titre(mission_name)
     return render_template("homepage_affaire_mission_vue.html.jinja2"
                            , shortName=shortName
                            , mission=mission
@@ -97,7 +98,7 @@ def carriere_vue(shortName, shortNameCarriere, etat):
     engineerObserve = get_engineer_by_nom_court(shortNameCarriere)
     listOfMissionsOnGoing = get_mission_en_cours_of_inge(engineerObserve.id)
     listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
-    listOfMissionsClosed = get_mission_en_termine_of_inge(engineerObserve.id)
+    listOfMissionsClosed = get_mission_termine_of_inge(engineerObserve.id)
     if (etat == "enCours"):
         listToShow = listOfMissionsOnGoing
     elif (etat == "termine"):
@@ -130,7 +131,7 @@ def onglet_etude(shortName, etat):
     listOfMissionsAvalable = get_mission_possible_of_inge(engineerObserve.id)
     listOfMissionsGoingOn = get_mission_en_cours_of_inge(engineerObserve.id)
     listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
-    listOfMissionsClosed = get_mission_en_termine_of_inge(engineerObserve.id)
+    listOfMissionsClosed = get_mission_termine_of_inge(engineerObserve.id)
     if (etat == "disponibles"):
         listToShow = listOfMissionsAvalable
     elif (etat == "enAttente"):

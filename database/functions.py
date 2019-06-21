@@ -11,17 +11,19 @@ def get_all_engineers():
 
 # GET ALL Specific
 def get_missions_a_affecter():
-    missions_ids = Souhait.query(Souhait.mission_id).disctinct().all()
+    missions_ids = db.session.query(Souhait.mission_id).distinct().all()
+    missions_ids = [id for (id,) in missions_ids]
     missions = []
     for id in missions_ids:
-        missions += get_mission_by_id(id)
+        missions.append(get_mission_by_id(id))
     return missions
 
 
 def get_missions_affecte():
     missions_ids = get_all_mission_ids()
-    souhaits_ids = Souhait.query(Souhait.mission_id).disctinct().all()
-    missions_ids.removeAll(souhaits_ids)
+    souhaits_ids = [id for (id,) in Souhait.query(Souhait.mission_id).distinct().all()]
+    for s in souhaits_ids:
+        missions_ids.remove(s)
     missions = []
     for id in missions_ids:
         missions += get_mission_by_id(id)
@@ -37,7 +39,7 @@ def get_postulant_by_mission(id_mission):
 
 
 def get_all_mission_ids():
-    return Mission.query(id).all()
+    return [n for (n,) in Mission.query(id).all()]
 
 
 def get_all_engineers_affaire():
