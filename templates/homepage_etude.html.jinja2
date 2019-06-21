@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Ingénieur d'étude - Home</title>
+    <title>Ing&eacute;nieur d&apos;&eacute;tudes - Home</title>
     <meta charset="utf-8">
     <meta name="author" content="Agathe Hainaut & Ophélie Laumonier & Théo Chassanite"/>
     <meta name="description" content="Page web crée dans l'UE SAR Flask de l'IMT Atlantique Campus Nantes."/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../static/img/favicon.png"/>
-    <link rel="stylesheet" href="../static/css/homepage.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style>
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 550px
-        }
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            background-color: #f1f1f1;
-            height: 100%;
-        }
-
-        /* On small screens, set height to 'auto' for the grid */
-        @media screen and (max-width: 767px) {
-            .row.content {
-                height: auto;
-            }
-        }
-    </style>
-    <script>
-        <!-- Script JS -->
-    </script>
+    <link rel="stylesheet" href="../static/css/homepage.css"/>
 </head>
 <body>
 <div class="p-3 mb-2 bg-info text-white size-6 font-weight-bold text-center">
-    <h2>Ingénieur d'études</h2>
+    <h2>Ing&eacute;nieur d&apos;&eacute;tudes</h2>
 </div>
 <div class="container-fluid">
     <div class="row content">
@@ -45,18 +20,20 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column md-2">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/Name/etude/postuler">
+                        <a class="nav-link active" href="/{{ shortName }}/etude/postuler/disponibles/">
                             <span data-feather="home"></span>
                             Postuler
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <!--
                     <li class="nav-item">
-                        <a class="nav-link" href="/Name/etude/suivi">
+                        <a class="nav-link" href="/{{ shortName }}/etude/suivi">
                             <span data-feather="file"></span>
                             Suivi
                         </a>
                     </li>
+                    -->
                 </ul>
             </div>
         </nav>
@@ -69,5 +46,8 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

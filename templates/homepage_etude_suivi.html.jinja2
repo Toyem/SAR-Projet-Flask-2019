@@ -10,27 +10,27 @@
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#TODO">
+                    <a class="nav-link active" data-toggle="pill" href="/TODO.php">
                         Accept&egrave;es
-                        <span class="badge badge-secondary badge-pill">6</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsAccepted|length }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         En attente
-                        <span class="badge badge-secondary badge-pill">5</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaiting|length }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Non abouties
-                        <span class="badge badge-secondary badge-pill">1</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsUnsuccessful|length }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Toutes
-                        <span class="badge badge-secondary badge-pill">13</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissions|length }}</span>
                     </a>
                 </li>
             </ul>

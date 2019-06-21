@@ -9,42 +9,42 @@
         <div class="container">
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#TODO">
+                <li class="nav-item ">
+                    <a class="nav-link active" href="/{{ shortName }}/affaire/missions/aAffecter/">
                         &Agrave; affecter
-                        <span class="badge badge-secondary badge-pill">4</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsToAssignLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" href="/{{ shortName }}/affaire/missions/affectees/">
                         Affect&eacute;es
-                        <span class="badge badge-secondary badge-pill">10</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsAssignedLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" href="/{{ shortName }}/affaire/missions/closes/">
                         Closes
-                        <span class="badge badge-secondary badge-pill">24</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" href="/{{ shortName }}/affaire/missions/toutes/">
                         Toutes
-                        <span class="badge badge-secondary badge-pill">38</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">Select all</a>
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">Select all</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         <img src="../static/img/trash.png"
                              style="width:24px;height:24px;"
                              alt="icone d&apos;une poubelle">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" href="#TODOTODO">
+                    <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" href="/TODO.php">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -68,15 +68,6 @@
         </div>
     </div>
     <div class="container rounded border">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox">
-                </div>
-            </div>
-            <input type="text" class="form-control" placeholder="Mission Name"
-                   onclick="location.href='/Name/affaire/missions/mission1';">
-        </div>
         {% block gridMission %}
         {% endblock %}
     </div>

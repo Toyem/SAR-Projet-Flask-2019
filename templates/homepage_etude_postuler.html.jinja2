@@ -1,31 +1,46 @@
 {% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
-    <div class="container rounded border">
-        <h4>POSTULER &Agrave; DES MISSIONS</h4>
+    <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
+        <h4>Postuler &agrave; des missions</h4>
     </div>
     <div class="row">
         <div class="container">
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#TODO">
+                    <a class="nav-link active" href="/{{ shortName }}/etude/postuler/disponibles/">
                         Disponibles
-                        <span class="badge badge-secondary badge-pill">12</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsAvalableLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
-                        Non disponibles
-                        <span class="badge badge-secondary badge-pill">4</span>
+                    <a class="nav-link" href="/{{ shortName }}/etude/postuler/enAttente/">
+                        <!--data-toggle="pill"-->
+                        En attente
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaitingLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#TODO">
+                    <a class="nav-link" href="/{{ shortName }}/etude/postuler/enCours/">
+                        En cours
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsGoingOnLength }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/{{ shortName }}/etude/postuler/termine/">
+                        Termine
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
+                    </a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Toutes
-                        <span class="badge badge-secondary badge-pill">16</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
                     </a>
                 </li>
+                -->
             </ul>
         </div>
         <div class="container">
@@ -39,15 +54,6 @@
         </div>
     </div>
     <div class="container rounded border">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox">
-                </div>
-            </div>
-            <input type="text" class="form-control" onclick="location.href='/Name/etude/postuler/mission2';"
-                   placeholder="Mission1 Name #TODO">
-        </div>
         {% block gridMission %}
         {% endblock %}
     </div>
