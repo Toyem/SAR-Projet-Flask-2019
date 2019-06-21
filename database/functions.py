@@ -111,6 +111,9 @@ def get_engineer_by_nom_prenom(nom, prenom):
     return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
 
 
+def get_competence_of_mission(mission_id):
+    return Competence.query.all()
+
 # ADD
 def add_skill_to_engineer(engineer_id, skill_id):
     engineer = Ingenieur.query.filter_by(id=engineer_id).first()
