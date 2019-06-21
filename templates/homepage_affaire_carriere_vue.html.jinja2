@@ -23,27 +23,21 @@
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="TODO.php/">
+                        <a class="nav-link active" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/enCours/">
                             En cours
-                            <span class="badge badge-secondary badge-pill">6</span>
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsOnGoingLength }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="/TODO.php">
-                            Termin&eacute;es
-                            <span class="badge badge-secondary badge-pill">5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="/TODO.php">
+                        <a class="nav-link" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/enAttente/">
                             En attente
-                            <span class="badge badge-secondary badge-pill">1</span>
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaitingLength }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="/TODO.php">
-                            Refus&eacute;es
-                            <span class="badge badge-secondary badge-pill">1</span>
+                        <a class="nav-link" href="/{{ shortName }}/affaire/carrieres/{{ shortNameCarriere }}/termine/"><!--data-toggle="pill"-->
+                            Termin&eacute;es
+                            <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
                         </a>
                     </li>
                 </ul>
