@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2176">
-              <caret line="128" column="60" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
+            <state relative-caret-position="134">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -41,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="102">
+              <caret line="48" column="17" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -50,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3893">
-              <caret line="229" column="37" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="37" />
+            <state relative-caret-position="134">
+              <caret line="204" selection-start-line="204" selection-end-line="204" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -140,8 +143,8 @@
         <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2" />
-        <option value="$PROJECT_DIR$/database/database.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/database/database.py" />
         <option value="$PROJECT_DIR$/database/functions.py" />
       </list>
     </option>
@@ -254,8 +257,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.layout.html.jinja2" />
       <item itemvalue="Flask server.Downloads" />
+      <item itemvalue="JavaScript Debug.layout.html.jinja2" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -285,12 +288,12 @@
       <workItem from="1561107557034" duration="7166000" />
       <workItem from="1561119168607" duration="157000" />
       <workItem from="1561119437773" duration="3770000" />
-      <workItem from="1561123250441" duration="3888000" />
+      <workItem from="1561123250441" duration="7885000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79282000" />
+    <option name="totallyTimeSpent" value="83279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1486" height="878" extended-state="6" />
@@ -301,7 +304,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32846716" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32797858" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32846716" />
       <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.39625168" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -347,24 +350,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/database/database.py</url>
-          <line>234</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/database/database.py</url>
-          <line>204</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SAR_Projet_Flask_2019$Downloads.coverage" NAME="Downloads Coverage Results" MODIFIED="1561125786884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SAR_Projet_Flask_2019$Downloads.coverage" NAME="Downloads Coverage Results" MODIFIED="1561131196873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -591,23 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3893">
-          <caret line="229" column="37" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -618,10 +588,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="128" column="60" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
+        <state relative-caret-position="134">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>

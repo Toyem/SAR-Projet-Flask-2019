@@ -220,7 +220,7 @@ def populate_database():
                 .join(Besoin) \
                 .join(Competence) \
                 .join(Certification) \
-                .filter(Certification.ingenieur_id == ingenieur.id) \
+                .filter(Certification.ingenieur_id == ingenieur.id, Mission.statut == "ouverte") \
                 .all()
 
             mission_souhaite = random.choice(missions_avec_une_competence)

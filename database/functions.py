@@ -26,7 +26,11 @@ def get_postulant_by_mission(id_mission):
 
 
 def get_participants_actuels_of_mission(mission_id):
-    return Mission.query.all()
+    inges = [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()]
+    participants = []
+    for eid in inges:
+        participants.append(get_engineer_by_id(eid))
+    return participants
 
 
 # ----------------------------------------------------------
@@ -36,7 +40,7 @@ def get_all_engineers():
     return Ingenieur.query.all()
 
 
-def get_all_full_name_engineers():
+def get_all_full_name_engineers(): #TO delete ?
     return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all()
 
 
@@ -56,12 +60,12 @@ def get_engineer_by_nom_prenom(nom, prenom):
     return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
 
 
-def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
-    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin<db.func.now()).all()]
+def get_mission_en_cours_of_inge(inge_id):
+    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin <= db.func.now()).all()]
 
 
-def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
-    return Mission.query.all() #Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
+def get_mission_termine_of_inge(inge_id):
+    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin > db.func.now()).all()]
 
 
 def get_mission_en_attente_of_inge(inge_id):
@@ -103,14 +107,14 @@ def get_missions_a_affecter():
 
 
 def get_missions_affecte():
-    missions_ids = get_all_mission_ids()
+    missions_ids = Mission.query.filter_by(statut="ouverte").all()
     souhaits_ids = [id for (id,) in Souhait.query.with_entities(Souhait.mission_id).distinct().all()]
     for s in souhaits_ids:
         missions_ids.remove(s)
     missions = []
     for id in missions_ids:
-        missions += get_mission_by_id(id)
-    return Mission.query.all()
+        missions.append(get_mission_by_id(id))
+    return missions
 
 
 def get_missions_close():
@@ -120,8 +124,16 @@ def get_missions_close():
 # ----------------------------------------------------------
 # ----------------------Competences-------------------------
 # ----------------------------------------------------------
-def get_competence_of_mission(mission_id): # TODO
-    return Competence.query.all()
+def get_competence_by_id(cid):
+    return Competence.query.filter_by(id=cid).first()
+
+
+def get_competence_of_mission(mission_id):
+    compe_ids = [n for (n,) in Besoin.query.with_entities(Besoin.competence_id).filter_by(mission_id=mission_id).all()]
+    competences = []
+    for cid in compe_ids:
+        competences.append(get_competence_by_id(cid))
+    return competences
 
 
 # ----------------------------------------------------------
@@ -151,7 +163,3 @@ def save_object_to_db(db_object):
 def remove_object_from_db(db_object):
     db.session.delete(db_object)
     db.session.commit()
-
-
-def find_mission_by_id(id):
-    return Mission.query.filter_by(id=id).first()
