@@ -5,7 +5,7 @@
         <div class="row">
             <div class="mb-3">
                 <button type="button" class="btn btn-info"
-                        onclick="location.href='/{{ shortName }}/affaire/missions/aAffecter/';">&lt;&lt;
+                        onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
             </div>
             <h4>VUE</h4>
@@ -19,7 +19,7 @@
             </div>
             <div class="mb-3">
                 <button type="button" class="btn btn-danger"
-                        onclick="location.href='/{{ shortName }}/affaire/missions/vue/{{ mission.titre }}/edit/';">Edit
+                        onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/edit/';">Edit
                 </button>
             </div>
         </div>
@@ -46,7 +46,9 @@
 
         <div class="mb-3">
             <label for="competences">Comp&eacute;tences requises :</label>
-            <label>{{ mission.besoins }}</label>
+            {% for competence in competences %}
+                <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
+            {% endfor %}
             <!-- TODO -->
         </div>
 

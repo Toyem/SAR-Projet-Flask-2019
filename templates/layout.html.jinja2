@@ -17,8 +17,8 @@
         Identifiant
     </button>
     <div class="dropdown-menu">
-        {% for shortName in listOfShortName %}
-            <a class="dropdown-item" href="/{{ shortName }}/affaire/missions/aAffecter/">{{ shortName }}</a>
+        {% for engineer in listOfEngineer %}
+            <a class="dropdown-item" href="/{{ engineer.id }}/affaire/missions/aAffecter/">{{ engineer.nom_court }}</a>
         {% endfor %}
     </div>
 </div>
@@ -28,8 +28,8 @@
         Identifiant
     </button>
     <div class="dropdown-menu">
-        {% for shortName in listOfShortName %}
-            <a class="dropdown-item" href="/{{ shortName }}/etude/postuler/disponibles/">{{ shortName }}</a>
+        {% for engineer in listOfEngineer %}
+            <a class="dropdown-item" href="/{{ engineer.id }}/etude/postuler/disponibles/">{{ engineer.nom_court }}</a>
         {% endfor %}
     </div>
 </div>
