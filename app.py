@@ -52,18 +52,19 @@ def onglet_affaire_mission(shortName, etat):
                            )
 
 
-@app.route('/<shortName>/affaire/missions/vue/<mission_name>/')
+@app.route('/<shortName>/affaire/missions/vue/<missionName>/')
 # API onglet missions d'un ingé d'affaire
-def onglet_affaire_mission_vue(shortName, mission_name):
-    mission = get_mission_by_titre(mission_name)
+def affaire_mission_vue(shortName, missionName):
+    mission = get_mission_by_titre(missionName)
     return render_template("homepage_affaire_mission_vue.html.jinja2"
                            , shortName=shortName
                            , mission=mission
                            )
 
-@app.route('/<shortName>/affaire/missions/vue/<mission>/edit/')
+@app.route('/<shortName>/affaire/missions/vue/<missionName>/edit/')
 # API pour voir mission à postuler
-def affaire_mission_edit(shortName, mission):
+def affaire_mission_edit(shortName, missionName):
+    mission = get_mission_by_titre(missionName)
     return render_template("homepage_affaire_mission_edit.html.jinja2"
                            , shortName=shortName
                            , mission=mission
@@ -88,9 +89,9 @@ def carriere_vue(shortName, shortNameCarriere, etat):
     if (etat == "enCours"):
         listToShow = listOfMissionsOnGoing
     elif (etat == "termine"):
-        listToShow = listOfMissionsWaiting
-    elif (etat == "enAttente"):
         listToShow = listOfMissionsClosed
+    elif (etat == "enAttente"):
+        listToShow = listOfMissionsWaiting
     else:
         error_page_404("tab doesn't exist")
     return render_template("homepage_affaire_carriere_vue_grille.html.jinja2",
