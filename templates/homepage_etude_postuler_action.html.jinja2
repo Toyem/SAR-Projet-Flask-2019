@@ -16,10 +16,10 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Name">Nom de la mission :</label>
-                <span>NOM TODO</span>
+                <span>{{ mission.titre }}</span>
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-danger" onclick="location.href='/{{ id }}/etude/postuler/disponible';">
+                <button type="button" class="btn btn-danger" onclick="location.href='/{{ id }}/etude/postuler/disponibles/';">
                     annuler
                 </button>
             </div>
@@ -34,7 +34,7 @@
         <div class="mb-3">
 
             <label for="date">Date :</label>
-            <span>DATE TODO</span>
+            <span>{{ mission.date_creation }}</span>
 
         </div>
         <form class="needs-validation" novalidate="">
@@ -42,7 +42,7 @@
                 <div class="mb-3 col-md-7">
                     <div class="form-group">
                         <label for="description">Description :</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment">{{ mission.description }}</textarea>
                     </div>
                 </div>
             </div>

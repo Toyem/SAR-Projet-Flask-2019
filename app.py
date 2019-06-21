@@ -97,7 +97,7 @@ def affaire_mission_edit(id, missionId):
 @app.route('/<id>/affaire/carrieres/')
 # API onglet carrière d'un ingé d'affaire
 def onglet_affaire_carriere(id):
-    listOfEngineer = Ingenieur.query.all()
+    listOfEngineer = get_all_engineers()
     return render_template("homepage_affaire_carriere_grille.html.jinja2",
                            id=id,
                            listOfEngineer=listOfEngineer)
@@ -106,10 +106,10 @@ def onglet_affaire_carriere(id):
 @app.route('/<id>/affaire/carrieres/<idCarriere>/<etat>/')
 # API pour voir les carrières des ingés
 def carriere_vue(id, idCarriere, etat):
-    engineerObserve = get_engineer_by_nom_court(idCarriere)
-    listOfMissionsOnGoing = get_mission_en_cours_of_inge(engineerObserve.id)
-    listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
-    listOfMissionsClosed = get_mission_termine_of_inge(engineerObserve.id)
+    engineerObserve = get_engineer_by_id(idCarriere)
+    listOfMissionsOnGoing = get_mission_en_cours_of_inge(idCarriere)
+    listOfMissionsWaiting = get_mission_en_attente_of_inge(idCarriere)
+    listOfMissionsClosed = get_mission_termine_of_inge(idCarriere)
     if (etat == "enCours"):
         listToShow = listOfMissionsOnGoing
     elif (etat == "termine"):
@@ -138,11 +138,11 @@ def carriere_vue(id, idCarriere, etat):
 @app.route('/<id>/etude/postuler/<etat>/')
 # API onglet soit postuler d'un ingé d'étude
 def onglet_etude(id, etat):
-    engineerObserve = get_engineer_by_nom_court(id)
-    listOfMissionsAvalable = get_mission_possible_of_inge(engineerObserve.id)
-    listOfMissionsGoingOn = get_mission_en_cours_of_inge(engineerObserve.id)
-    listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
-    listOfMissionsClosed = get_mission_termine_of_inge(engineerObserve.id)
+    engineerObserve = get_engineer_by_id(id)
+    listOfMissionsAvalable = get_mission_possible_of_inge(id)
+    listOfMissionsGoingOn = get_mission_en_cours_of_inge(id)
+    listOfMissionsWaiting = get_mission_en_attente_of_inge(id)
+    listOfMissionsClosed = get_mission_termine_of_inge(id)
     if (etat == "disponibles"):
         listToShow = listOfMissionsAvalable
     elif (etat == "enAttente"):
@@ -180,9 +180,10 @@ def onglet_etude(id, etat):
 #    return render_template("homepage_affaire_mission_edit.html.jinja2",
 #                           shortName=shortName)
 
-@app.route('/<id>/etude/postuler/<etat>/<mission>/')
+@app.route('/<id>/etude/postuler/<etat>/<missionId>/')
 # API pour voir mission à postuler
-def postuler(id, mission, etat):
+def postuler(id, missionId, etat):
+    mission = get_mission_by_id(missionId)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
                            ,id=id
                            ,etat=etat
