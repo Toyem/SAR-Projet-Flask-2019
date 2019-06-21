@@ -57,22 +57,26 @@ def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
 
 
 def get_mission_en_cours_of_inge(inge_id): #inge mission terminé(now>date fin)
-    return Mission.query.all()
+    return Affectation.query.filter_by().all()
 
 
-def get_mission_en_attente_of_inge(inge_id): #inge mission condidature
-    return Mission.query.all()
+def get_mission_en_attente_of_inge(inge_id):
+    missions = []
+    souhaits = Souhait.query(Souhait.mision_id).filter_by(ingenieur_id=inge_id).all()
+    for id in souhaits:
+        missions += get_mission_by_id(id)
+    return missions
 
 
 def get_participants_actuels_of_mission(mission_id):
-    return Affectation.query(ingenieur_id).filter_by(mission_id=mission_id).all()
+    return Affectation.query(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()
 
 
 def get_mission_possible_of_inge(inge_id):
-    missions = Mission.query.all()
+    missions = Mission.query.filter_by(statut="ouverte").all()
     inge = get_engineer_by_id(inge_id)
     visibles = []
-    for m in missions :
+    for m in missions:
         cout_actuel = 0
         inges = get_participants_actuels_of_mission(m)
         for eid in inges:
@@ -85,6 +89,10 @@ def get_mission_possible_of_inge(inge_id):
 # GET BY (first)
 def get_mission_by_id(mission_id):
     return Mission.query.filter_by(id=mission_id).first()
+
+
+def get_mission_by_titre(mission_titre):
+    return Mission.query.filter_by(titre=mission_titre).first()
 
 
 def get_engineer_by_id(engineer_id):
