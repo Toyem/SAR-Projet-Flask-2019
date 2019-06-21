@@ -1,6 +1,9 @@
 from flask import Flask
 from flask import render_template
 from database.database import db, init_database
+import flask
+from datetime import datetime
+
 
 from database.models import *
 from database.functions import *
@@ -19,14 +22,14 @@ with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
 @app.route('/')
 # API page acceuil
 def layout():
-    listOfShortName = get_all_short_name_engineers()
+    listOfEngineer = get_all_engineers()
     # listOfShortName = get_all_engineers()
     return render_template("layout.html.jinja2",
-                           listOfShortName=listOfShortName)
+                           listOfEngineer=listOfEngineer)
 
-@app.route('/<shortName>/affaire/missions/<etat>/')
+@app.route('/<id>/affaire/missions/<etat>/')
 # API onglet missions d'un ingé d'affaire
-def onglet_affaire_mission(shortName, etat):
+def onglet_affaire_mission(id, etat):
     listOfMissionsToAssign = get_missions_a_affecter()
     listOfMissionsAssigned = get_missions_affecte()
     listOfMissionsClosed = get_missions_close()
@@ -43,7 +46,7 @@ def onglet_affaire_mission(shortName, etat):
     else:
         error_page_404("tab doesn't exist - onglet_affaire_mission")
     return render_template("homepage_affaire_mission_grille.html.jinja2"
-                           , shortName=shortName
+                           , id=id
                            , listToShow=listToShow
                            , listOfMissionsToAssignLength=len(listOfMissionsToAssign)
                            , listOfMissionsAssignedLength=len(listOfMissionsAssigned)
@@ -52,37 +55,58 @@ def onglet_affaire_mission(shortName, etat):
                            )
 
 
-@app.route('/<shortName>/affaire/missions/vue/<missionName>/')
+@app.route('/<id>/affaire/missions/vue/<missionId>/')
 # API onglet missions d'un ingé d'affaire
-def affaire_mission_vue(shortName, missionName):
-    mission = get_mission_by_titre(missionName)
+def affaire_mission_vue(id, missionId):
+    mission = get_mission_by_id(missionId)
+    competences = get_competence_of_mission(mission.id)
     return render_template("homepage_affaire_mission_vue.html.jinja2"
-                           , shortName=shortName
+                           , id=id
                            , mission=mission
+                           , competences=competences
                            )
 
-@app.route('/<shortName>/affaire/missions/vue/<missionName>/edit/')
+@app.route("/process_form_data/<id>/<missionId>", methods=["POST"])
+def process_form_data(id, missionId):
+
+    mission = get_mission_by_id(missionId)
+
+    mission.titre = flask.request.form["foo_titre"]
+    mission.description = flask.request.form["mission_description"]
+    mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
+
+    datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
+    mission.date_creation = datetime_object
+
+    db.session.add(mission)
+    db.session.commit()
+
+    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionName=mission.titre))
+
+@app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 # API pour voir mission à postuler
-def affaire_mission_edit(shortName, missionName):
-    mission = get_mission_by_titre(missionName)
+def affaire_mission_edit(id, missionId):
+    mission = get_mission_by_id(missionId)
+    competences = get_competence_of_mission(mission.id)
     return render_template("homepage_affaire_mission_edit.html.jinja2"
-                           , shortName=shortName
+                           , id=id
                            , mission=mission
+                           , competences=competences
                            )
 
-@app.route('/<shortName>/affaire/carrieres/')
+@app.route('/<id>/affaire/carrieres/')
 # API onglet carrière d'un ingé d'affaire
-def onglet_affaire_carriere(shortName):
+def onglet_affaire_carriere(id):
     listOfEngineer = Ingenieur.query.all()
     return render_template("homepage_affaire_carriere_grille.html.jinja2",
-                           shortName=shortName,
+                           id=id,
                            listOfEngineer=listOfEngineer)
 
 
-@app.route('/<shortName>/affaire/carrieres/<shortNameCarriere>/<etat>/')
+@app.route('/<id>/affaire/carrieres/<idCarriere>/<etat>/')
 # API pour voir les carrières des ingés
-def carriere_vue(shortName, shortNameCarriere, etat):
-    engineerObserve = get_engineer_by_nom_court(shortNameCarriere)
+def carriere_vue(id, idCarriere, etat):
+    engineerObserve = get_engineer_by_nom_court(idCarriere)
     listOfMissionsOnGoing = get_mission_en_cours_of_inge(engineerObserve.id)
     listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
     listOfMissionsClosed = get_mission_termine_of_inge(engineerObserve.id)
@@ -95,12 +119,12 @@ def carriere_vue(shortName, shortNameCarriere, etat):
     else:
         error_page_404("tab doesn't exist")
     return render_template("homepage_affaire_carriere_vue_grille.html.jinja2",
-                           shortName=shortName,
+                           id=id,
                            etat=etat,
                            engineerObserveFirstName=engineerObserve.prenom,
                            engineerObserveLastName=engineerObserve.nom_famille,
                            engineerObserveEmail=engineerObserve.email,
-                           shortNameCarriere=shortNameCarriere
+                           idCarriere=idCarriere
                            , listOfMissionsOnGoingLength=len(listOfMissionsOnGoing)
                            , listOfMissionsWaitingLength=len(listOfMissionsWaiting)
                            , listOfMissionsClosedLength=len(listOfMissionsClosed)
@@ -111,10 +135,10 @@ def carriere_vue(shortName, shortNameCarriere, etat):
 # ----------------------------------------------------------
 
 
-@app.route('/<shortName>/etude/postuler/<etat>/')
+@app.route('/<id>/etude/postuler/<etat>/')
 # API onglet soit postuler d'un ingé d'étude
-def onglet_etude(shortName, etat):
-    engineerObserve = get_engineer_by_nom_court(shortName)
+def onglet_etude(id, etat):
+    engineerObserve = get_engineer_by_nom_court(id)
     listOfMissionsAvalable = get_mission_possible_of_inge(engineerObserve.id)
     listOfMissionsGoingOn = get_mission_en_cours_of_inge(engineerObserve.id)
     listOfMissionsWaiting = get_mission_en_attente_of_inge(engineerObserve.id)
@@ -130,7 +154,7 @@ def onglet_etude(shortName, etat):
     else:
         error_page_404("tab doesn't exist")
     return render_template("homepage_etude_postuler_grille.html.jinja2",
-                           shortName=shortName
+                           id=id
                            , etat=etat
                            , listOfMissionsAvalableLength=len(listOfMissionsAvalable)
                            , listOfMissionsWaitingLength=len(listOfMissionsWaiting)
@@ -156,11 +180,11 @@ def onglet_etude(shortName, etat):
 #    return render_template("homepage_affaire_mission_edit.html.jinja2",
 #                           shortName=shortName)
 
-@app.route('/<shortName>/etude/postuler/<etat>/<mission>/')
+@app.route('/<id>/etude/postuler/<etat>/<mission>/')
 # API pour voir mission à postuler
-def postuler(shortName, mission, etat):
+def postuler(id, mission, etat):
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
-                           ,shortName=shortName
+                           ,id=id
                            ,etat=etat
                            ,mission=mission
                            )
