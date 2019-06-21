@@ -66,7 +66,7 @@ def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
 
 def get_mission_en_attente_of_inge(inge_id):
     missions = []
-    souhaits = [n for (n,) in Souhait.query.with_entities(Souhait.mision_id).filter_by(ingenieur_id=inge_id).all()]
+    souhaits = [n for (n,) in Souhait.query.with_entities(Souhait.mission_id).filter_by(ingenieur_id=inge_id).all()]
     for id in souhaits:
         missions.append(get_mission_by_id(id))
     return missions
