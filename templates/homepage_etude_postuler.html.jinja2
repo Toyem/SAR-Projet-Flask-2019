@@ -9,23 +9,38 @@
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="/TODO.php">
+                    <a class="nav-link active" href="/{{ shortName }}/etude/postuler/disponibles/">
                         Disponibles
-                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsAvalable|length }}</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsAvalableLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
-                        Non disponibles
-                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsNotAvalable|length }}</span>
+                    <a class="nav-link" href="/{{ shortName }}/etude/postuler/enAttente/">
+                        <!--data-toggle="pill"-->
+                        En attente
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaitingLength }}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/{{ shortName }}/etude/postuler/enCours/">
+                        En cours
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsGoingOnLength }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/{{ shortName }}/etude/postuler/termine/">
+                        Termine
+                        <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
+                    </a>
+                </li>
+                <!--
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="pill" href="/TODO.php">
                         Toutes
-                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissions|length }}</span>
+                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
                     </a>
                 </li>
+                -->
             </ul>
         </div>
         <div class="container">
@@ -39,15 +54,6 @@
         </div>
     </div>
     <div class="container rounded border">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox">
-                </div>
-            </div>
-            <input type="text" class="form-control" onclick="location.href='TODO/';"
-                   placeholder="Mission1 Name #TODO">
-        </div>
         {% block gridMission %}
         {% endblock %}
     </div>
