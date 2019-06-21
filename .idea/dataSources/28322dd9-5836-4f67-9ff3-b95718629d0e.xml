@@ -132,7 +132,6 @@
     <index id="38" parent="9" name="sqlite_autoindex_competence_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>nom</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="39" parent="9">
@@ -183,13 +182,11 @@
     <index id="50" parent="10" name="sqlite_autoindex_ingenieur_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>nom_court</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="51" parent="10" name="sqlite_autoindex_ingenieur_2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="52" parent="10">
@@ -243,13 +240,11 @@
     <index id="64" parent="11" name="sqlite_autoindex_mission_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>titre</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="65" parent="11" name="sqlite_autoindex_mission_2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>description</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="66" parent="11">

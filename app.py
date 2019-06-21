@@ -16,20 +16,6 @@ with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
     init_database()
 
 
-def save_object_to_db(db_object):
-    db.session.add(db_object)
-    db.session.commit()
-
-
-def remove_object_from_db(db_object):
-    db.session.delete(db_object)
-    db.session.commit()
-
-
-def find_mission_by_id(id):
-    return Mission.query.filter_by(id=id).first()
-
-
 @app.route('/')
 # API page acceuil
 def layout():
