@@ -57,7 +57,7 @@ def get_all_full_name_engineers():
 
 
 def get_mission_en_cours_of_inge(inge_id): #inge mission en cours (now<date fin)
-    return Affectation.query(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin<db.func.now()).all()
+    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id).filter(Affectation.date_fin<db.func.now()).all()]
 
 
 def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
@@ -66,9 +66,9 @@ def get_mission_termine_of_inge(inge_id): #inge mission terminé(now>date fin)
 
 def get_mission_en_attente_of_inge(inge_id):
     missions = []
-    souhaits = Souhait.query(Souhait.mision_id).filter_by(ingenieur_id=inge_id).all()
+    souhaits = [n for (n,) in Souhait.query.with_entities(Souhait.mision_id).filter_by(ingenieur_id=inge_id).all()]
     for id in souhaits:
-        missions += get_mission_by_id(id)
+        missions.append(get_mission_by_id(id))
     return missions
 
 
@@ -86,7 +86,7 @@ def get_mission_possible_of_inge(inge_id):
         for eid in inges:
             cout_actuel += get_engineer_by_id(eid).taux_journalier
         if cout_actuel + inge.taux_journalier < m.prix_vente:
-            visibles += m
+            visibles.append(m)
     return visibles
 
 
