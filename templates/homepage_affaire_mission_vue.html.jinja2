@@ -3,7 +3,7 @@
 {% block body %}
     <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
-            <div class="mr-3">
+            <div class="mr-3 ml-1">
                 <button type="button" class="btn btn-outline-light btn-sm"
                         onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
@@ -16,21 +16,24 @@
 
     <div class="col-md-12 order-md-1">
         <div class="row">
-            <div class="col-md-6 mb-0">
-                <div class="p-1 mb-0 bg-info text-white size-6 font-weight-bold">
+            <div class="col-md-10">
+                <div class="p-1 bg-info text-white size-6 font-weight-bold">
                     <label for="Name">Mission : </label>
                     <label>{{ mission.titre }}</label>
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-2 ml-2 ">
                 <button type="button" class="btn btn-success"
-                        onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/edit/';">Edit
+                        onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/edit/';">Editer
+                </button>
+                <button type="button" class="btn btn-danger ml-3">
+                        Clore
                 </button>
             </div>
         </div>
 
         <div class="row">
-            <div class="mb-3">
+            <div class="mb-2 col-md-10">
                 <div class="form-group">
                     <label for="date">Date de création :</label>
                     <label>{{ mission.date_creation }}</label>
@@ -39,8 +42,8 @@
         </div>
 
         <div class="row">
-            <div class="mb-3 col-md-7">
-                <div class="p-1 mb-0 bg-info text-white size-6">
+            <div class="col-md-10">
+                <div class="p-1  bg-info text-white size-6">
                     <label for="description">Description</label>
                 </div>
                 <div class="form-group">
@@ -50,103 +53,88 @@
          </div>
 
         <div class="row">
-            <div class="form-group">
-                <label for="nbPlace">Nombres de places :</label>
-                <span>{{ mission.effectifs_max }}</span>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nbPlace">Nombres de places :</label>
+                    <span>{{ mission.effectifs_max }}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col size-4">
+                    <label for="places">Nombre de places occupées :</label>
+                    <span>{{ equipeForme|length }}</span>
+                </div>
             </div>
         </div>
 
-            <div class="row">
-                <div class="mb-3">
-                    <div class="form-group">
-                        <label for="date">Date :</label>
-                        <label>{{ mission.date_creation }}</label>
-                    </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class=" size-4">
+                    <label for="places"> Tarif journalier : </label>
+                    <span>{{ mission.prix_vente }}</span>
                 </div>
-                <div class="row">
-                    <div class="mb-3 col-md-7">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 mb-0">
-                                    <div class="p-1 mb-0 bg-info text-white size-6">
-                                        <label for="description">Description</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <label for="description">Description :</label>
-                            <label>{{ mission.description }}</label>
-                        </div>
-                        <div>
-                            <div class="form-group">
-                                <label for="nbPlace">Nombres de places :</label>
-                                <span>{{ mission.effectifs_max }}</span>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col size-4">
+                    <label> Coût total :</label>
+                    <span>TODO</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <div class="p-1  bg-info text-white size-6">
+                    <label for="description">Equipe</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="p-1 size-4">
+                    <label for="places"> Equipe formée : </label>
+                    <ul>
+                        {% for personne in equipeForme %}
+                            <li>{{ personne.prenom }} {{ personne.nom_famille }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
-                    <div class="row">
-                        <div class="col-md-6 mb-0">
-                            <div class="p-1 mb-0 size-4">
-                                <label for="places">Nombre de places total : </label>
-                                <span>{{ equipeForme|length }}</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-0">
-                            <div class="p-1 mb-0 size-4">
-                                <label for="places"> Tarif journalier : </label>
-                                <span>{{ mission.prix_vente }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-0">
-                            <div class="p-1 mb-0 size-4">
-                                <label for="places"> Equipe formée : </label>
-                                <ul>
-                                    {% for personne in equipeForme %}
-                                        <li>{{ personne.prenom }} {{ personne.nom_famille }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-0">
-                            <div class="p-1 mb-0 size-4">
-                                <label for="places">Demandes à traiter :</label>
-                                <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
-                                      method="post"
-                                      class="needs-validation" novalidate="">
-                                    <ul>
-                                        {% for postulant in postulants %}
-                                            <li>{{ postulant.prenom }} {{ postulant.nom_famille }}</li>
-
-                                            <input type="radio" name="validation" value="accepté"/>
-                                            <input type="radio" name="validation" value="refusé"/>
-                                        {% endfor %}
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-md-6 mb-0">
-                            <div class="p-1 mb-0 bg-info text-white size-6">
-                                <label for="competences">Compétences requises</label>
-                            </div>
-                            {% for competence in competences %}
-                                <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="p-1 size-4">
+                    <label for="places">Demandes à traiter :</label>
+                    <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
+                          method="post"
+                          class="needs-validation" novalidate="">
+                        <ul>
+                            {% for postulant in postulants %}
+                                <li>{{ postulant.prenom }} {{ postulant.nom_famille }}</li>
+                                <input type="radio" name="validation" value="accepté"/> oui
+                                <input type="radio" name="validation" value="refusé"/> non
                             {% endfor %}
-                            <!-- TODO -->
-                        </div>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-                    </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="p-1  bg-info text-white size-6">
+                    <label for="competences">Compétences requises</label>
+                </div>
+                {% for competence in competences %}
+                    <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
+                {% endfor %}
+                <!-- TODO -->
+            </div>
+        </div>
 {% endblock %}

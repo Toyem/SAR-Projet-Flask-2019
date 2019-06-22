@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,37 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="197" column="29" lean-forward="true" selection-start-line="197" selection-start-column="29" selection-end-line="197" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-              <folding>
-                <element signature="e#338#342#0#HTML" expanded="true" />
-                <element signature="e#342#346#0#HTML" expanded="true" />
-                <element signature="e#3268#3276#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="52">
+              <caret line="54" column="28" lean-forward="true" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -65,11 +39,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+            <state relative-caret-position="183">
+              <caret line="114" column="65" lean-forward="true" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -131,7 +114,6 @@
         <option value="$PROJECT_DIR$/templates/404.html" />
         <option value="$PROJECT_DIR$/static/css/404.css" />
         <option value="$PROJECT_DIR$/templates/404.html.jinja2" />
-        <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_mission.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_suivi.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/layout.html.jinja2" />
@@ -147,9 +129,10 @@
         <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere_vue.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" />
-        <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/database/functions.py" />
+        <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2" />
+        <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" />
       </list>
     </option>
   </component>
@@ -177,6 +160,11 @@
               <item name="SAR-Projet-Flask-2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="SAR-Projet-Flask-2019" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SAR-Projet-Flask-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SAR-Projet-Flask-2019" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,7 +217,7 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Python\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Ophelie\Miniconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -245,7 +233,7 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Users\Ophelie\Miniconda3\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Ophelie\Miniconda3\envs\FlaskExample\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -291,24 +279,25 @@
       <workItem from="1561205823044" duration="6481000" />
       <workItem from="1561214178416" duration="1956000" />
       <workItem from="1561216455534" duration="2935000" />
+      <workItem from="1561220748674" duration="2321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100854000" />
+    <option name="totallyTimeSpent" value="103175000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1486" height="878" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12745099" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23521851" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32797858" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32839838" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.3145917" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32839838" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3145917" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -364,7 +353,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SAR_Projet_Flask_2019$Downloads.coverage" NAME="Downloads Coverage Results" MODIFIED="1561219243209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SAR_Projet_Flask_2019$Downloads.coverage" NAME="Downloads Coverage Results" MODIFIED="1561221364154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -493,13 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_mission.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -565,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_grille.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -610,20 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -631,35 +592,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="197" column="29" selection-start-line="197" selection-start-column="29" selection-end-line="197" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="e#338#342#0#HTML" expanded="true" />
-            <element signature="e#342#346#0#HTML" expanded="true" />
-            <element signature="e#3268#3276#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="52">
+          <caret line="54" column="28" lean-forward="true" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/functions.py">
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="197" column="29" lean-forward="true" selection-start-line="197" selection-start-column="29" selection-end-line="197" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-549">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="114" column="65" lean-forward="true" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
         </state>
       </provider>
     </entry>
