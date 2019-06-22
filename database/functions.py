@@ -178,6 +178,14 @@ def get_lvl_compe_inge(inge_id, compe_id):
     return certif.niveau
 
 
+def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
+    competences = get_competence_of_mission(mission_id)
+    list_couple = []
+    for c in competences:
+        lvl = get_lvl_compe_inge(inge_id, c.id)
+        list_couple.append([c, lvl])
+    return list_couple
+
 def add_skill_to_engineer(engineer_id, skill_id):
     engineer = Ingenieur.query.filter_by(id=engineer_id).first()
     skill = Competence.query.filter_by(id=skill_id).first()
