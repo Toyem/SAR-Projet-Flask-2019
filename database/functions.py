@@ -226,6 +226,11 @@ def update_besoin(mission_id, compe_list):
         save_object_to_db(new_b)
 
 
+def new_mission(inge_id):
+    new_m = Mission(statut="ouverte", date_creation=datetime.now(), responsable_id=inge_id)
+    save_object_to_db(new_m)
+
+
 def save_object_to_db(db_object):
     db.session.add(db_object)
     db.session.commit()
