@@ -1,54 +1,71 @@
 {% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
-    <div class="row">
-        <div class="mb-3 text-left">
-            <button type="button" class="btn btn-info" onclick="location.href='/{{ shortName }}/etude/postuler/disponibles/';">&lt;&lt;</button>
-        </div>
-        <div class="p-1 mb-2 bg-dark text-white size-6 font-weight-bold text-center">
-            <h4>POSTULER</h4>
+    <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
+        <div class="row">
+            <div class="md-3 text-center">
+               <h4>POSTULER A CETTE MISSION</h4>
+            </div>
         </div>
     </div>
-    <div class="col-md-8 order-md-1">
+
+     <div class="col-md-12 order-md-1">
         <div class="alert alert-success" id="success-message" style="display: none;">
             <strong>Le formulaire a &eacute;t&eacute; envoy&eacute; avec succes !</strong>
         </div>
         <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="Name">Nom de la mission :</label>
-                <span>NOM TODO</span>
-            </div>
-            <div class="mb-3">
-                <button type="button" class="btn btn-danger" onclick="location.href='/{{ shortName }}/etude/postuler/disponible';">
-                    annuler
-                </button>
-            </div>
-            <div class="mb-3">
-                <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';
-                                                                       document.getElementById('success-message').style.display='block';">
-                    envoyer
-                </button>
-            </div>
-        </div>
-
-        <div class="mb-3">
-
-            <label for="date">Date :</label>
-            <span>DATE TODO</span>
-
-        </div>
-        <form class="needs-validation" novalidate="">
-            <div class="row">
-                <div class="mb-3 col-md-7">
-                    <div class="form-group">
-                        <label for="description">Description :</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
+            <div class="col-md-6 mb-0">
+                <div class="p-1 mb-0 bg-info text-white size-6">
+                    <label for="name">Nom : </label>
+                    <label>TODO</label>
                 </div>
             </div>
-        </form>
+             <div class="mb-0">
+                <button type="button" class="btn btn-danger" onclick="location.href='/{{ shortName }}/etude/postuler/disponible';">
+                    Annuler
+                </button>
+            </div>
+            <div class="mb-0">
+                <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';
+                                                                       document.getElementById('success-message').style.display='block';">
+                    Envoyer
+                </button>
+            </div>
+        </div>
 
-        <div class="mb-3">
+        <div class="row">
+            <div class="col-md-6 mb-0">
+                <div class="p-1 mb-0 size-4">
+                    <label for="date">Date : </label>
+                    <label>TODO</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-0">
+                <div class="p-1 mb-0 bg-info text-white size-6">
+                    <label for="description">Description</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 order-md-1">
+                <div class="form-group">
+                    <label>TODO</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-0">
+                <div class="p-1 mb-0 bg-info text-white size-6">
+                    <label for="competences">Compétences requises</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             <label for="competences">Auto &eacute;valuation des comp&eacute;tences :</label>
             {% block competence %}
             {% endblock %}
