@@ -83,7 +83,7 @@ def process_form_data(id, missionId):
 
     datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
     mission.date_creation = datetime_object
-    test=flask.request.form["competences"]
+    test=flask.request.form.getlist["competences"]
 
     db.session.add(mission)
     db.session.commit()
@@ -197,10 +197,10 @@ def postuler_vue(id, missionId,etat):
         dates = []
         enable = ""
     elif (etat == "enAttente"):
-        dates = ["TODO Date attente"]
-        enable = "disable"
+        dates = get_date_candidat_souhait(id,missionId)
+        enable = "disabled"
     elif (etat == "enCours" or etat == "termine"):
-        dates = ["TODO DATE DEBUT", "TODO DATE FIN"]
+        dates = get_date_fin_date_fin_affectation(id,missionId)
         enable = "disabled"
     else:
         error_page_404("tab doesn't exist")

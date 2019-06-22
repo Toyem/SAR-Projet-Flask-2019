@@ -27,18 +27,12 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="mb-2">
-                <div class="form-group">
-                    <label for="date">Date de création :</label>
-                    <label>{{ mission.date_creation }}</label>
-                </div>
-            </div>
+        <div class="row"></div>
         {% for date in dates %}
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="date">Date :</label>
-                    <label>{{ date }}</label>
+                    <label for="date">{{ date[0] }} :</label>
+                    <label>{{ date[1] }}</label>
                 </div>
             </div>
         {% endfor %}
