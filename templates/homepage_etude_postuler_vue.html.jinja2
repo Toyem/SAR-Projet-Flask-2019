@@ -1,4 +1,4 @@
-{% extends "homepage_etude_postuler.html.jinja2" %}
+﻿{% extends "homepage_etude_postuler.html.jinja2" %}
 
 {% block body %}
     <div class=" d-flex flex-column p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
@@ -27,18 +27,12 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class=" mb-2 ml-3 col-md-10 ">
-                <div class="form-group">
-                    <label for="date">Date de création :</label>
-                    <label>{{ mission.date_creation }}</label>
-                </div>
-            </div>
+        <div class="row"></div>
         {% for date in dates %}
             <div class="mb-2">
                 <div class="form-group">
-                    <label for="date">Date :</label>
-                    <label>{{ date }}</label>
+                    <label for="date">{{ date[0] }} :</label>
+                    <label>{{ date[1] }}</label>
                 </div>
             </div>
         {% endfor %}

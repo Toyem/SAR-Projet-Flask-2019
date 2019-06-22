@@ -10,25 +10,25 @@
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item ">
-                    <a class="nav-link active" href="/{{ id }}/affaire/missions/aAffecter/">
+                    <a class="nav-link active" href="/{{ id }}/affaire/missions/aAffecter/" data-toggle="pill" >
                         &Agrave; affecter
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsToAssignLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/{{ id }}/affaire/missions/affectees/">
+                    <a class="nav-link" href="/{{ id }}/affaire/missions/affectees/" data-toggle="pill">
                         Affect&eacute;es
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsAssignedLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/{{ id }}/affaire/missions/closes/">
+                    <a class="nav-link" href="/{{ id }}/affaire/missions/closes/" data-toggle="pill">
                         Closes
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/{{ id }}/affaire/missions/toutes/">
+                    <a class="nav-link" href="/{{ id }}/affaire/missions/toutes/" data-toggle="pill">
                         Toutes
                         <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
                     </a>
@@ -60,7 +60,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-sm bg navbar">
                 <form class="form-inline" action="/TODO.php">
-                    <button type="button" class="btn btn-link" disabled>Q</button>
+                    <button type="button" class="btn btn-link" disabled><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>

@@ -42,12 +42,12 @@ def get_cout_of_mission(mission_id):
 
 def get_date_fin_date_fin_affectation(inge_id, mission_id):
     a = Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return [a.date_debut, a.date_fin]
+    return [("Date de début",a.date_debut),("Date de fin", a.date_fin)]
 
 
 def get_date_candidat_souhait(inge_id, mission_id):
     s = Souhait.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return s.date_candidature
+    return [("date de candidature",s.date_candidature)]
 
 
 # ----------------------------------------------------------
