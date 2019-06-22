@@ -23,7 +23,7 @@ def get_mission_by_titre(mission_titre):
 
 
 def get_postulant_by_mission(id_mission):
-    return Souhait.query.filter_by(id_mission=id_mission).all().length
+    return [get_engineer_by_id(s.ingenieur_id) for s in Souhait.query.filter_by(mission_id=id_mission).all()]
 
 
 def get_participants_actuels_of_mission(mission_id):
