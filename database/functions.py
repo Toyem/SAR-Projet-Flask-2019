@@ -77,7 +77,7 @@ def get_engineer_by_nom_prenom(nom, prenom):
     return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
 
 
-def get_mission_en_cours_of_inge(inge_id):
+def get_mission_en_cours_of_inge(inge_id): #def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -94,7 +94,7 @@ def get_mission_en_cours_of_inge(inge_id):
     return missions_en_cours
 
 
-def get_mission_termine_of_inge(inge_id):
+def get_mission_termine_of_inge(inge_id): #def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -122,12 +122,13 @@ def get_mission_possible_of_inge(inge_id):
     inge = get_engineer_by_id(inge_id)
     visibles = []
     for m in missions:
-        cout_actuel = 0
-        inges = get_participants_actuels_of_mission(m.id)
-        for inge in inges:
-            cout_actuel += inge.taux_journalier
-        if cout_actuel + inge.taux_journalier < m.prix_vente:
-            visibles.append(m)
+        if not ((inge in get_participants_actuels_of_mission(m.id)) or (inge in get_postulant_by_mission(m.id))):
+            cout_actuel = 0
+            participants = get_participants_actuels_of_mission(m.id)
+            for p in participants:
+                cout_actuel += p.taux_journalier
+            if cout_actuel + inge.taux_journalier < m.prix_vente:
+                visibles.append(m)
     return visibles
 
 

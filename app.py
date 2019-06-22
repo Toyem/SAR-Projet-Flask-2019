@@ -23,7 +23,10 @@ with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
 # API page accueil
 def layout():
     listOfEngineer = get_all_engineers()
-    return render_template("layout.html.jinja2", listOfEngineer=listOfEngineer)
+    listOfAffair = get_all_engineers_affaire()
+    return render_template("layout.html.jinja2",
+                           listOfEngineer=listOfEngineer,
+                           listOfAffair=listOfAffair)
 
 @app.route('/<id>/affaire/missions/<etat>/')
 # API onglet missions d'un ingé d'affaire

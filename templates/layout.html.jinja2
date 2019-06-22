@@ -17,7 +17,7 @@
         Identifiant
     </button>
     <div class="dropdown-menu">
-        {% for engineer in listOfEngineer %}
+        {% for engineer in listOfAffair %}
             <a class="dropdown-item" href="/{{ engineer.id }}/affaire/missions/aAffecter/">{{ engineer.nom_court }}</a>
         {% endfor %}
     </div>
