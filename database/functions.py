@@ -131,11 +131,11 @@ def get_all_engineers_affaire():
     return Ingenieur.query.filter_by(estCommercial=True).all()
 
 
-def get_missions_a_affecter():
+def get_missions_a_affecter(): #TODO
     missions_ids = [s.mission_id for s in Souhait.query.all()]
-    missions = []
+    missions = set()
     for id in missions_ids:
-        missions.append(get_mission_by_id(id))
+        missions.add(get_mission_by_id(id))
     return missions
 
 
