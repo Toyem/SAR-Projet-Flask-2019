@@ -201,14 +201,15 @@ def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
 # ----------------------------------------------------------
 # ----------------------Edition-----------------------------
 # ----------------------------------------------------------
-# def edit_competance_of_inge_mission(inge_id, mission_id, liste_comp):
-#     compes = get_competence_of_mission(mission_id)
-#     for c in compes:
-#         certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=c.id).first()
-#         if certif is None:
-#             lvl = 0
-#         else:
-#             lvl = certif.niveau
+def edit_competance_of_inge(inge_id, liste_comp):
+    for (cid, lvl) in liste_comp:
+        certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=cid).first()
+        if certif is None:
+            certif = Certification(ingenieur_id=inge_id, competence_id=cid, niveau=lvl)
+        else:
+            certif.niveau = lvl
+        save_object_to_db(certif)
+        
 
 def update_besoin(mission_id, compe_list):
     for b in Besoin.query.filter_by(mission_id=mission_id).all():
