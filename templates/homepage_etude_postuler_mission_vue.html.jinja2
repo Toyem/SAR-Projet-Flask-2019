@@ -1,16 +1,15 @@
-{% extends "homepage_affaire.html.jinja2" %}
-
+{% extends "homepage_etude.html.jinja2" %}
 
 {% block body %}
     <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
             <div class="mb-0">
-                <button type="button" class="btn btn-outline-light btn-sm"
-                        onclick="location.href='/{{ shortName }}/affaire/missions/aAffecter/';">&lt;&lt;
-                </button>
+                <div class="mb-0 text-left">
+            <button type="button" class="btn btn-outline-light" onclick="location.href='/{{ shortName }}/etude/postuler/disponibles/';">&lt;&lt;</button>
+        </div>
             </div>
             <div class="md-3 text-center">
-               <h4>VUE MISSION</h4>
+               <h4>POSTULER A UNE MISSION</h4>
             </div>
         </div>
     </div>
@@ -23,9 +22,10 @@
                     <label>TODO</label>
                 </div>
             </div>
-            <button type="button" class="btn btn-success"
-                    onclick="location.href='/{{ shortName }}/affaire/missions/vue/{{ mission }}/edit/';">Editer
-            </button>
+            <button type="button" class="btn btn-success">
+                    Postuler
+{#                Faire le lien vers la page#}
+                </button>
         </div>
 
         <div class="row">
@@ -36,43 +36,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-0">
-                <div class="p-1 mb-0 size-4">
-                    <label for="places">Nombre de places total : </label>
-                        <span>4</span>
-                </div>
-            </div>
-        </div>
-
-         <div class="row">
-            <div class="col-md-6 mb-0">
-                <div class="p-1 mb-0 size-4">
-                    <label for="places"> Tarif journalier : </label>
-                        <span>TODO</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-0">
-                <div class="p-1 mb-0 size-4">
-                    <label for="places">Nombre de places prises : </label>
-                        <span>4</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-0">
-                <div class="p-1 mb-0 size-4">
-                    <label for="places"> Equipe formée : </label>
-                        <label>TODO</label>
-                </div>
-            </div>
-        </div>
-
 
         <div class="row">
             <div class="col-md-6 mb-0">
