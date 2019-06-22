@@ -3,13 +3,13 @@
 {% block body %}
     <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
-            <div class="mr-3 ml-1">
+            <div class="mr-3">
                 <button type="button" class="btn btn-outline-light btn-sm"
                         onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
             </div>
             <div class="md-3">
-               <h4>VUE MISSION</h4>
+               <h4>Vue Mission</h4>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
             <div class="col-md-6 mb-0">
                 <div class="p-1 mb-0 size-4">
                     <label for="places">Nombre de places total : </label>
-                        <span>4</span>
+                        <span>{{ equipeForme|length }}</span>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="col-md-6 mb-0">
                 <div class="p-1 mb-0 size-4">
                     <label for="places"> Tarif journalier : </label>
-                        <span>TODO</span>
+                        <span>{{ mission.prix_vente }}</span>
                 </div>
             </div>
         </div>
@@ -79,7 +79,24 @@
             <div class="col-md-6 mb-0">
                 <div class="p-1 mb-0 size-4">
                     <label for="places"> Equipe formée : </label>
-                        <label>TODO</label>
+                        <ul>
+                        {% for personne in equipeForme %}
+                        <li>{{ personne.prenom }} {{ personne.nom_famille }}</li>
+                        {% endfor %}
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-0">
+                <div class="p-1 mb-0 size-4">
+                    <label for="places">Demandes à traiter :</label>
+                        <ul>
+                        {% for personne in equipeForme %}
+                        <li>{{ personne.prenom }} {{ personne.nom_famille }}</li>
+                        {% endfor %}
+                        </ul>
                 </div>
             </div>
         </div>
