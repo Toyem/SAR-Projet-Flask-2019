@@ -180,23 +180,38 @@ def onglet_etude(id, etat):
 #    return render_template("homepage_affaire_mission_edit.html.jinja2",
 #                           shortName=shortName)
 
-@app.route('/<id>/etude/postuler/vue/<missionId>/')
+@app.route('/<id>/etude/postuler/<etat>/vue/<missionId>/')
 # API pour voir mission à postuler
-def postuler_vue(id, missionId):
+def postuler_vue(id, missionId,etat):
     mission = get_mission_by_id(missionId)
     competences = get_competence_of_mission(missionId)
+    if (etat == "disponibles"):
+        dates = []
+        enable = ""
+    elif (etat == "enAttente"):
+        dates = ["TODO Date attente"]
+        enable = "disable"
+    elif (etat == "enCours" or etat == "termine"):
+        dates = ["TODO DATE DEBUT", "TODO DATE FIN"]
+        enable = "disabled"
+    else:
+        error_page_404("tab doesn't exist")
     return render_template("homepage_etude_postuler_vue.html.jinja2"
+                           , etat=etat
                            , id=id
                            , mission=mission
                            , competences=competences
+                           , dates=dates
+                           , enable=enable
                            )
 
-@app.route('/<id>/etude/postuler/vue/<missionId>/edit/')
+@app.route('/<id>/etude/postuler/<etat>/vue/<missionId>/edit/')
 # API pour voir mission à postuler
-def postuler_edit(id, missionId):
+def postuler_edit(id, missionId,etat):
     mission = get_mission_by_id(missionId)
     competences = get_competence_of_mission(missionId)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
+                           , etat=etat
                            , id=id
                            , mission=mission
                            , competences=competences
