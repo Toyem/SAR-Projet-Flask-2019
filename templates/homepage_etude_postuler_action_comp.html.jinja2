@@ -11,12 +11,12 @@
     }
     {% for competence in competences %}
         <form>
-            <label>Comp&eacute;tence {{ competence.name }} :</label>
+            <label>Comp&eacute;tence {{ competence.nom }} :</label>
             <!-- par la suite on peux mettre {{ competence.id }} a la place du name -->
-            <input type="range" name="{{ competence.name }}" class="custom-range" min="0" max="100" step="1"
+            <input type="range" name="{{ competence.nom }}" class="custom-range" min="0" max="100" step="1"
                    value="100"
-                   oninput="result{{ competence.name }}.value=parseInt({{ competence.name }}.value)"/>
-            <output name="result{{ competence.name }}">--</output><span>%</span>
+                   oninput="result{{ competence.nom }}.value=parseInt({{ competence.nom }}.value)"/>
+            <output name="result{{ competence.nom }}">--</output><span>%</span>
 
         </form>
         <script type="text/javascript">
