@@ -18,7 +18,7 @@
                 <label>{{ mission.titre }}</label>
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-danger"
+                <button type="button" class="btn btn-danger disabled"
                         onclick="location.href='/{{ id }}/etude/postuler/vue/{{ mission.id }}/edit/';">Edit
                 </button>
             </div>
@@ -30,6 +30,9 @@
                 <label>{{ mission.date_creation }}</label>
             </div>
         </div>
+        {% for date in dates %}
+
+        {% endfor %}
         <div class="row">
             <div class="mb-3 col-md-7">
                 <div class="form-group">

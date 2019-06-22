@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap 4 Buttons Checkbox</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .bs-example {
+            margin: 20px;
+        }
+
+        .btn {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="bs-example">
+    <form action="{{ url_for("test_form") }}" method="post" novalidate="" name="menu">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            {% for competence in competences %}
+                <label class="btn btn-primary">
+                <input type="checkbox" name="options[]" value="option1" autocomplete="off"> Option A
+            </label>
+            {% endfor %}
+            <label class="btn btn-primary">
+                <input type="checkbox" name="options[]" value="option1" autocomplete="off"> Option A
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox" name="options[]" value="option2" autocomplete="off"> Option B
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox" name="options[]" value="option3" autocomplete="off" checked> Option C
+            </label>
+        </div>
+        <input type="submit" value="Envoyer" />
+    </form>
+    <div>
+        {{ formulaire }}
+    </div>
+</div>
+</body>
+</html>
