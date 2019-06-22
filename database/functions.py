@@ -10,7 +10,7 @@ def get_all_missions():
 
 
 def get_all_mission_ids():
-    return [n for (n,) in Mission.query.with_entities(Mission.id).all()]
+    return [m.id for m in Mission.query.all()]
 
 
 def get_mission_by_id(mission_id):
@@ -26,10 +26,9 @@ def get_postulant_by_mission(id_mission):
 
 
 def get_participants_actuels_of_mission(mission_id):
-    inges = [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(mission_id=mission_id).all()]
-    participants = []
-    for eid in inges:
-        participants.append(get_engineer_by_id(eid))
+    mission = get_mission_by_id(mission_id)
+    id_inges = mission.affectations
+    participants = [get_engineer_by_id(id) for id in list(id_inges)]
     return participants
 
 
@@ -45,7 +44,7 @@ def get_all_full_name_engineers(): #TO delete ?
 
 
 def get_all_short_name_engineers():
-    return [n for (n,) in db.session.query(Ingenieur.nom_court).all()]
+    return [inge.nom_court for inge in get_all_engineers()]
 
 
 def get_engineer_by_id(engineer_id):
@@ -61,20 +60,30 @@ def get_engineer_by_nom_prenom(nom, prenom):
 
 
 def get_mission_en_cours_of_inge(inge_id):
-    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id)
-        .filter_by(ingenieur_id=inge_id)
-        .filter(Affectation.date_fin <= db.func.now())
-        .all()]
+    inge = get_engineer_by_id(inge_id)
+    id_missions = inge.affectations
+    missions = [get_mission_by_id(id) for id in id_missions]
+    missions_en_cours = []
+    for m in missions:
+        affectations = get_all_affectations_inge_mission(inge_id, m.id)
+        ajouter = False
+        if m.statut == "ouverte":
+            for a in affectations:
+                if a.date_fin >= db.func.now():
+                   ajouter = True
+        if ajouter:
+            missions_en_cours.append(m)
+    return missions_en_cours
 
 
-def get_mission_termine_of_inge(inge_id):
+def get_mission_termine_of_inge(inge_id): #verifier
     return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id)
         .filter(Affectation.date_fin > db.func.now()).all()]
 
 
-def get_mission_en_attente_of_inge(inge_id):
+def get_mission_en_attente_of_inge(inge_id): #verifier
     missions = []
-    souhaits = [n for (n,) in Souhait.query.with_entities(Souhait.mission_id).filter_by(ingenieur_id=inge_id).all()]
+    souhaits = [s.mission_id for s in Souhait.query.filter_by(ingenieur_id=inge_id).all()]
     for id in souhaits:
         missions.append(get_mission_by_id(id))
     return missions
@@ -112,15 +121,8 @@ def get_missions_a_affecter():
 
 
 def get_missions_affecte():
-    missions_ids = [m.id for m in Mission.query.filter_by(statut="ouverte").all()]
-    souhaits_ids = [id for (id,) in Souhait.query.with_entities(Souhait.mission_id).distinct().all()]
-    for s in souhaits_ids:
-        missions_ids.remove(s)
-    missions = []
-    for id in missions_ids:
-        missions.append(get_mission_by_id(id))
-    missions2 = [m for m in Mission.query.all() if m.statut=="ouverte" and len(list(m.souhaits)) == 0]
-    return missions2
+    missions = [m for m in Mission.query.all() if m.statut == "ouverte" and len(list(m.souhaits)) == 0]
+    return missions
 
 
 def get_missions_close():
@@ -145,6 +147,10 @@ def get_competence_of_mission(mission_id):
 # ----------------------------------------------------------
 # ----------------------A TRIER-----------------------------
 # ----------------------------------------------------------
+def get_all_affectations_inge_mission(inge_id, mission_id):
+    return Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).all()
+
+
 def add_skill_to_engineer(engineer_id, skill_id):
     engineer = Ingenieur.query.filter_by(id=engineer_id).first()
     skill = Competence.query.filter_by(id=skill_id).first()
