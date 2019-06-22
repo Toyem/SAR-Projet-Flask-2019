@@ -59,11 +59,13 @@ def onglet_affaire_mission(id, etat):
 # API onglet missions d'un ingé d'affaire
 def affaire_mission_vue(id, missionId):
     mission = get_mission_by_id(missionId)
-    competences = get_competence_of_mission(mission.id)
+    competences = get_competence_of_mission(missionId)
+    equipeForme = get_participants_actuels_of_mission(missionId)
     return render_template("homepage_affaire_mission_vue.html.jinja2"
                            , id=id
                            , mission=mission
                            , competences=competences
+                           , equipeForme=equipeForme
                            )
 
 @app.route("/process_form_data/<id>/<missionId>", methods=["POST"])
