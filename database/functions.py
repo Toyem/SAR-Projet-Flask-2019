@@ -175,7 +175,11 @@ def get_all_affectations_inge_mission(inge_id, mission_id):
 
 def get_lvl_compe_inge(inge_id, compe_id):
     certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=compe_id).first()
-    return certif.niveau
+    if certif is None:
+        lvl = 0
+    else:
+        lvl = certif.niveau
+    return lvl
 
 
 def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
