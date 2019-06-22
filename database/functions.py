@@ -196,8 +196,28 @@ def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
         lvl = get_lvl_compe_inge(inge_id, c.id)
         list_couple.append([c, lvl])
     return list_couple
-	
-	
+
+
+# ----------------------------------------------------------
+# ----------------------Edition-----------------------------
+# ----------------------------------------------------------
+# def edit_competance_of_inge_mission(inge_id, mission_id, liste_comp):
+#     compes = get_competence_of_mission(mission_id)
+#     for c in compes:
+#         certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=c.id).first()
+#         if certif is None:
+#             lvl = 0
+#         else:
+#             lvl = certif.niveau
+
+def update_besoin(mission_id, compe_list):
+    for b in Besoin.query.filter_by(mission_id=mission_id).all():
+        remove_object_from_db(b)
+    for cid in compe_list:
+        new_b = Besoin(mission_id=mission_id, competence_id=cid)
+        save_object_to_db(new_b)
+
+
 def add_skill_to_engineer(engineer_id, skill_id):
     engineer = Ingenieur.query.filter_by(id=engineer_id).first()
     skill = Competence.query.filter_by(id=skill_id).first()
