@@ -24,8 +24,8 @@ with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
 def layout():
     listOfEngineer = get_all_engineers()
     # listOfShortName = get_all_engineers()
-    return render_template("layout.html.jinja2",
-                           listOfEngineer=listOfEngineer)
+    return render_template("layout.html.jinja2", listOfEngineer=listOfEngineer)
+    #return render_template("test.html.jinja2")
 
 @app.route('/<id>/affaire/missions/<etat>/')
 # API onglet missions d'un ingé d'affaire
@@ -201,6 +201,16 @@ def postuler_edit(id, missionId):
                            , mission=mission
                            , competences=competences
                            )
+
+@app.route("/test_form", methods=["POST"])
+def test_form():
+    formulaire = flask.request.getlist["options[]"]
+
+    return flask.redirect(flask.url_for("render_form",formulaire=formulaire))
+
+@app.route("/")
+def render_form(formulaire):
+    return render_template("test.html.jinja2",formulaire=formulaire)
 
 @app.errorhandler(404)
 def error_page_404(error):
