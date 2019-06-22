@@ -77,7 +77,7 @@ def get_engineer_by_nom_prenom(nom, prenom):
     return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
 
 
-def get_mission_en_cours_of_inge(inge_id):
+def get_mission_en_cours_of_inge(inge_id): #def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -94,7 +94,7 @@ def get_mission_en_cours_of_inge(inge_id):
     return missions_en_cours
 
 
-def get_mission_termine_of_inge(inge_id):
+def get_mission_termine_of_inge(inge_id): #def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -122,12 +122,13 @@ def get_mission_possible_of_inge(inge_id):
     inge = get_engineer_by_id(inge_id)
     visibles = []
     for m in missions:
-        cout_actuel = 0
-        inges = get_participants_actuels_of_mission(m.id)
-        for inge in inges:
-            cout_actuel += inge.taux_journalier
-        if cout_actuel + inge.taux_journalier < m.prix_vente and not (inge_id in list(m.affectations) or inge_id in list(m.souhaits)):
-            visibles.append(m)
+        if not ((inge in get_participants_actuels_of_mission(m.id)) or (inge in get_postulant_by_mission(m.id))):
+            cout_actuel = 0
+            participants = get_participants_actuels_of_mission(m.id)
+            for p in participants:
+                cout_actuel += p.taux_journalier
+            if cout_actuel + inge.taux_journalier < m.prix_vente:
+                visibles.append(m)
     return visibles
 
 
@@ -198,20 +199,36 @@ def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
     return list_couple
 
 
-def add_skill_to_engineer(engineer_id, skill_id):
-    engineer = Ingenieur.query.filter_by(id=engineer_id).first()
-    skill = Competence.query.filter_by(id=skill_id).first()
+# ----------------------------------------------------------
+# ----------------------Edition-----------------------------
+# ----------------------------------------------------------
+def update_competence_of_inge(inge_id, liste_comp):
+    for (cid, lvl) in liste_comp:
+        certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=cid).first()
+        if certif is None:
+            certif = Certification(ingenieur_id=inge_id, competence_id=cid, niveau=lvl)
+        else:
+            certif.niveau = lvl
+        save_object_to_db(certif)
 
-    has_already_the_skill = skill.id in [skill_entry.skill.id for skill_entry in engineer.skill_entries]
 
-    if not has_already_the_skill:
-        new_skill_entry = Certification(engineer_id=engineer.id,
-                                        skill_id=skill.id)
-        db.session.add(new_skill_entry)
-        db.session.commit()
+def postuler(inge_id, mission_id, liste_comp):
+    update_competence_of_inge(inge_id, liste_comp)
+    new_souhait = Souhait(date_candidature=datetime.now(), mission_id=mission_id, ingenieur_id=inge_id)
+    save_object_to_db(new_souhait)
 
-        return True
-    return False
+
+def update_besoin(mission_id, compe_list):
+    for b in Besoin.query.filter_by(mission_id=mission_id).all():
+        remove_object_from_db(b)
+    for cid in compe_list:
+        new_b = Besoin(mission_id=mission_id, competence_id=cid)
+        save_object_to_db(new_b)
+
+
+def new_mission(inge_id):
+    new_m = Mission(statut="ouverte", date_creation=datetime.now(), responsable_id=inge_id)
+    save_object_to_db(new_m)
 
 
 def save_object_to_db(db_object):
@@ -222,24 +239,3 @@ def save_object_to_db(db_object):
 def remove_object_from_db(db_object):
     db.session.delete(db_object)
     db.session.commit()
-
-def update_besoin(mission_id, compe_list):
-    for b in Besoin.query.filter_by(mission_id=mission_id).all():
-        remove_object_from_db(b)
-    for cid in compe_list:
-        new_b = Besoin(mission_id=mission_id, competence_id=cid)
-        save_object_to_db(new_b)
-
-def update_competance_of_inge(inge_id, liste_comp):
-    for (cid, lvl) in liste_comp:
-        certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=cid).first()
-        if certif is None:
-            certif = Certification(ingenieur_id=inge_id, competence_id=cid, niveau=lvl)
-        else:
-            certif.niveau = lvl
-        save_object_to_db(certif)
-
-def postuler(inge_id, mission_id, liste_comp):
-    update_competance_of_inge(inge_id, liste_comp)
-    new_souhait = Souhait(date_candidature=datetime.now(), mission_id=mission_id, ingenieur_id=inge_id)
-    save_object_to_db(new_souhait)

@@ -40,7 +40,7 @@ def populate_database():
         site = random.choice(BUREAUX)
         taux_journalier = round(random.uniform(240, 560), 2)
         statut = "disponible"
-        estCommercial = bool(random.getrandbits(1))
+        estCommercial = random.choice([True, False])
 
         email = "%s.%s@%s_agency.bigcompany.fr" % (prenom.lower(),
                                                    nom_famille.lower(),
@@ -95,7 +95,7 @@ def populate_database():
         responsable = random.choice(ingenieurs)
         description = "Description de la mission '%s'" % (nouveau_titre)
         prix_vente = random.randint(10000, 100000)
-        effectifs_max = 4
+        effectifs_max = 20
         statut = random.choice(STATUS)
         decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
         date_creation = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
@@ -176,33 +176,31 @@ def populate_database():
     # ecoulees entre le 1er janvier 1970 et le 07 juin 2019 à 13h12 et 50 secondes
 
     for mission in missions:
-        for besoin in mission.besoins:
+        all_inge = Ingenieur.query.all()
 
-            ingenieurs_avec_cette_competence = Ingenieur.query.all()
+        ingenieurs_affectes = random.sample(all_inge, 2)
 
-            ingenieurs_affectes = random.sample(ingenieurs_avec_cette_competence, 2)
+        for ingenieur_affecte in ingenieurs_affectes:
 
-            for ingenieur_affecte in ingenieurs_affectes:
+            duree_projet_en_semaine = random.randint(1, 24)
+            decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
+            date_debut_timestamp = common_timestamp \
+                                   + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
+            date_fin_timestamp = date_debut_timestamp + duree_projet_en_semaine * 7 * 24 * 3600
 
-                duree_projet_en_semaine = random.randint(1, 24)
-                decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
-                date_debut_timestamp = common_timestamp \
-                                       + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
-                date_fin_timestamp = date_debut_timestamp + duree_projet_en_semaine * 7 * 24 * 3600
+            nouvelle_affectation = Affectation(date_debut=datetime.fromtimestamp(date_debut_timestamp),
+                                               date_fin=datetime.fromtimestamp(date_fin_timestamp),
+                                               ingenieur_id=ingenieur_affecte.id,
+                                               mission_id=mission.id)
 
-                nouvelle_affectation = Affectation(date_debut=datetime.fromtimestamp(date_debut_timestamp),
-                                                   date_fin=datetime.fromtimestamp(date_fin_timestamp),
-                                                   ingenieur_id=ingenieur_affecte.id,
-                                                   mission_id=mission.id)
+            db.session.add(nouvelle_affectation)
 
-                db.session.add(nouvelle_affectation)
-
-                try:
-                    db.session.commit()
-                except Exception as e:
-                    print(
-                        "[3] Je ne peux pas ajouter un besoin competence sur une mission (ce qui peut etre normal) a cause de : %s" % e)
-                    db.session.rollback()
+            try:
+                db.session.commit()
+            except Exception as e:
+                print(
+                    "[3] Je ne peux pas ajouter un besoin competence sur une mission (ce qui peut etre normal) a cause de : %s" % e)
+                db.session.rollback()
 
     ##########################################
     # Chaque ingenieur exprime deux souhaits
