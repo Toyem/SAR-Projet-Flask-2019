@@ -80,7 +80,7 @@
             <div class="col-md-6">
                 <div class="col size-4">
                     <label> Coût total :</label>
-                    <span>TODO</span>
+                    <span>{{ coutTT }}</span>
                 </div>
             </div>
         </div>
@@ -118,8 +118,8 @@
                         <ul>
                             {% for postulant in postulants %}
                                 <li>{{ postulant.prenom }} {{ postulant.nom_famille }}</li>
-                                <input type="radio" name="validation" value="accepté"/> oui
-                                <input type="radio" name="validation" value="refusé"/> non
+                                <input type="radio" name="validation" value="accepté" class="btn btn-primary"/> oui
+                                <input type="radio" name="validation" value="refusé" class="btn btn-primary"/> non
                             {% endfor %}
                         </ul>
                     </form>

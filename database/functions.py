@@ -42,12 +42,12 @@ def get_cout_of_mission(mission_id):
 
 def get_date_fin_date_fin_affectation(inge_id, mission_id):
     a = Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return [a.date_debut, a.date_fin]
+    return [("Date de début",a.date_debut),("Date de fin",a.date_fin)]
 
 
 def get_date_candidat_souhait(inge_id, mission_id):
     s = Souhait.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return s.date_candidature
+    return [("Date de candidature",s.date_candidature)]
 
 
 # ----------------------------------------------------------
@@ -126,7 +126,7 @@ def get_mission_possible_of_inge(inge_id):
         inges = get_participants_actuels_of_mission(m.id)
         for inge in inges:
             cout_actuel += inge.taux_journalier
-        if cout_actuel + inge.taux_journalier < m.prix_vente:
+        if cout_actuel + inge.taux_journalier < m.prix_vente and not (inge_id in list(m.affectations) or inge_id in list(m.souhaits)):
             visibles.append(m)
     return visibles
 
@@ -222,3 +222,24 @@ def save_object_to_db(db_object):
 def remove_object_from_db(db_object):
     db.session.delete(db_object)
     db.session.commit()
+
+def update_besoin(mission_id, compe_list):
+    for b in Besoin.query.filter_by(mission_id=mission_id).all():
+        remove_object_from_db(b)
+    for cid in compe_list:
+        new_b = Besoin(mission_id=mission_id, competence_id=cid)
+        save_object_to_db(new_b)
+
+def update_competance_of_inge(inge_id, liste_comp):
+    for (cid, lvl) in liste_comp:
+        certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=cid).first()
+        if certif is None:
+            certif = Certification(ingenieur_id=inge_id, competence_id=cid, niveau=lvl)
+        else:
+            certif.niveau = lvl
+        save_object_to_db(certif)
+
+def postuler(inge_id, mission_id, liste_comp):
+    update_competance_of_inge(inge_id, liste_comp)
+    new_souhait = Souhait(date_candidature=datetime.now(), mission_id=mission_id, ingenieur_id=inge_id)
+    save_object_to_db(new_souhait)

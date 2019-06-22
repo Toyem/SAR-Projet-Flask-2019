@@ -11,7 +11,7 @@
     {% for competenceAndLvl in coupleCompetencesLvl %}
         <p><span>{{ competenceAndLvl[0].nom }} :</span>
             <!-- par la suite on peux mettre {{ competenceAndLvl[0].id }} a la place du name -->
-            <input type="range" name="{{ competenceAndLvl[0].nom }}" id="{{ competenceAndLvl[0].id }}"
+            <input type="range" name="competence_{{ competenceAndLvl[0].id }}" id="{{ competenceAndLvl[0].id }}"
                    class="custom-range" min="0" max="100" step="1"
                    value="{{ competenceAndLvl[1] }}"/>
             <span id="valueOfRange{{ competenceAndLvl[0].id }}"></span><span>%</span>
