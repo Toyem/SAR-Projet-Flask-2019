@@ -100,7 +100,7 @@ def get_mission_possible_of_inge(inge_id):
     #         cout_actuel += get_engineer_by_id(eid).taux_journalier
     #     if cout_actuel + inge.taux_journalier < m.prix_vente:
     #         visibles.append(m)
-    #return visibles
+    # return visibles
     return Mission.query.all()
 
 

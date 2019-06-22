@@ -1,0 +1,56 @@
+{% extends "homepage_etude_postuler.html.jinja2" %}
+
+{% block body %}
+    <div class="container rounded border">
+        <div class="row">
+            <div class="mb-3">
+                <button type="button" class="btn btn-info"
+                        onclick="location.href='/{{ id }}/etude/postuler/disponibles/';">&lt;&lt;
+                </button>
+            </div>
+            <h4>VUE</h4>
+        </div>
+    </div>
+    <div class="col-md-8 order-md-1">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Name">Name</label>
+                <label>{{ mission.titre }}</label>
+            </div>
+            <div class="mb-3">
+                <button type="button" class="btn btn-danger"
+                        onclick="location.href='/{{ id }}/etude/postuler/vue/{{ mission.id }}/edit/';">Edit
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-group">
+                <label for="date">Date :</label>
+                <label>{{ mission.date_creation }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-7">
+                <div class="form-group">
+                    <label for="description">Description :</label>
+                    <label>{{ mission.description }}</label>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label for="nbPlace">Nombres de places :</label>
+                    <span>{{ mission.effectifs_max }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="competences">Comp&eacute;tences requises :</label>
+            {% for competence in competences %}
+                <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
+            {% endfor %}
+            <!-- TODO -->
+        </div>
+
+    </div>
+{% endblock %}

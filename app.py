@@ -180,14 +180,26 @@ def onglet_etude(id, etat):
 #    return render_template("homepage_affaire_mission_edit.html.jinja2",
 #                           shortName=shortName)
 
-@app.route('/<id>/etude/postuler/<etat>/<missionId>/')
+@app.route('/<id>/etude/postuler/vue/<missionId>/')
 # API pour voir mission à postuler
-def postuler(id, missionId, etat):
+def postuler_vue(id, missionId):
     mission = get_mission_by_id(missionId)
+    competences = get_competence_of_mission(missionId)
+    return render_template("homepage_etude_postuler_vue.html.jinja2"
+                           , id=id
+                           , mission=mission
+                           , competences=competences
+                           )
+
+@app.route('/<id>/etude/postuler/vue/<missionId>/edit/')
+# API pour voir mission à postuler
+def postuler_edit(id, missionId):
+    mission = get_mission_by_id(missionId)
+    competences = get_competence_of_mission(missionId)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
-                           ,id=id
-                           ,etat=etat
-                           ,mission=mission
+                           , id=id
+                           , mission=mission
+                           , competences=competences
                            )
 
 @app.errorhandler(404)
