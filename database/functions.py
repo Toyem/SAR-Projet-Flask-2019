@@ -141,6 +141,9 @@ def get_missions_close():
 # ----------------------------------------------------------
 # ----------------------Competences-------------------------
 # ----------------------------------------------------------
+def get_all_competence():
+    return Competence.query.all()
+
 def get_competence_by_id(cid):
     return Competence.query.filter_by(id=cid).first()
 

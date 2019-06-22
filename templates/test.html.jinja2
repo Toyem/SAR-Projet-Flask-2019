@@ -22,23 +22,24 @@
 <body>
 <div class="bs-example">
     <form action="{{ url_for("test_form") }}" method="post" novalidate="" name="menu">
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            {% for competence in competences %}
+
+        {% for competence in competences %}
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary">
-                <input type="checkbox" name="options[]" value="option1" autocomplete="off"> Option A
-            </label>
-            {% endfor %}
-            <label class="btn btn-primary">
-                <input type="checkbox" name="options[]" value="option1" autocomplete="off"> Option A
-            </label>
-            <label class="btn btn-primary">
-                <input type="checkbox" name="options[]" value="option2" autocomplete="off"> Option B
-            </label>
-            <label class="btn btn-primary">
-                <input type="checkbox" name="options[]" value="option3" autocomplete="off" checked> Option C
-            </label>
-        </div>
-        <input type="submit" value="Envoyer" />
+                    <input type="checkbox" name="options" value="option1" autocomplete="off"> Option A
+                </label>
+            </div>
+        {% endfor %}
+        <label class="btn btn-primary">
+            <input type="checkbox" name="options" value="option1" autocomplete="off"> Option A
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" name="options" value="option2" autocomplete="off"> Option B
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" name="options" value="option3" autocomplete="off" checked> Option C
+        </label>
+        <input type="submit" value="Envoyer"/>
     </form>
     <div>
         {{ formulaire }}

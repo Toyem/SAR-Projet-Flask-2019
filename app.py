@@ -77,17 +77,19 @@ def process_form_data(id, missionId):
 
     datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
     mission.date_creation = datetime_object
+    test=flask.request.form["competences"]
 
     db.session.add(mission)
     db.session.commit()
 
-    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionName=mission.titre))
+    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission.id))
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 # API pour voir mission à postuler
 def affaire_mission_edit(id, missionId):
     mission = get_mission_by_id(missionId)
-    competences = get_competence_of_mission(mission.id)
+    #competences = get_competence_of_mission(mission.id)
+    competences = get_all_competence()
     return render_template("homepage_affaire_mission_edit.html.jinja2"
                            , id=id
                            , mission=mission
@@ -216,16 +218,6 @@ def postuler_edit(id, missionId,etat):
                            , mission=mission
                            , competences=competences
                            )
-
-@app.route("/test_form", methods=["POST"])
-def test_form():
-    formulaire = flask.request.getlist["options[]"]
-
-    return flask.redirect(flask.url_for("render_form",formulaire=formulaire))
-
-@app.route("/")
-def render_form(formulaire):
-    return render_template("test.html.jinja2",formulaire=formulaire)
 
 @app.errorhandler(404)
 def error_page_404(error):
