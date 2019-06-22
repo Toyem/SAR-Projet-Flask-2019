@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html.jinja2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="335">
@@ -72,10 +68,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
+            <state relative-caret-position="1185">
               <caret line="79" column="15" lean-forward="true" selection-start-line="79" selection-start-column="15" selection-end-line="79" selection-end-column="15" />
             </state>
           </provider>
@@ -314,25 +310,24 @@
       <workItem from="1561123250441" duration="9293000" />
       <workItem from="1561133912984" duration="4795000" />
       <workItem from="1561205823044" duration="6481000" />
-      <workItem from="1561212637161" duration="3020000" />
+      <workItem from="1561212637161" duration="3093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98983000" />
+    <option name="totallyTimeSpent" value="99056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16639742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16639742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32797858" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32846716" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.3138686" />
+      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.3138686" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -665,16 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -684,8 +669,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_edit.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
+        <state relative-caret-position="1185">
           <caret line="79" column="15" lean-forward="true" selection-start-line="79" selection-start-column="15" selection-end-line="79" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
