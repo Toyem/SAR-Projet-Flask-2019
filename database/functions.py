@@ -90,18 +90,17 @@ def get_mission_en_attente_of_inge(inge_id): #verifier
 
 
 def get_mission_possible_of_inge(inge_id):
-    # missions = Mission.query.filter_by(statut="ouverte").all()
-    # inge = get_engineer_by_id(inge_id)
-    # visibles = []
-    # for m in missions:
-    #     cout_actuel = 0
-    #     inges = get_participants_actuels_of_mission(m)
-    #     for eid in inges:
-    #         cout_actuel += get_engineer_by_id(eid).taux_journalier
-    #     if cout_actuel + inge.taux_journalier < m.prix_vente:
-    #         visibles.append(m)
-    # return visibles
-    return Mission.query.all()
+    missions = Mission.query.filter_by(statut="ouverte").all()
+    inge = get_engineer_by_id(inge_id)
+    visibles = []
+    for m in missions:
+        cout_actuel = 0
+        inges = get_participants_actuels_of_mission(m)
+        for eid in inges:
+            cout_actuel += get_engineer_by_id(eid).taux_journalier
+        if cout_actuel + inge.taux_journalier < m.prix_vente:
+            visibles.append(m)
+    return visibles
 
 
 # ----------------------------------------------------------
