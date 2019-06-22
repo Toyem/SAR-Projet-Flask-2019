@@ -201,7 +201,7 @@ def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
 # ----------------------------------------------------------
 # ----------------------Edition-----------------------------
 # ----------------------------------------------------------
-def edit_competance_of_inge(inge_id, liste_comp):
+def update_competence_of_inge(inge_id, liste_comp):
     for (cid, lvl) in liste_comp:
         certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=cid).first()
         if certif is None:
@@ -209,7 +209,13 @@ def edit_competance_of_inge(inge_id, liste_comp):
         else:
             certif.niveau = lvl
         save_object_to_db(certif)
-        
+
+
+def postuler(inge_id, mission_id, liste_comp):
+    update_competence_of_inge(inge_id, liste_comp)
+    new_souhait = Souhait(date_candidature=datetime.now(), mission_id=mission_id, ingenieur_id=inge_id)
+    save_object_to_db(new_souhait)
+
 
 def update_besoin(mission_id, compe_list):
     for b in Besoin.query.filter_by(mission_id=mission_id).all():
@@ -217,22 +223,6 @@ def update_besoin(mission_id, compe_list):
     for cid in compe_list:
         new_b = Besoin(mission_id=mission_id, competence_id=cid)
         save_object_to_db(new_b)
-
-
-def add_skill_to_engineer(engineer_id, skill_id):
-    engineer = Ingenieur.query.filter_by(id=engineer_id).first()
-    skill = Competence.query.filter_by(id=skill_id).first()
-
-    has_already_the_skill = skill.id in [skill_entry.skill.id for skill_entry in engineer.skill_entries]
-
-    if not has_already_the_skill:
-        new_skill_entry = Certification(engineer_id=engineer.id,
-                                        skill_id=skill.id)
-        db.session.add(new_skill_entry)
-        db.session.commit()
-
-        return True
-    return False
 
 
 def save_object_to_db(db_object):

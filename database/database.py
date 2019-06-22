@@ -95,7 +95,7 @@ def populate_database():
         responsable = random.choice(ingenieurs)
         description = "Description de la mission '%s'" % (nouveau_titre)
         prix_vente = random.randint(10000, 100000)
-        effectifs_max = 4
+        effectifs_max = 20
         statut = random.choice(STATUS)
         decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
         date_creation = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
