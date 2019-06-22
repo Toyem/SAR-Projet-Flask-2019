@@ -33,6 +33,15 @@ def get_participants_actuels_of_mission(mission_id):
     return participants
 
 
+def get_date_fin_date_fin_affectation(inge_id, mission_id):
+    a = Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
+    return [a.date_debut, a.date_fin]
+
+
+def get_date_candidat_souhait(inge_id, mission_id):
+    s = Souhait.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
+    return s.date_candidature
+
 # ----------------------------------------------------------
 # ----------------------INGE ETUDE--------------------------
 # ----------------------------------------------------------
@@ -141,6 +150,10 @@ def get_missions_close():
 # ----------------------------------------------------------
 # ----------------------Competences-------------------------
 # ----------------------------------------------------------
+def get_all_competence():
+    return Competence.query.all()
+
+
 def get_competence_by_id(cid):
     return Competence.query.filter_by(id=cid).first()
 
@@ -158,10 +171,10 @@ def get_competence_of_mission(mission_id):
 def get_all_affectations_inge_mission(inge_id, mission_id):
     return Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).all()
 
+
 def get_lvl_compe_inge(inge_id, compe_id):
     certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=compe_id).first()
     return certif.niveau
-
 
 
 def add_skill_to_engineer(engineer_id, skill_id):
