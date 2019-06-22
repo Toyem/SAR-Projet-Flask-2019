@@ -201,7 +201,7 @@ def postuler_vue(id, missionId,etat):
         dates = []
         enable = ""
     elif (etat == "enAttente"):
-        dates =  get_date_candidat_souhait(id,missionId)
+        dates = get_date_candidat_souhait(id,missionId)
         enable = "disabled"
     elif (etat == "enCours" or etat == "termine"):
         dates = get_date_fin_date_fin_affectation(id,missionId)
