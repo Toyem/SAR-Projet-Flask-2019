@@ -32,6 +32,10 @@ def get_participants_actuels_of_mission(mission_id):
     participants = [get_engineer_by_id(id) for id in id_inges]
     return participants
 
+def get_cout_of_mission(mission_id):
+    coutTT = 0
+    coutTT = [coutTT+inge.taux_journalier for inge in get_participants_actuels_of_mission(mission_id)]
+    return coutTT
 
 def get_date_fin_date_fin_affectation(inge_id, mission_id):
     a = Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
