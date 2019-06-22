@@ -146,9 +146,9 @@ def onglet_etude(id, etat):
     if (etat == "disponibles"):
         listToShow = listOfMissionsAvalable
     elif (etat == "enAttente"):
-        listToShow = listOfMissionsGoingOn
-    elif (etat == "enCours"):
         listToShow = listOfMissionsWaiting
+    elif (etat == "enCours"):
+        listToShow = listOfMissionsGoingOn
     elif (etat == "termine"):
         listToShow = listOfMissionsClosed
     else:

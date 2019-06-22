@@ -178,11 +178,7 @@ def populate_database():
     for mission in missions:
         for besoin in mission.besoins:
 
-            ingenieurs_avec_cette_competence = Ingenieur.query \
-                .join(Certification) \
-                .join(Competence) \
-                .filter_by(id=besoin.competence.id) \
-                .all()
+            ingenieurs_avec_cette_competence = Ingenieur.query.all()
 
             ingenieurs_affectes = random.sample(ingenieurs_avec_cette_competence, 2)
 
@@ -216,19 +212,13 @@ def populate_database():
 
     for ingenieur in ingenieurs:
         for i in range(0, 1):
-            missions_avec_une_competence = Mission.query \
-                .join(Besoin) \
-                .join(Competence) \
-                .join(Certification) \
-                .filter(Certification.ingenieur_id == ingenieur.id, Mission.statut == "ouverte") \
-                .all()
+            missions_ouvertes = Mission.query.filter_by(statut="ouverte").all()
 
-            mission_souhaite = random.choice(missions_avec_une_competence)
+            mission_souhaite = random.choice(missions_ouvertes)
 
             decalage_par_rapport_a_common_timestamp_en_jours = random.randint(1, 365)
             date_candidature = common_timestamp + decalage_par_rapport_a_common_timestamp_en_jours * 24 * 3600
             nouveau_souhait = Souhait(date_candidature=datetime.fromtimestamp(date_candidature),
-
                                       ingenieur_id=ingenieur.id,
                                       mission_id=mission_souhaite.id)
 

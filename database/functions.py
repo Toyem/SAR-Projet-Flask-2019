@@ -1,5 +1,6 @@
 from database.models import *
 from app import db
+from datetime import datetime
 
 
 # ----------------------------------------------------------
@@ -27,8 +28,8 @@ def get_postulant_by_mission(id_mission):
 
 def get_participants_actuels_of_mission(mission_id):
     mission = get_mission_by_id(mission_id)
-    id_inges = mission.affectations
-    participants = [get_engineer_by_id(id) for id in list(id_inges)]
+    id_inges = [a.ingenieur_id for a in list(mission.affectations)]
+    participants = [get_engineer_by_id(id) for id in id_inges]
     return participants
 
 
@@ -61,7 +62,7 @@ def get_engineer_by_nom_prenom(nom, prenom):
 
 def get_mission_en_cours_of_inge(inge_id):
     inge = get_engineer_by_id(inge_id)
-    id_missions = inge.affectations
+    id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
     missions_en_cours = []
     for m in missions:
@@ -69,23 +70,33 @@ def get_mission_en_cours_of_inge(inge_id):
         ajouter = False
         if m.statut == "ouverte":
             for a in affectations:
-                if a.date_fin >= db.func.now():
+                if a.date_fin >= datetime.now():
                    ajouter = True
         if ajouter:
             missions_en_cours.append(m)
     return missions_en_cours
 
 
-def get_mission_termine_of_inge(inge_id): #verifier
-    return [n for (n,) in Affectation.query.with_entities(Affectation.ingenieur_id).filter_by(ingenieur_id=inge_id)
-        .filter(Affectation.date_fin > db.func.now()).all()]
+def get_mission_termine_of_inge(inge_id):
+    inge = get_engineer_by_id(inge_id)
+    id_missions = [a.mission_id for a in list(inge.affectations)]
+    missions = [get_mission_by_id(id) for id in id_missions]
+    missions_termines = []
+    for m in missions:
+        affectations = get_all_affectations_inge_mission(inge_id, m.id)
+        ajouter = True
+        if m.statut == "ouverte":
+            for a in affectations:
+                if a.date_fin >= datetime.now():
+                   ajouter = False
+        if ajouter:
+            missions_termines.append(m)
+    return missions_termines
 
 
-def get_mission_en_attente_of_inge(inge_id): #verifier
-    missions = []
+def get_mission_en_attente_of_inge(inge_id):
     souhaits = [s.mission_id for s in Souhait.query.filter_by(ingenieur_id=inge_id).all()]
-    for id in souhaits:
-        missions.append(get_mission_by_id(id))
+    missions = [get_mission_by_id(id) for id in souhaits]
     return missions
 
 
@@ -95,9 +106,9 @@ def get_mission_possible_of_inge(inge_id):
     visibles = []
     for m in missions:
         cout_actuel = 0
-        inges = get_participants_actuels_of_mission(m)
-        for eid in inges:
-            cout_actuel += get_engineer_by_id(eid).taux_journalier
+        inges = get_participants_actuels_of_mission(m.id)
+        for inge in inges:
+            cout_actuel += inge.taux_journalier
         if cout_actuel + inge.taux_journalier < m.prix_vente:
             visibles.append(m)
     return visibles
@@ -111,8 +122,7 @@ def get_all_engineers_affaire():
 
 
 def get_missions_a_affecter():
-    missions_ids = db.session.query(Souhait.mission_id).distinct().all()
-    missions_ids = [id for (id,) in missions_ids]
+    missions_ids = [s.mission_id for s in Souhait.query.all()]
     missions = []
     for id in missions_ids:
         missions.append(get_mission_by_id(id))
@@ -136,11 +146,10 @@ def get_competence_by_id(cid):
 
 
 def get_competence_of_mission(mission_id):
-    compe_ids = [n for (n,) in Besoin.query.with_entities(Besoin.competence_id).filter_by(mission_id=mission_id).all()]
-    competences = []
-    for cid in compe_ids:
-        competences.append(get_competence_by_id(cid))
-    return competences
+    mission = get_mission_by_id(mission_id)
+    compe_ids = [b.competence_id for b in list(mission.besoins)]
+    compes = [Competence.query.filter_by(id=cid).first() for cid in compe_ids]
+    return compes
 
 
 # ----------------------------------------------------------
@@ -148,6 +157,11 @@ def get_competence_of_mission(mission_id):
 # ----------------------------------------------------------
 def get_all_affectations_inge_mission(inge_id, mission_id):
     return Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).all()
+
+def get_lvl_compe_inge(inge_id, compe_id):
+    certif = Certification.query.filter_by(ingenieur_id=inge_id, competence_id=compe_id).first()
+    return certif.niveau
+
 
 
 def add_skill_to_engineer(engineer_id, skill_id):
