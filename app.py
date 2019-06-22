@@ -46,6 +46,7 @@ def onglet_affaire_mission(id, etat):
     else:
         error_page_404("tab doesn't exist - onglet_affaire_mission")
     return render_template("homepage_affaire_mission_grille.html.jinja2"
+                           , etat=etat
                            , id=id
                            , listToShow=listToShow
                            , listOfMissionsToAssignLength=len(listOfMissionsToAssign)
@@ -83,10 +84,13 @@ def process_form_data(id, missionId):
 
     datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
     mission.date_creation = datetime_object
-    test=flask.request.form.getlist["competences"]
-
-    db.session.add(mission)
-    db.session.commit()
+    listOfAllFormName = flask.request.form.to_dict().keys()
+    listOfCompetencesEdit=[]
+    for formName in listOfAllFormName:
+        if formName[:11] == "competence_":
+            listOfCompetencesEdit.append(formName[11:])
+    update_besoin(missionId,listOfCompetencesEdit)
+    save_object_to_db(mission)
 
     return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission.id))
 
@@ -216,6 +220,8 @@ def postuler_vue(id, missionId,etat):
 @app.route('/<id>/etude/postuler/<etat>/vue/<missionId>/edit/')
 # API pour voir mission à postuler
 def postuler_edit(id, missionId,etat):
+    #if formulaireSuccess != True:
+    #    formulaireSuccess = False
     mission = get_mission_by_id(missionId)
     coupleCompetencesLvl = get_couple_compe_lvl_of_mission_inge(missionId,id)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
@@ -224,6 +230,21 @@ def postuler_edit(id, missionId,etat):
                            , mission=mission
                            , coupleCompetencesLvl=coupleCompetencesLvl
                            )
+
+
+@app.route("/process_form_postuler/<id>/<missionId>/<etat>", methods=["POST"])
+def process_form_postuler(id, missionId,etat):
+
+    listOfAllFormName = flask.request.form.to_dict().keys()
+    listeOfTuplesCompetencesLevel = []
+    for formName in listOfAllFormName:
+        if formName[:11] == "competence_":
+            listeOfTuplesCompetencesLevel.append((formName[11:],flask.request.form[formName]))
+    print(listeOfTuplesCompetencesLevel)
+    postuler(id,missionId,listeOfTuplesCompetencesLevel)
+    formulaireSuccess=True
+
+    return flask.redirect(flask.url_for("onglet_etude", id=id, etat=etat))
 
 @app.errorhandler(404)
 def error_page_404(error):

@@ -73,7 +73,7 @@
                 {% for competence in competences %}
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="competences" value="{{ competence.nom }}"
+                            <input type="checkbox" name="competence_{{ competence.id }}" value="{{ competence.nom }}"
                                    autocomplete="off"> {{ competence.nom }}
                         </label>
                     </div>
