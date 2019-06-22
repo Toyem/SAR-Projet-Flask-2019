@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75085c5f-341f-40b6-a130-8e1ddd354c53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,11 +39,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+            <state relative-caret-position="255">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/homepage_etude.html.jinja2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -109,11 +118,9 @@
         <option value="$PROJECT_DIR$/templates/homepage_etude_mission.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_suivi.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/layout.html.jinja2" />
-        <option value="$PROJECT_DIR$/templates/homepage_etude.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_carriere_grille.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_action_comp.html.jinja2" />
-        <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_grille.html.jinja2" />
         <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_action.html.jinja2" />
         <option value="$PROJECT_DIR$/database/database.py" />
@@ -124,10 +131,12 @@
         <option value="$PROJECT_DIR$/database/functions.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2" />
+        <option value="$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2" />
+        <option value="$PROJECT_DIR$/templates/homepage_etude.html.jinja2" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="956" />
     <option name="width" value="890" />
     <option name="height" value="1089" />
@@ -176,13 +185,13 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/css" />
-      <recent name="$PROJECT_DIR$/static" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/static/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/css" />
+      <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -208,7 +217,7 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Users\Ophelie\Miniconda3\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Ophelie\Miniconda3\envs\FlaskExample\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -271,12 +280,12 @@
       <workItem from="1561214178416" duration="1956000" />
       <workItem from="1561216455534" duration="2935000" />
       <workItem from="1561220763804" duration="2153000" />
-      <workItem from="1561223388654" duration="240000" />
+      <workItem from="1561223388654" duration="5136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103247000" />
+    <option name="totallyTimeSpent" value="108143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
@@ -447,21 +456,6 @@
     <entry file="file://$PROJECT_DIR$/templates/homepage_etude_suivi_grille.html.jinja2">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
-          <folding>
-            <element signature="e#54#62#0#HTML" expanded="true" />
-            <element signature="e#69#75#0#HTML" expanded="true" />
-            <element signature="e#75#83#0#HTML" expanded="true" />
-            <element signature="e#729#737#0#HTML" expanded="true" />
-            <element signature="e#744#750#0#HTML" expanded="true" />
-            <element signature="e#749#757#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_grille.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -531,13 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="130" lean-forward="true" selection-start-line="21" selection-start-column="130" selection-end-line="21" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -623,8 +610,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/homepage_affaire_mission_vue.html.jinja2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+        <state relative-caret-position="170">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude_postuler_vue.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage_etude.html.jinja2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
         </state>
       </provider>
     </entry>
