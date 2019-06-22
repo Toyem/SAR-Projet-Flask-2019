@@ -4,39 +4,38 @@
     <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
             <div class="mb-3">
-                <button type="button" class="btn btn-info"
+                <button type="button" class="btn btn-outline-light"
                         onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
             </div>
-            <div class="md-3">
+            <div class="md-3 ml-3">
                 <h4>Edition</h4>
             </div>
         </div>
     </div>
-    <div class="col-md-8 order-md-1">
+    <div class="col-md-10 flex-column">
         <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}" method="post"
               class="needs-validation" novalidate="">
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" id="Name" name="foo_titre" value='{{ mission.titre }}'>
-                    <div class="invalid-feedback">
-                        Valid name is required.
+                <div class="col-md-9 mb-3">
+                    <div class="p-1 bg-info text-white size-6 font-weight-bold">
+                        <label for="Name">Mission : </label>
+                    </div>
+                        <input type="text" class="form-control" id="Name" name="foo_titre" value='{{ mission.titre }}'>
+                        <div class="invalid-feedback">
+                            Valid name is required.
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="col-md justify-content-end">
                     <button type="button" class="btn btn-danger"
                             onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';">annuler
                     </button>
-                </div>
-                <div class="mb-3">
                     {#                    <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';" >sauver</button>#}
                     <input type="submit" class="btn btn-success" onclick="location.href='/TODO.php';" value="sauver"/>
                 </div>
             </div>
-
-            <div class="mb-3">
-                <div class="form-group">
+            <div class="row">
+                <div class="form-group ml-3">
                     <label for="date">Date :</label>
                     <div class='input-group date' id='datetimepicker1'>
                         <input type='text' class="form-control" name="mission_date_creation"
@@ -60,24 +59,29 @@
                                   id="comment">{{ mission.description }}</textarea>
                     </div>
                 </div>
-                <div>
-                    <div class="form-group">
-                        <label for="nbPlace">Nombres de places :</label>
-                        <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
-                    </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group ml-3">
+                    <label for="nbPlace">Nombres de places :</label>
+                    <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label for="competences">Comp&eacute;tences requises :</label>
+            <div class="row">
+                <div class="col p-1 bg-info text-white size-6 font-weight-bold  mb-2 ml-3 md-7">
+                    <label for="competences">Comp&eacute;tences requises :</label>
+                </div>
+             <div class="row ml-3">
                 {% for competence in competences %}
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-primary">
+                        <label class="btn btn-primary ml-2 mb-2">
                             <input type="checkbox" name="competences" value="{{ competence.nom }}"
                                    autocomplete="off"> {{ competence.nom }}
                         </label>
                     </div>
                 {% endfor %}
+            </div>
             </div>
         </form>
     </div>
