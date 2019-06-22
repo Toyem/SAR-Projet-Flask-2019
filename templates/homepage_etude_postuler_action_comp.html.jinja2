@@ -8,25 +8,22 @@
         }
     </style>
     <!-- Fin du truc important -->
-    }
-    {% for competence in competences %}
-        <form>
-            <label>Comp&eacute;tence {{ competence.nom }} :</label>
-            <!-- par la suite on peux mettre {{ competence.id }} a la place du name -->
-            <input type="range" name="{{ competence.nom }}" class="custom-range" min="0" max="100" step="1"
-                   value="100"
-                   oninput="result{{ competence.nom }}.value=parseInt({{ competence.nom }}.value)"/>
-            <output name="result{{ competence.nom }}">--</output><span>%</span>
+    {% for competenceAndLvl in coupleCompetencesLvl %}
+        <p><span>{{ competenceAndLvl[0].nom }} :</span>
+            <!-- par la suite on peux mettre {{ competenceAndLvl[0].id }} a la place du name -->
+            <input type="range" name="{{ competenceAndLvl[0].nom }}" id="{{ competenceAndLvl[0].id }}"
+                   class="custom-range" min="0" max="100" step="1"
+                   value="{{ competenceAndLvl[1] }}"/>
+            <span id="valueOfRange{{ competenceAndLvl[0].id }}"></span><span>%</span>
+            <script>
+                var slider{{ competenceAndLvl[0].id }} = document.getElementById("{{ competenceAndLvl[0].id }}");
+                var output{{ competenceAndLvl[0].id }} = document.getElementById("valueOfRange{{ competenceAndLvl[0].id }}");
+                output{{ competenceAndLvl[0].id }}.innerHTML = slider{{ competenceAndLvl[0].id }}.value;
 
-        </form>
-        <script type="text/javascript">
-            $(function () {
-                $('.range').next().text('--'); // Valeur par défaut
-                $('.range').on('input', function () {
-                    var $set = $(this).val();
-                    $(this).next().text($set);
-                });
-            });
-        </script>
+                slider{{ competenceAndLvl[0].id }}.oninput = function () {
+                    output{{ competenceAndLvl[0].id }}.innerHTML = this.value;
+                }
+            </script>
+        </p>
     {% endfor %}
 {% endblock %}

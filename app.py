@@ -217,12 +217,12 @@ def postuler_vue(id, missionId,etat):
 # API pour voir mission à postuler
 def postuler_edit(id, missionId,etat):
     mission = get_mission_by_id(missionId)
-    competences = get_competence_of_mission(missionId)
+    coupleCompetencesLvl = get_couple_compe_lvl_of_mission_inge(missionId,id)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
                            , etat=etat
                            , id=id
                            , mission=mission
-                           , competences=competences
+                           , coupleCompetencesLvl=coupleCompetencesLvl
                            )
 
 @app.errorhandler(404)
