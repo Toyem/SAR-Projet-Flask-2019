@@ -1,35 +1,39 @@
 {% extends "homepage_etude_postuler.html.jinja2" %}
 
 {% block body %}
-    <div class="container rounded border">
+    <div class="p-3 mb-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
-            <div class="mb-3">
-                <button type="button" class="btn btn-info"
+            <div class="mr-3 ml-1">
+                <button type="button" class="btn btn-outline-light"
                         onclick="location.href='/{{ id }}/etude/postuler/disponibles/';">&lt;&lt;
                 </button>
             </div>
-            <h4>VUE</h4>
+            <h4>Vue de la mission</h4>
         </div>
     </div>
-    <div class="col-md-8 order-md-1">
+
+    <div class="col-md-12 order-md-1">
         <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="Name">Name</label>
-                <label>{{ mission.titre }}</label>
+            <div class="col-md-6">
+                <div class="p-1 bg-info text-white size-6 font-weight-bold">
+                    <label for="Name">Mission :  </label>
+                    <label class ="bg-info text-white size-6 font-weight-bold">{{ mission.titre }}</label>
+                </div>
             </div>
-            <div class="mb-3">
-                <button type="button" class="btn btn-danger" {{ enable }}
-                        onclick="location.href='/{{ id }}/etude/postuler/{{ etat }}/vue/{{ mission.id }}/edit/';">Edit
+            <div class="mb-2">
+                <button type="button" class="btn btn-success" {{ enable }}
+                        onclick="location.href='/{{ id }}/etude/postuler/{{ etat }}/vue/{{ mission.id }}/edit/';">Postuler
                 </button>
             </div>
         </div>
 
-        <div class="mb-3">
-            <div class="form-group">
-                <label for="date">Date :</label>
-                <label>{{ mission.date_creation }}</label>
+        <div class="row">
+            <div class="mb-2">
+                <div class="form-group">
+                    <label for="date">Date de création :</label>
+                    <label>{{ mission.date_creation }}</label>
+                </div>
             </div>
-        </div>
         {% for date in dates %}
             <div class="mb-3">
                 <div class="form-group">
@@ -38,27 +42,27 @@
                 </div>
             </div>
         {% endfor %}
+        </div>
+
         <div class="row">
-            <div class="mb-3 col-md-7">
+            <div class="mb-2 col-md-7">
+
                 <div class="form-group">
-                    <label for="description">Description :</label>
+                    <div class="p-1 mb-2 bg-info text-white size-6">
+                        <label for="description">Description :</label>
+                    </div>
                     <label>{{ mission.description }}</label>
                 </div>
-                <div>
-                    <div class="form-group">
-                        <label for="nbPlace">Nombres de places :</label>
-                        <span>{{ mission.effectifs_max }}</span>
-                    </div>
-                </div>
             </div>
-
-            <div class="mb-3">
-                <label for="competences">Comp&eacute;tences requises :</label>
-                {% for competence in competences %}
-                    <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
-                {% endfor %}
-                <!-- TODO -->
-            </div>
-
+         <div class="row">
+            <div class="mb-2 col-md-7">
+                 <div class="p-1 mb-0 bg-info text-white size-6 mb-2">
+                    <label for="competences">Compétences requises :</label>
+                 </div>
+            {% for competence in competences %}
+                <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
+            {% endfor %}
+            <!-- TODO -->
+        </div>
         </div>
 {% endblock %}
