@@ -4,7 +4,7 @@
     <div class=" mb-2 p-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
             <div class="mr-3 ml-3">
-                <button type="button" class="btn btn-outline-light btn"
+                <button type="button" class="btn btn-outline-light"
                         onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
             </div>
@@ -107,21 +107,21 @@
         </div>
 
 
-        <div class="row">
-            <div class="col ml-3 size-4">
+        <div class="d-flex flex-inline mb-2">
+            <div class="col-md-auto ml-3 size-4">
                 <div class="">
                     <label for="places">Demandes à traiter :</label>
                     <table class="table-responsive table-bordered">
                         <thead class="thead-light">
                         <tr>
-                            <th scope="col-md-2">Ingenieur</th>
+                            <th scope="col">Ingenieur</th>
                             {% for competence in competences %}
-                                <th scope="col-md-1">{{ competence.nom }}</th>
+                                <th scope="col">{{ competence.nom }}</th>
                             {% endfor %}
-                            <th scope="col-md-2">Décision</th>
-                            <th scope="col-md-1">Date début</th>
-                            <th scope="col-md-1">Date fin</th>
-                            <th scope="col-md-1">Valider</th>
+                            <th scope="col">Décision</th>
+                            <th scope="col">Date début</th>
+                            <th scope="col">Date fin</th>
+                            <th scope="col">Valider</th>
                         </tr>
                         </thead>
                         <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
@@ -131,8 +131,9 @@
                             {% for postulant in postulants %}
                                 <tr>
                                     <th scope="row justify-content-start">{{ postulant.prenom }} {{ postulant.nom_famille }}</th>
-                                    <td>42</td>
-                                    <td>42</td>
+                                    {% for competence in competences %}
+                                        <td>42</td>
+                                    {% endfor %}
                                     <td>oui/non</td>
                                     <td>date1</td>
                                     <td>date</td>
