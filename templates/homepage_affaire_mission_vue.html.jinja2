@@ -1,9 +1,9 @@
 {% extends "homepage_affaire.html.jinja2" %}
 
 {% block body %}
-    <div class=" mb-2 bg-dark text-white size-6 font-weight-bold">
+    <div class=" mb-2 p-2 bg-dark text-white size-6 font-weight-bold">
         <div class="row">
-            <div class="mr-3 ml-1">
+            <div class="mr-3 ml-3">
                 <button type="button" class="btn btn-outline-light btn"
                         onclick="location.href='/{{ id }}/affaire/missions/aAffecter/';">&lt;&lt;
                 </button>
@@ -14,15 +14,15 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="row mb-2">
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-inline mb-2">
             <div class="col-md-10">
-                <div class="p-1 bg-info text-white size-6 font-weight-bold">
+                <div class="col p-1 bg-info text-white size-6 font-weight-bold">
                     <label for="Name">Mission : </label>
                     <label>{{ mission.titre }}</label>
                 </div>
             </div>
-            <div class="col-md justify-content-end">
+            <div class="col-md-auto p-0">
                 <button type="button" class="btn btn-success"
                         onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/edit/';">Editer
                 </button>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="d-flex flex-inline mb-2">
             <div class="mb-2 col-md-10">
                 <div class="form-group">
                     <label for="date">Date de création :</label>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="d-flex flex-inline mb-2">
             <div class="col-md-10">
                 <div class="p-1  bg-info text-white size-6">
                     <label for="description">Description</label>
@@ -54,15 +54,15 @@
             </div>
          </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-">
+        <div class="d-flex flex-inline mb-2">
+            <div class="col-md-auto mr-auto">
                 <div class="form-group">
                     <label for="nbPlace">Nombres de places :</label>
                     <span>{{ mission.effectifs_max }}</span>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="col size-4">
+            <div class="col ml-4">
+                <div class="size-4">
                     <label for="places">Nombre de places occupées :</label>
                     <span>{{ equipeForme|length }}</span>
                 </div>
@@ -70,15 +70,15 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-md-6">
+        <div class="d-flex flex-inline mb-2">
+            <div class="col-md-auto mr-auto">
                 <div class=" size-4">
-                    <label for="places"> Tarif journalier : </label>
+                    <label for="tarif"> Tarif journalier : </label>
                     <span>{{ mission.prix_vente }}</span>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="col size-4">
+            <div class="col ml-4">
+                <div class="size-4">
                     <label> Coût total :</label>
                     <span>{{ coutTT }}</span>
                 </div>
@@ -86,17 +86,17 @@
         </div>
 
         <div class="row">
-            <div class="col-md-10">
-                <div class="p-1  bg-info text-white size-6">
-                    <label for="description">Equipe</label>
+            <div class="col-md-10 ml-3">
+                <div class="p-1  bg-info text-white size-6 mb-2">
+                    <label for="equipe">Equipe :</label>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="d-flex flex-inline mb-2">
             <div class="col-md-6 ">
                 <div class="p-1 size-4">
-                    <label for="places"> Equipe formée : </label>
+                    <label for="personnes"> Equipe formée : </label>
                     <ul>
                         {% for personne in equipeForme %}
                             <li>{{ personne.prenom }} {{ personne.nom_famille }}</li>
@@ -109,7 +109,7 @@
 
 
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 ml-3">
                 <div class="p-1 size-4">
                     <label for="places">Demandes à traiter :</label>
                     <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
@@ -129,9 +129,9 @@
 
 
         <div class="row">
-            <div class="col-md-10 ">
+            <div class="col-md-10 ml-3">
                 <div class="p-1  bg-info text-white size-6 mb-2">
-                    <label for="competences">Compétences requises</label>
+                    <label for="competences">Compétences requises :</label>
                 </div>
                 {% for competence in competences %}
                     <button type="button" class="btn btn-secondary" disabled>{{ competence.nom }}</button>
