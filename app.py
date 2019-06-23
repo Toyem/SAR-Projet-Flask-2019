@@ -14,6 +14,9 @@ db.init_app(app)  # (1) flask prend en compte la base de donnee
 with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
     init_database()
 
+# ------------------------------------------
+# ---------Page Acceuil---------------------
+# ------------------------------------------
 
 @app.route('/')
 # API page accueil
@@ -24,6 +27,10 @@ def layout():
                            listOfEngineer=listOfEngineer,
                            listOfAffair=listOfAffair)
 
+# ------------------------------------------
+# ---------Ingé AFFAIRE---------------------
+# ------------------------------------------
+
 @app.route('/<id>/affaire/missions/<etat>/')
 # API onglet missions d'un ingé d'affaire
 def onglet_affaire_mission(id, etat):
@@ -31,7 +38,6 @@ def onglet_affaire_mission(id, etat):
     listOfMissionsAssigned = get_missions_affecte()
     listOfMissionsClosed = get_missions_close()
     listOfAllMissions = get_all_missions()
-    print(etat)
     if (etat == "aAffecter"):
         listToShow = listOfMissionsToAssign
     elif (etat == "affectees"):
@@ -52,12 +58,7 @@ def onglet_affaire_mission(id, etat):
                            , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
-@app.route("/process_new_mission/<id>/", methods=["POST"])
-def process_new_mission(id):
-    print("is ok ?")
-    mission_id = new_mission(id)
-    #mission = get_mission_by_id(mission_id)
-    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission_id))
+
 
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/')
@@ -77,39 +78,26 @@ def affaire_mission_vue(id, missionId):
                            , coutTT=coutTT
                            )
 
-@app.route("/process_form_data/<id>/<missionId>", methods=["POST"])
-def process_form_data(id, missionId):
-
-    mission = get_mission_by_id(missionId)
-
-    mission.titre = flask.request.form["foo_titre"]
-    mission.description = flask.request.form["mission_description"]
-    mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
-
-    datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
-    mission.date_creation = datetime_object
-    listOfAllFormName = flask.request.form.to_dict().keys()
-    listOfCompetencesEdit=[]
-    for formName in listOfAllFormName:
-        if formName[:11] == "competence_":
-            listOfCompetencesEdit.append(formName[11:])
-    update_besoin(missionId,listOfCompetencesEdit)
-    save_object_to_db(mission)
-
-    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
 
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
-# API pour voir mission à postuler
-def affaire_mission_edit(id, missionId):
+def affaire_mission_edit_get_mission(id, missionId):
+    print("passage 1")
+    # API pour voir mission à postuler
     mission = get_mission_by_id(missionId)
-    #competences = get_competence_of_mission(mission.id)
+    is_new_mission = False
+    return affaire_mission_edit(id, mission,is_new_mission)
+
+#@app.route('/affaire_mission_edit/<id>/<missionId>/')
+def affaire_mission_edit(id, mission,is_new_mission):
+    # competences = get_competence_of_mission(mission.id)
     competences = get_all_competence()
     return render_template("homepage_affaire_mission_edit.html.jinja2"
-                           , id=id
-                           , mission=mission
-                           , competences=competences
-                           )
+                            , id=id
+                            , mission=mission
+                            , competences=competences
+                            , is_new_mission=is_new_mission
+                            )
 
 @app.route('/<id>/affaire/carrieres/')
 # API onglet carrière d'un ingé d'affaire
@@ -147,9 +135,42 @@ def carriere_vue(id, idCarriere, etat):
                            , listOfMissionsClosedLength=len(listOfMissionsClosed)
                            , listToShow=listToShow)
 
-# ----------------------------------------------------------
-# ----------------------------------------------------------
-# ----------------------------------------------------------
+# ---------------------
+# --------POST---------
+# ---------------------
+
+@app.route("/process_form_data/<id>/<missionId>", methods=["POST"])
+def process_form_data(id, missionId):
+
+    mission = get_mission_by_id(missionId)
+
+    mission.titre = flask.request.form["foo_titre"]
+    mission.description = flask.request.form["mission_description"]
+    mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
+
+    datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
+    mission.date_creation = datetime_object
+    listOfAllFormName = flask.request.form.to_dict().keys()
+    listOfCompetencesEdit=[]
+    for formName in listOfAllFormName:
+        if formName[:11] == "competence_":
+            listOfCompetencesEdit.append(formName[11:])
+    update_besoin(mission.id,listOfCompetencesEdit)
+    save_object_to_db(mission)
+
+    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
+
+@app.route('/<id>/affaire/missions/vue/0/edit/', methods=["POST"])
+def process_new_mission(id):
+    print("is ok ?")
+    mission = new_mission(id)
+    is_new_mission = True
+    #mission = get_mission_by_id(mission_id)
+    return affaire_mission_edit(id,mission,is_new_mission)
+
+# ----------------------------------------------------
+# ---------------------Ingé ETUDE---------------------
+# ----------------------------------------------------
 
 
 @app.route('/<id>/etude/postuler/<etat>/')
@@ -236,6 +257,9 @@ def postuler_edit(id, missionId,etat):
                            , coupleCompetencesLvl=coupleCompetencesLvl
                            )
 
+# ---------------------
+# --------POST---------
+# ---------------------
 
 @app.route("/process_form_postuler/<id>/<missionId>/<etat>", methods=["POST"])
 def process_form_postuler(id, missionId,etat):
@@ -245,11 +269,14 @@ def process_form_postuler(id, missionId,etat):
     for formName in listOfAllFormName:
         if formName[:11] == "competence_":
             listeOfTuplesCompetencesLevel.append((formName[11:],flask.request.form[formName]))
-    print(listeOfTuplesCompetencesLevel)
     postuler(id,missionId,listeOfTuplesCompetencesLevel)
     formulaireSuccess=True
 
     return flask.redirect(flask.url_for("onglet_etude", id=id, etat=etat))
+
+# ----------------------------------------------------
+# --------------------------Error---------------------
+# ----------------------------------------------------
 
 @app.errorhandler(404)
 def error_page_404(error):

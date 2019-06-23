@@ -1,5 +1,5 @@
 from database.models import *
-from app import db
+from database.database import db
 from datetime import datetime
 
 

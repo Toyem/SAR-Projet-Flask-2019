@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <form action="{{ url_for("process_new_mission", id=id) }}" method="post" id="new_mission_form">
+                    <form action="{{ url_for("process_new_mission", id=id,missionId=00) }}" method="post" id="new_mission_form">
                     <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" onclick='document.getElementById("new_mission_form").submit()'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none"
