@@ -28,8 +28,12 @@
                 </button>
             </div>
             <div class="col-md justify-content-end">
-                <button type="button" class="btn btn-danger" href="/TODO.php">
-                    Clore
+                <button type="button" class="btn btn-danger"
+                        {% if mission.statut == "close" %}
+                            disabled
+                        {% endif %}
+                        onclick="location.href='{{ url_for("clore_mission",id=id, missionId=mission.id) }}';">
+                        Clore
                 </button>
             </div>
         </div>
@@ -124,9 +128,9 @@
                             <th scope="col">Valider</th>
                         </tr>
                         </thead>
-                        <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
-                              method="post"
-                              class="needs-validation" novalidate="">
+                    <form action="{{ url_for("process_form_acceptation", id=id, missionId=mission.id) }}"
+                          method="post"
+                          class="needs-validation" novalidate="">
                             <tbody>
                             {% for postulant in postulants %}
                                 <tr>

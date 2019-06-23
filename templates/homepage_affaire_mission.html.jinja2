@@ -33,16 +33,16 @@
                         <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {#<li class="nav-item">
                     <a class="nav-link" data-toggle="pill" href="/TODO.php">Select all</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="pill" href="/TODO.php">
-                        <img src="../static/img/trash.png"
+                        <img src="/../static/img/trash.png"
                              style="width:24px;height:24px;"
                              alt="icone d&apos;une poubelle">
                     </a>
-                </li>
+                </li>#}
                 <li class="nav-item">
                     <form action="{{ url_for("process_new_mission", id=id,missionId=00) }}" method="post" id="new_mission_form">
                     <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" onclick='document.getElementById("new_mission_form").submit()'>
