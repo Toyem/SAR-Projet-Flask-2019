@@ -14,8 +14,9 @@ db.init_app(app)  # (1) flask prend en compte la base de donnee
 with app.test_request_context():  # (2) bloc execute a l'initialisation de Flask
     init_database()
 
+
 # ------------------------------------------
-# ---------Page Acceuil---------------------
+# ---------Page Accueil---------------------
 # ------------------------------------------
 
 @app.route('/')
@@ -26,6 +27,7 @@ def layout():
     return render_template("layout.html.jinja2",
                            listOfEngineer=listOfEngineer,
                            listOfAffair=listOfAffair)
+
 
 # ------------------------------------------
 # ---------Ingé AFFAIRE---------------------
@@ -58,11 +60,12 @@ def onglet_affaire_mission(id, etat):
                            , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
+
 @app.route('/delete_mission/<id>/<missionId>/')
-def delete_mission(id,missionId):
+def delete_mission(id, missionId):
     mission = get_mission_by_id(missionId)
     remove_object_from_db(mission)
-    return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
+    return flask.redirect(flask.url_for("onglet_affaire_mission", id=id, etat="aAffecter"))
 
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/')
@@ -82,10 +85,12 @@ def affaire_mission_vue(id, missionId):
                            , coutTT=coutTT
                            )
 
+
 @app.route('/clore_mission/<id>/<missionId>/')
 def clore_mission(id, missionId):
     clore_mission_in_bd(missionId)
-    return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
+    return flask.redirect(flask.url_for("onglet_affaire_mission", id=id, etat="aAffecter"))
+
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 def affaire_mission_edit_get_mission(id, missionId):
@@ -93,23 +98,25 @@ def affaire_mission_edit_get_mission(id, missionId):
     # API pour voir mission à postuler
     mission = get_mission_by_id(missionId)
     is_new_mission = False
-    return affaire_mission_edit(id, mission,is_new_mission,"")
+    return affaire_mission_edit(id, mission, is_new_mission, "")
+
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
-def affaire_mission_edit(id, mission,is_new_mission,error):
+def affaire_mission_edit(id, mission, is_new_mission, error):
     print("passage 2")
     # competences = get_competence_of_mission(mission.id)
     allCompetences = get_all_competence()
     competencesMission = get_competence_of_mission(mission.id)
 
     return render_template("homepage_affaire_mission_edit.html.jinja2"
-                            , id=id
-                            , mission=mission
-                            , competences=allCompetences
-                            , competencesMission=competencesMission
-                            , is_new_mission=is_new_mission
-                            , error = error
-                            )
+                           , id=id
+                           , mission=mission
+                           , competences=allCompetences
+                           , competencesMission=competencesMission
+                           , is_new_mission=is_new_mission
+                           , error=error
+                           )
+
 
 @app.route('/<id>/affaire/carrieres/')
 # API onglet carrière d'un ingé d'affaire
@@ -147,6 +154,7 @@ def carriere_vue(id, idCarriere, etat):
                            , listOfMissionsClosedLength=len(listOfMissionsClosed)
                            , listToShow=listToShow)
 
+
 # ---------------------
 # --------POST---------
 # ---------------------
@@ -155,8 +163,9 @@ def carriere_vue(id, idCarriere, etat):
 def process_form_acceptation(id, missionId):
     return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=missionId))
 
+
 @app.route("/process_form_data/<id>/<missionId>/<is_new_mission>/", methods=["POST"])
-def process_form_data(id, missionId,is_new_mission):
+def process_form_data(id, missionId, is_new_mission):
     mission = get_mission_by_id(missionId)
     try:
         mission.titre = flask.request.form["foo_titre"]
@@ -172,11 +181,11 @@ def process_form_data(id, missionId,is_new_mission):
                 listOfCompetencesEdit.append(formName[11:])
         update_besoin(mission.id, listOfCompetencesEdit)
         save_object_to_db(mission)
-        error=""
+        error = ""
         return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
     except:
         error = "Un des champ est mal rempli"
-        return affaire_mission_edit(id,mission,is_new_mission,error)
+        return affaire_mission_edit(id, mission, is_new_mission, error)
     # mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
     # mission.prix_vente = float(flask.request.form["mission_prix_vente"])
     #
@@ -190,13 +199,15 @@ def process_form_data(id, missionId,is_new_mission):
     # update_besoin(mission.id,listOfCompetencesEdit)
     # save_object_to_db(mission)
 
+
 @app.route('/<id>/affaire/missions/vue/0/edit/', methods=["POST"])
 def process_new_mission(id):
     print("is ok ?")
     mission = new_mission(id)
     is_new_mission = True
-    #mission = get_mission_by_id(mission_id)
-    return affaire_mission_edit(id,mission,is_new_mission,"")
+    # mission = get_mission_by_id(mission_id)
+    return affaire_mission_edit(id, mission, is_new_mission, "")
+
 
 # ----------------------------------------------------
 # ---------------------Ingé ETUDE---------------------
@@ -241,26 +252,26 @@ def onglet_etude(id, etat):
 #                           #listOfAllMissions=listOfAllMissions
 #                           )
 
-#@app.route('/<shortName>/affaire/missions/<etat>/<mission>/')
+# @app.route('/<shortName>/affaire/missions/<etat>/<mission>/')
 # API pour édit une mission
-#def edit_mission(shortName, mission):
+# def edit_mission(shortName, mission):
 #    # Il faut varier les trucs en sortie en fonction de la mission
 #    return render_template("homepage_affaire_mission_edit.html.jinja2",
 #                           shortName=shortName)
 
 @app.route('/<id>/etude/postuler/<etat>/vue/<missionId>/')
 # API pour voir mission à postuler
-def postuler_vue(id, missionId,etat):
+def postuler_vue(id, missionId, etat):
     mission = get_mission_by_id(missionId)
     competences = get_competence_of_mission(missionId)
     if (etat == "disponibles"):
         dates = []
         enable = ""
     elif (etat == "enAttente"):
-        dates = get_date_candidat_souhait(id,missionId)
+        dates = get_date_candidat_souhait(id, missionId)
         enable = "disabled"
     elif (etat == "enCours" or etat == "termine"):
-        dates = get_date_fin_date_fin_affectation(id,missionId)
+        dates = get_date_fin_date_fin_affectation(id, missionId)
         enable = "disabled"
     else:
         error_page_404("tab doesn't exist")
@@ -273,13 +284,14 @@ def postuler_vue(id, missionId,etat):
                            , enable=enable
                            )
 
+
 @app.route('/<id>/etude/postuler/<etat>/vue/<missionId>/edit/')
 # API pour voir mission à postuler
-def postuler_edit(id, missionId,etat):
-    #if formulaireSuccess != True:
+def postuler_edit(id, missionId, etat):
+    # if formulaireSuccess != True:
     #    formulaireSuccess = False
     mission = get_mission_by_id(missionId)
-    coupleCompetencesLvl = get_couple_compe_lvl_of_mission_inge(missionId,id)
+    coupleCompetencesLvl = get_couple_compe_lvl_of_mission_inge(missionId, id)
     return render_template("homepage_etude_postuler_action_comp.html.jinja2"
                            , etat=etat
                            , id=id
@@ -287,22 +299,23 @@ def postuler_edit(id, missionId,etat):
                            , coupleCompetencesLvl=coupleCompetencesLvl
                            )
 
+
 # ---------------------
 # --------POST---------
 # ---------------------
 
 @app.route("/process_form_postuler/<id>/<missionId>/<etat>", methods=["POST"])
-def process_form_postuler(id, missionId,etat):
-
+def process_form_postuler(id, missionId, etat):
     listOfAllFormName = flask.request.form.to_dict().keys()
     listeOfTuplesCompetencesLevel = []
     for formName in listOfAllFormName:
         if formName[:11] == "competence_":
-            listeOfTuplesCompetencesLevel.append((formName[11:],flask.request.form[formName]))
-    postuler(id,missionId,listeOfTuplesCompetencesLevel)
-    formulaireSuccess=True
+            listeOfTuplesCompetencesLevel.append((formName[11:], flask.request.form[formName]))
+    postuler(id, missionId, listeOfTuplesCompetencesLevel)
+    formulaireSuccess = True
 
     return flask.redirect(flask.url_for("onglet_etude", id=id, etat=etat))
+
 
 # ----------------------------------------------------
 # --------------------------Error---------------------

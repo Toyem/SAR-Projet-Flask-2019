@@ -7,7 +7,6 @@
             height: 10px;
         }
     </style>
-    <!-- Fin du truc important -->
     {% for competenceAndLvl in coupleCompetencesLvl %}
         <p><span>{{ competenceAndLvl[0].nom }} :</span>
             <!-- par la suite on peux mettre {{ competenceAndLvl[0].id }} a la place du name -->
@@ -19,7 +18,6 @@
                 var slider{{ competenceAndLvl[0].id }} = document.getElementById("{{ competenceAndLvl[0].id }}");
                 var output{{ competenceAndLvl[0].id }} = document.getElementById("valueOfRange{{ competenceAndLvl[0].id }}");
                 output{{ competenceAndLvl[0].id }}.innerHTML = slider{{ competenceAndLvl[0].id }}.value;
-
                 slider{{ competenceAndLvl[0].id }}.oninput = function () {
                     output{{ competenceAndLvl[0].id }}.innerHTML = this.value;
                 }

@@ -5,44 +5,39 @@
     <div class=" mb-2 p-2 bg-dark text-white size-6 font-weight-bold text-center">
         <h4>Postuler &agrave; des missions</h4>
     </div>
-
     <div class="row">
         <div class="container">
             <!-- Nav pills -->
             <ul class="nav nav-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link {% if etat == "disponibles" %}active{% endif %}" href="/{{ id }}/etude/postuler/disponibles/">
+                    <a class="nav-link {% if etat == "disponibles" %}active{% endif %}"
+                       href="/{{ id }}/etude/postuler/disponibles/">
                         Disponibles
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsAvalableLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if etat == "enAttente" %}active{% endif %}" href="/{{ id }}/etude/postuler/enAttente/">
+                    <a class="nav-link {% if etat == "enAttente" %}active{% endif %}"
+                       href="/{{ id }}/etude/postuler/enAttente/">
                         <!--data-toggle="pill"-->
                         En attente
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsWaitingLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if etat == "enCours" %}active{% endif %}" href="/{{ id }}/etude/postuler/enCours/">
+                    <a class="nav-link {% if etat == "enCours" %}active{% endif %}"
+                       href="/{{ id }}/etude/postuler/enCours/">
                         En cours
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsGoingOnLength }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if etat == "termine" %}active{% endif %}"  href="/{{ id }}/etude/postuler/termine/">
+                    <a class="nav-link {% if etat == "termine" %}active{% endif %}"
+                       href="/{{ id }}/etude/postuler/termine/">
                         Termine
                         <span class="badge badge-secondary badge-pill">{{ listOfMissionsClosedLength }}</span>
                     </a>
                 </li>
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="/TODO.php">
-                        Toutes
-                        <span class="badge badge-secondary badge-pill">{{ listOfAllMissionsLength }}</span>
-                    </a>
-                </li>
-                -->
             </ul>
         </div>
         <div class="container-fluid">

@@ -2,17 +2,17 @@
 
 {% block gridMission %}
     <div class="d-flex flex-column">
-    <form>
-        {% for mission in listToShow %}
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <input type="checkbox">
+        <form>
+            {% for mission in listToShow %}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox">
+                        </div>
                     </div>
+                    <input type="text" class="form-control" placeholder="{{ mission.titre }}">
                 </div>
-                <input type="text" class="form-control" placeholder="{{ mission.titre }}">
-            </div>
-        {% endfor %}
-    </form>
+            {% endfor %}
+        </form>
     </div>
 {% endblock %}
