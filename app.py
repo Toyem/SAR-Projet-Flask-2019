@@ -1,11 +1,7 @@
 from flask import Flask
 from flask import render_template
-from database.database import db, init_database
+from database.database import init_database
 import flask
-from datetime import datetime
-
-
-from database.models import *
 from database.functions import *
 
 app = Flask(__name__)
