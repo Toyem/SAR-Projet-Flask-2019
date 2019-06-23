@@ -18,10 +18,6 @@ def get_mission_by_id(mission_id):
     return Mission.query.filter_by(id=mission_id).first()
 
 
-def get_mission_by_titre(mission_titre):
-    return Mission.query.filter_by(titre=mission_titre).first()
-
-
 def get_postulant_by_mission(id_mission):
     return [get_engineer_by_id(s.ingenieur_id) for s in Souhait.query.filter_by(mission_id=id_mission).all()]
 
@@ -57,27 +53,11 @@ def get_all_engineers():
     return Ingenieur.query.all()
 
 
-def get_all_full_name_engineers(): #TO delete ?
-    return Ingenieur.query(Ingenieur.prenom, Ingenieur.nom_famille).all()
-
-
-def get_all_short_name_engineers():
-    return [inge.nom_court for inge in get_all_engineers()]
-
-
 def get_engineer_by_id(engineer_id):
     return Ingenieur.query.filter_by(id=engineer_id).first()
 
 
-def get_engineer_by_nom_court(nom_court):
-    return Ingenieur.query.filter_by(nom_court=nom_court).first()
-
-
-def get_engineer_by_nom_prenom(nom, prenom):
-    return Ingenieur.query.filter_by(nom=nom, prenom=prenom).first()
-
-
-def get_mission_en_cours_of_inge(inge_id): #def de clore avec ouverte
+def get_mission_en_cours_of_inge(inge_id):  # def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -87,13 +67,13 @@ def get_mission_en_cours_of_inge(inge_id): #def de clore avec ouverte
         ajouter = False
         for a in affectations:
             if a.date_fin >= datetime.now():
-               ajouter = True
+                ajouter = True
         if ajouter:
             missions_en_cours.append(m)
     return missions_en_cours
 
 
-def get_mission_termine_of_inge(inge_id): #def de clore avec ouverte
+def get_mission_termine_of_inge(inge_id):  # def de clore avec ouverte
     inge = get_engineer_by_id(inge_id)
     id_missions = [a.mission_id for a in list(inge.affectations)]
     missions = [get_mission_by_id(id) for id in id_missions]
@@ -103,7 +83,7 @@ def get_mission_termine_of_inge(inge_id): #def de clore avec ouverte
         ajouter = True
         for a in affectations:
             if a.date_fin >= datetime.now():
-               ajouter = False
+                ajouter = False
         if ajouter:
             missions_termines.append(m)
     return missions_termines
@@ -137,7 +117,7 @@ def get_all_engineers_affaire():
     return Ingenieur.query.filter_by(estCommercial=True).all()
 
 
-def get_missions_a_affecter(): #TODO
+def get_missions_a_affecter():
     missions_ids = [s.mission_id for s in Souhait.query.all()]
     missions = set()
     for id in missions_ids:
@@ -173,7 +153,7 @@ def get_competence_of_mission(mission_id):
 
 
 # ----------------------------------------------------------
-# ----------------------A TRIER-----------------------------
+# ----------------------Classes-----------------------------
 # ----------------------------------------------------------
 def get_all_affectations_inge_mission(inge_id, mission_id):
     return Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).all()
@@ -188,7 +168,7 @@ def get_lvl_compe_inge(inge_id, compe_id):
     return lvl
 
 
-def get_couple_compe_lvl_of_mission_inge(mission_id,inge_id):
+def get_couple_compe_lvl_of_mission_inge(mission_id, inge_id):
     competences = get_competence_of_mission(mission_id)
     list_couple = []
     for c in competences:
@@ -212,7 +192,8 @@ def update_competence_of_inge(inge_id, liste_comp):
 
 def postuler(inge_id, mission_id, liste_comp):
     update_competence_of_inge(inge_id, liste_comp)
-    new_souhait = Souhait(date_candidature=datetime.now().replace(microsecond=0), mission_id=mission_id, ingenieur_id=inge_id)
+    new_souhait = Souhait(date_candidature=datetime.now().replace(microsecond=0), mission_id=mission_id,
+                          ingenieur_id=inge_id)
     save_object_to_db(new_souhait)
 
 
@@ -232,7 +213,7 @@ def new_mission(inge_id):
     return new_m
 
 
-def clore_mission(mission_id):
+def clore_mission_in_bd(mission_id):
     mission = get_mission_by_id(mission_id)
     mission.statut = "close"
     save_object_to_db(mission)

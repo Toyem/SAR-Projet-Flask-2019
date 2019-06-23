@@ -2,7 +2,6 @@ from flask_sqlalchemy import SQLAlchemy
 import inspect
 import random
 
-
 db = SQLAlchemy()
 
 
@@ -82,7 +81,8 @@ def populate_database():
     ##########################################
     # Creation de missions + Responsables missions
     ##########################################
-    ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny", "infinity", "barbatruc"]
+    ADJECTIFS = ["incredible", "revolutionary", "marvelous", "awesome", "next", "green", "sunny", "infinity",
+                 "barbatruc"]
     NOMS = ["revolution", "moon", "breakthrough", "landscape", "impossible", "orangeade"]
     STATUS = ["ouverte", "close"]
     ingenieurs = database.models.Ingenieur.query.all()
@@ -136,9 +136,9 @@ def populate_database():
             try:
                 db.session.commit()
             except Exception as e:
-                print("[3] Je ne peux pas ajouter un besoin competence sur une mission (ce qui peut etre normal) a cause de : %s" % e)
+                print(
+                    "[3] Je ne peux pas ajouter un besoin competence sur une mission (ce qui peut etre normal) a cause de : %s" % e)
                 db.session.rollback()
-
 
     ##########################################
     # Association de competences aux ingenieurs via des certifications

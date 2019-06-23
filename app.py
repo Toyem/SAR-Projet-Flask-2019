@@ -83,8 +83,8 @@ def affaire_mission_vue(id, missionId):
                            )
 
 @app.route('/clore_mission/<id>/<missionId>/')
-def clore_mission(id,missionId):
-    clore_mission(missionId)
+def clore_mission(id, missionId):
+    clore_mission_in_bd(missionId)
     return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')

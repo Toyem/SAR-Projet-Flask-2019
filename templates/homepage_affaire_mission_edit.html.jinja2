@@ -32,7 +32,7 @@
               method="post"
               class="needs-validation" novalidate="">
             <div class="d-flex flex-inline">
-                <div class="col mb-3 ml-2">
+                <div class="col mb-3 ml-1">
                     <div class="p-1 bg-info text-white size-6 font-weight-bold">
                         <label for="Name">Mission : </label>
                     </div>
@@ -41,29 +41,30 @@
                         Valid name is required.
                     </div>
                 </div>
-            <div class="col-md-auto p-0">
-                <button type="button" class="btn btn-danger"
-                        onclick="
-                                {% if is_new_mission %}
-                                    location.href='{{ url_for("delete_mission",id=id, missionId=mission.id) }}';
-                                {% else %}
-                                    location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';
-                                {% endif %}">
-                    annuler
-                </button>
-                <input type="submit" class="btn btn-success" value="sauver"/>
-            </div>
-
-            <div class="form-group ml-3">
-                <label for="date">Date :</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="mission_date_creation"
-                           value='{{ mission.date_creation }}'/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                <div class="col-md-auto p-0">
+                    <button type="button" class="btn btn-danger"
+                            onclick="
+                                    {% if is_new_mission %}
+                                        location.href='{{ url_for("delete_mission",id=id, missionId=mission.id) }}';
+                                    {% else %}
+                                        location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';
+                                    {% endif %}">
+                        annuler
+                    </button>
+                    <input type="submit" class="btn btn-success" value="sauver"/>
                 </div>
             </div>
+
+
+        <div class="d-flex flex-inline mb-2">
+            <div class="ml-1 col-md-10">
+                <div class="form-group">
+                    <label for="date">Date de création :</label>
+                    <input type='text' class="form-control" name="mission_date_creation"
+                           value='{{ mission.date_creation }}'/>
+                </div>
+            </div>
+        </div>
             <div class="row ml-1">
                 <div class="mb-3 col-md-7">
                     <div class="form-group">
@@ -73,14 +74,13 @@
                     </div>
                 </div>
             </div>
-    </div>
 
-    <div class="row  ml-3">
-        <div class="form-group">
-            <label for="nbPlace">Nombres de places :</label>
-            <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
-        </div>
-    </div>
+            <div class="row  ml-3">
+                <div class="form-group">
+                    <label for="nbPlace">Nombres de places :</label>
+                    <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
+                </div>
+            </div>
             <div class="row  ml-3">
                 <div class="form-group">
                     <label for="prixVente">Prix Vente :</label>
@@ -104,11 +104,11 @@
                                    autocomplete="off"
                                     {% if competence in competencesMission %}
                                    checked
-                                    {% endif %}> {{ competence.nom }}
+                                    {% endif %}> {{ competence.id }}
                         </label>
                     </div>
                 {% endfor %}
-    </div>
-    </form>
+            </div>
+        </form>
     </div>
 {% endblock %}

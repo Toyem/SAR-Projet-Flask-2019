@@ -3,14 +3,14 @@ from database.database import db
 
 class Ingenieur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nom_court = db.Column(db.Text, unique=True) #unique ??
+    nom_court = db.Column(db.Text, unique=True)  # unique ??
     prenom = db.Column(db.Text)
     nom_famille = db.Column(db.Text)
     site = db.Column(db.Text)
     email = db.Column(db.Text, unique=True)
     taux_journalier = db.Column(db.Float)
-    statut = db.Column(db.Text) #a traiter, ajouté par mes soins
-    estCommercial = db.Column(db.Boolean) #ajouté par mes soins
+    statut = db.Column(db.Text)  # a traiter, ajouté par mes soins
+    estCommercial = db.Column(db.Boolean)  # ajouté par mes soins
 
     certifications = db.relationship('Certification', backref='ingenieur', lazy='dynamic')
     souhaits = db.relationship('Souhait', backref='ingenieur', lazy='dynamic')
