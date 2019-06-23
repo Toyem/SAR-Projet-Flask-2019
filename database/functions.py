@@ -225,7 +225,11 @@ def update_besoin(mission_id, compe_list):
 
 
 def new_mission(inge_id):
-    new_m = Mission(statut="ouverte", date_creation=datetime.now(), responsable_id=inge_id)
+
+    date_now = datetime.now()
+    date_now.strftime('%Y-%m-%d %H:%M:%S')
+    new_m = Mission(statut="ouverte", date_creation=date_now, responsable_id=inge_id)
+    save_object_to_db(new_m)
     return new_m
 
 

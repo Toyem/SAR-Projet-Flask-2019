@@ -26,10 +26,18 @@
                             Valid name is required.
                         </div>
                     </div>
-                    <div class="col-md-auto p-0">
-                        <button type="button" class="btn btn-danger"
-                            onclick="location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';">annuler
-                        </button>
+                </div>
+                <div class="col-md justify-content-end">
+                    <button type="button" class="btn btn-danger"
+                            onclick="
+                                    {% if is_new_mission %}
+                                    {{ url_for("delete_mission",id=id, missionId=mission.id) }};
+                                    {% else %}
+                                    location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';
+                                    {% endif %}">
+                        annuler
+                    </button>
+
                     {#                    <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';" >sauver</button>#}
                         <input type="submit" class="btn btn-success" onclick="location.href='/TODO.php';" value="sauver"/>
                     </div>
