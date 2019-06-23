@@ -225,7 +225,6 @@ def update_besoin(mission_id, compe_list):
 
 
 def new_mission(inge_id):
-
     date_now = datetime.now()
     date_now.strftime('%Y-%m-%d %H:%M:%S')
     new_m = Mission(statut="ouverte", date_creation=date_now, responsable_id=inge_id)
