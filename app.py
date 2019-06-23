@@ -93,7 +93,7 @@ def process_form_data(id, missionId):
     update_besoin(missionId,listOfCompetencesEdit)
     save_object_to_db(mission)
 
-    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission.id))
+    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 # API pour voir mission à postuler
