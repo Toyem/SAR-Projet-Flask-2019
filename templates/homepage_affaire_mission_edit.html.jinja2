@@ -16,65 +16,64 @@
     <div class="d-flex flex-column">
         <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}" method="post"
               class="needs-validation" novalidate="">
-                <div class = "d-flex flex-inline">
-                    <div class="col mb-3 ml-2">
-                        <div class="p-1 bg-info text-white size-6 font-weight-bold">
-                            <label for="Name">Mission : </label>
-                        </div>
-                        <input type="text" class="form-control" id="Name" name="foo_titre" value='{{ mission.titre }}'>
-                        <div class="invalid-feedback">
-                            Valid name is required.
-                        </div>
+            <div class="d-flex flex-inline">
+                <div class="col mb-3 ml-2">
+                    <div class="p-1 bg-info text-white size-6 font-weight-bold">
+                        <label for="Name">Mission : </label>
+                    </div>
+                    <input type="text" class="form-control" id="Name" name="foo_titre" value='{{ mission.titre }}'>
+                    <div class="invalid-feedback">
+                        Valid name is required.
                     </div>
                 </div>
-                <div class="col-md justify-content-end">
-                    <button type="button" class="btn btn-danger"
-                            onclick="
-                                    {% if is_new_mission %}
+            <div class="col-md-auto p-0">
+                <button type="button" class="btn btn-danger"
+                        onclick="
+                                {% if is_new_mission %}
                                     {{ url_for("delete_mission",id=id, missionId=mission.id) }};
-                                    {% else %}
+                                {% else %}
                                     location.href='/{{ id }}/affaire/missions/vue/{{ mission.id }}/';
-                                    {% endif %}">
-                        annuler
-                    </button>
+                                {% endif %}">
+                    annuler
+                </button>
 
-                    {#                    <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';" >sauver</button>#}
-                        <input type="submit" class="btn btn-success" onclick="location.href='/TODO.php';" value="sauver"/>
-                    </div>
-                </div>
+                {#                    <button type="button" class="btn btn-success" onclick="location.href='/TODO.php';" >sauver</button>#}
+                <input type="submit" class="btn btn-success" onclick="location.href='/TODO.php';" value="sauver"/>
+            </div>
+    </div>
 
-            <div class="row ml-1">
-                <div class="mb-3 col-md-7">
-                    <div class="form-group">
-                        <label for="description">Description :</label>
-                        <textarea class="form-control" rows="5" name="mission_description"
-                                  id="comment">{{ mission.description }}</textarea>
-                    </div>
-                </div>
+    <div class="row ml-1">
+        <div class="mb-3 col-md-7">
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea class="form-control" rows="5" name="mission_description"
+                          id="comment">{{ mission.description }}</textarea>
             </div>
+        </div>
+    </div>
 
-            <div class="row  ml-3">
-                <div class="form-group">
-                    <label for="nbPlace">Nombres de places :</label>
-                    <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
-                </div>
-            </div>
+    <div class="row  ml-3">
+        <div class="form-group">
+            <label for="nbPlace">Nombres de places :</label>
+            <input type="number" name="mission_effectif_max" value='{{ mission.effectifs_max }}'/>
+        </div>
+    </div>
 
-            <div class="row d-inline">
-                <div class="p-1 bg-info text-white size-6 font-weight-bold  mb-2 ml-3">
-                    <label for="competences">Comp&eacute;tences requises :</label>
-                </div>
+    <div class="row d-inline">
+        <div class="p-1 bg-info text-white size-6 font-weight-bold  mb-2 ml-3">
+            <label for="competences">Comp&eacute;tences requises :</label>
+        </div>
+    </div>
+    <div class="row ml-2">
+        {% for competence in competences %}
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary ml-2 mb-2">
+                    <input type="checkbox" name="competence_{{ competence.id }}" value="{{ competence.nom }}"
+                           autocomplete="off"> {{ competence.nom }}
+                </label>
             </div>
-             <div class="row ml-2">
-                {% for competence in competences %}
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-primary ml-2 mb-2">
-                            <input type="checkbox" name="competence_{{ competence.id }}" value="{{ competence.nom }}"
-                                   autocomplete="off"> {{ competence.nom }}
-                        </label>
-                    </div>
-                {% endfor %}
-            </div>
-        </form>
+        {% endfor %}
+    </div>
+    </form>
     </div>
 {% endblock %}
