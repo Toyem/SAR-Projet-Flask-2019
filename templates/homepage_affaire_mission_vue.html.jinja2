@@ -29,7 +29,7 @@
             </div>
             <div class="col-md justify-content-end">
                 <button type="button" class="btn btn-danger" href="/TODO.php">
-                        Clore
+                    Clore
                 </button>
             </div>
         </div>
@@ -52,7 +52,7 @@
                     <label>{{ mission.description }}</label>
                 </div>
             </div>
-         </div>
+        </div>
 
         <div class="d-flex flex-inline mb-2">
             <div class="col-md-auto mr-auto">
@@ -107,22 +107,41 @@
         </div>
 
 
-
         <div class="row">
-            <div class="col-md-6 ml-3">
-                <div class="p-1 size-4">
+            <div class="col ml-3 size-4">
+                <div class="">
                     <label for="places">Demandes à traiter :</label>
-                    <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
-                          method="post"
-                          class="needs-validation" novalidate="">
-                        <ul>
-                            {% for postulant in postulants %}
-                                <li>{{ postulant.prenom }} {{ postulant.nom_famille }}</li>
-                                <input type="radio" name="validation" value="accepté" class="btn btn-primary"/> oui
-                                <input type="radio" name="validation" value="refusé" class="btn btn-primary"/> non
+                    <table class="table-responsive table-bordered">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col-md-2">Ingenieur</th>
+                            {% for competence in competences %}
+                                <th scope="col-md-1">{{ competence.nom }}</th>
                             {% endfor %}
-                        </ul>
-                    </form>
+                            <th scope="col-md-2">Décision</th>
+                            <th scope="col-md-1">Date début</th>
+                            <th scope="col-md-1">Date fin</th>
+                            <th scope="col-md-1">Valider</th>
+                        </tr>
+                        </thead>
+                        <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
+                              method="post"
+                              class="needs-validation" novalidate="">
+                            <tbody>
+                            {% for postulant in postulants %}
+                                <tr>
+                                    <th scope="row justify-content-start">{{ postulant.prenom }} {{ postulant.nom_famille }}</th>
+                                    <td>42</td>
+                                    <td>42</td>
+                                    <td>oui/non</td>
+                                    <td>date1</td>
+                                    <td>date</td>
+                                    <td>Bouton ok</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </form>
+                    </table>
                 </div>
             </div>
         </div>

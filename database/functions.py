@@ -226,7 +226,8 @@ def update_besoin(mission_id, compe_list):
 
 def new_mission(inge_id):
     new_m = Mission(statut="ouverte", date_creation=datetime.now(), responsable_id=inge_id)
-    return new_m
+    save_object_to_db(new_m)
+    return new_m.id
 
 
 def clore_mission(mission_id):
