@@ -58,6 +58,13 @@ def onglet_affaire_mission(id, etat):
                            , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
+@app.route('/delete_mission/<id>/aAffecter/<missionId>/',methods=["POST"])
+def delete_mission(id,missionId):
+    mission = get_mission_by_id(missionId)
+    remove_object_from_db(mission)
+    print("delete is on")
+    return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
+
 
 
 
