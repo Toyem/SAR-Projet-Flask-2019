@@ -58,14 +58,11 @@ def onglet_affaire_mission(id, etat):
                            , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
-@app.route('/delete_mission/<id>/aAffecter/<missionId>/',methods=["POST"])
+@app.route('/delete_mission/<id>/<missionId>/')
 def delete_mission(id,missionId):
     mission = get_mission_by_id(missionId)
     remove_object_from_db(mission)
-    print("delete is on")
     return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
-
-
 
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/')
@@ -85,18 +82,17 @@ def affaire_mission_vue(id, missionId):
                            , coutTT=coutTT
                            )
 
-
-
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 def affaire_mission_edit_get_mission(id, missionId):
     print("passage 1")
     # API pour voir mission à postuler
     mission = get_mission_by_id(missionId)
     is_new_mission = False
-    return affaire_mission_edit(id, mission,is_new_mission)
+    return affaire_mission_edit(id, mission,is_new_mission,"")
 
-#@app.route('/affaire_mission_edit/<id>/<missionId>/')
-def affaire_mission_edit(id, mission,is_new_mission):
+@app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
+def affaire_mission_edit(id, mission,is_new_mission,error):
+    print("passage 2")
     # competences = get_competence_of_mission(mission.id)
     competences = get_all_competence()
     return render_template("homepage_affaire_mission_edit.html.jinja2"
@@ -104,6 +100,7 @@ def affaire_mission_edit(id, mission,is_new_mission):
                             , mission=mission
                             , competences=competences
                             , is_new_mission=is_new_mission
+                            , error = error
                             )
 
 @app.route('/<id>/affaire/carrieres/')
@@ -146,26 +143,44 @@ def carriere_vue(id, idCarriere, etat):
 # --------POST---------
 # ---------------------
 
-@app.route("/process_form_data/<id>/<missionId>", methods=["POST"])
-def process_form_data(id, missionId):
+@app.route("/process_form_acceptation/<id>/<missionId>/", methods=["POST"])
+def process_form_acceptation(id, missionId):
+    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=missionId))
 
+@app.route("/process_form_data/<id>/<missionId>/<is_new_mission>/", methods=["POST"])
+def process_form_data(id, missionId,is_new_mission):
     mission = get_mission_by_id(missionId)
-
-    mission.titre = flask.request.form["foo_titre"]
-    mission.description = flask.request.form["mission_description"]
-    mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
-
-    datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
-    mission.date_creation = datetime_object
-    listOfAllFormName = flask.request.form.to_dict().keys()
-    listOfCompetencesEdit=[]
-    for formName in listOfAllFormName:
-        if formName[:11] == "competence_":
-            listOfCompetencesEdit.append(formName[11:])
-    update_besoin(mission.id,listOfCompetencesEdit)
-    save_object_to_db(mission)
-
-    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
+    try:
+        mission.titre = flask.request.form["foo_titre"]
+        mission.description = flask.request.form["mission_description"]
+        mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
+        mission.prix_vente = float(flask.request.form["mission_prix_vente"])
+        datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
+        mission.date_creation = datetime_object
+        listOfAllFormName = flask.request.form.to_dict().keys()
+        listOfCompetencesEdit = []
+        for formName in listOfAllFormName:
+            if formName[:11] == "competence_":
+                listOfCompetencesEdit.append(formName[11:])
+        update_besoin(mission.id, listOfCompetencesEdit)
+        save_object_to_db(mission)
+        error=""
+        return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
+    except:
+        error = "Un des champ est mal rempli"
+        return flask.redirect(flask.url_for("affaire_mission_edit",id=id, missionId=mission.id,is_new_mission=is_new_mission,error=error))
+    # mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
+    # mission.prix_vente = float(flask.request.form["mission_prix_vente"])
+    #
+    # datetime_object = datetime.strptime(flask.request.form["mission_date_creation"], '%Y-%m-%d %H:%M:%S')
+    # mission.date_creation = datetime_object
+    # listOfAllFormName = flask.request.form.to_dict().keys()
+    # listOfCompetencesEdit=[]
+    # for formName in listOfAllFormName:
+    #     if formName[:11] == "competence_":
+    #         listOfCompetencesEdit.append(formName[11:])
+    # update_besoin(mission.id,listOfCompetencesEdit)
+    # save_object_to_db(mission)
 
 @app.route('/<id>/affaire/missions/vue/0/edit/', methods=["POST"])
 def process_new_mission(id):
@@ -173,7 +188,7 @@ def process_new_mission(id):
     mission = new_mission(id)
     is_new_mission = True
     #mission = get_mission_by_id(mission_id)
-    return affaire_mission_edit(id,mission,is_new_mission)
+    return affaire_mission_edit(id,mission,is_new_mission,"")
 
 # ----------------------------------------------------
 # ---------------------Ingé ETUDE---------------------

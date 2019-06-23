@@ -112,7 +112,7 @@
             <div class="col-md-6 ml-3">
                 <div class="p-1 size-4">
                     <label for="places">Demandes à traiter :</label>
-                    <form action="{{ url_for("process_form_data", id=id, missionId=mission.id) }}"
+                    <form action="{{ url_for("process_form_acceptation", id=id, missionId=mission.id) }}"
                           method="post"
                           class="needs-validation" novalidate="">
                         <ul>
