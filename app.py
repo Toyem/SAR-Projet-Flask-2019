@@ -168,7 +168,7 @@ def process_form_data(id, missionId,is_new_mission):
         return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
     except:
         error = "Un des champ est mal rempli"
-        return flask.redirect(flask.url_for("affaire_mission_edit",id=id, missionId=mission.id,is_new_mission=is_new_mission,error=error))
+        return affaire_mission_edit(id,mission,is_new_mission,error)
     # mission.effectifs_max = int(flask.request.form["mission_effectif_max"])
     # mission.prix_vente = float(flask.request.form["mission_prix_vente"])
     #
