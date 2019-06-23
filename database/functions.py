@@ -1,5 +1,5 @@
 from database.models import *
-from app import db
+from database.database import db
 from datetime import datetime
 
 
@@ -42,12 +42,12 @@ def get_cout_of_mission(mission_id):
 
 def get_date_fin_date_fin_affectation(inge_id, mission_id):
     a = Affectation.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return [("Date de début",a.date_debut),("Date de fin",a.date_fin)]
+    return [("Date de début", a.date_debut), ("Date de fin", a.date_fin)]
 
 
 def get_date_candidat_souhait(inge_id, mission_id):
     s = Souhait.query.filter_by(ingenieur_id=inge_id, mission_id=mission_id).first()
-    return [("Date de candidature",s.date_candidature)]
+    return [("Date de candidature", s.date_candidature)]
 
 
 # ----------------------------------------------------------
@@ -85,10 +85,9 @@ def get_mission_en_cours_of_inge(inge_id): #def de clore avec ouverte
     for m in missions:
         affectations = get_all_affectations_inge_mission(inge_id, m.id)
         ajouter = False
-        if m.statut == "ouverte":
-            for a in affectations:
-                if a.date_fin >= datetime.now():
-                   ajouter = True
+        for a in affectations:
+            if a.date_fin >= datetime.now():
+               ajouter = True
         if ajouter:
             missions_en_cours.append(m)
     return missions_en_cours
@@ -102,10 +101,9 @@ def get_mission_termine_of_inge(inge_id): #def de clore avec ouverte
     for m in missions:
         affectations = get_all_affectations_inge_mission(inge_id, m.id)
         ajouter = True
-        if m.statut == "ouverte":
-            for a in affectations:
-                if a.date_fin >= datetime.now():
-                   ajouter = False
+        for a in affectations:
+            if a.date_fin >= datetime.now():
+               ajouter = False
         if ajouter:
             missions_termines.append(m)
     return missions_termines
@@ -231,8 +229,18 @@ def new_mission(inge_id):
     return new_m
 
 
-def clore(mission_id): #todo
-    return
+def clore_mission(mission_id):
+    mission = get_mission_by_id(mission_id)
+    mission.statut = "close"
+    save_object_to_db(mission)
+    for s in Souhait.query.filter_by(mission_id=mission_id):
+        remove_object_from_db(s)
+
+
+def open_mission(mission_id):
+    mission = get_mission_by_id(mission_id)
+    mission.statut = "ouverte"
+    save_object_to_db(mission)
 
 
 def save_object_to_db(db_object):
