@@ -17,7 +17,7 @@
             <strong>Le formulaire a &eacute;t&eacute; envoy&eacute; avec succes !</strong>
         </div>
         <div class="d-flex flex-inline mb-2">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="p-1 bg-info text-white size-6 font-weight-bold">
                     <label for="Name">Mission : </label>
                     <span class="p-1 bg-info text-white size-6 font-weight-bold">{{ mission.titre }}</span>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="d-flex flex-inline mb-2">
-            <div class="mb-2 col-md-10">
+            <div class="mb-2 col-md-12">
                 <div class="form-group">
                     <label for="date">Date de creation :</label>
                     <span>{{ mission.date_creation }}</span>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="d-flex flex-inline mb-2">
-            <div class="mb-2 col-md-10">
+            <div class="mb-2 col-md-12">
                 <div class="p-1 mb-2 bg-info text-white size-6">
                     <label for="description">Description :</label>
                 </div>
@@ -47,7 +47,7 @@
         <form action="{{ url_for("process_form_postuler", id=id, missionId=mission.id,etat=etat) }}" method="post"
               class="needs-validation" novalidate="">
             <div class="d-flex flex-inline mb-2">
-                <div class="mb-2 col-md-10">
+                <div class="mb-2 col-md-12">
                     <div class="p-1 mb-0 bg-info text-white size-6 mb-2">
                         <label for="competences">Auto &eacute;valuation des comp&eacute;tences :</label>
                     </div>
