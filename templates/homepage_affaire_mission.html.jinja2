@@ -44,7 +44,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" href="/TODO.php">
+                    <form action="{{ url_for("process_new_mission", id=id) }}" method="post" id="new_mission_form">
+                    <a class="nav-link d-flex align-items-center text-muted" data-toggle="pill" onclick='document.getElementById("new_mission_form").submit()'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -54,6 +55,7 @@
                             <line x1="8" y1="12" x2="16" y2="12"></line>
                         </svg>
                     </a>
+                    </form>
                 </li>
             </ul>
         </div>

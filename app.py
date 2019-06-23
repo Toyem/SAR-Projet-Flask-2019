@@ -52,6 +52,13 @@ def onglet_affaire_mission(id, etat):
                            , listOfAllMissionsLength=len(listOfAllMissions)
                            )
 
+@app.route("/process_new_mission/<id>/", methods=["POST"])
+def process_new_mission(id):
+    print("is ok ?")
+    mission_id = new_mission(id)
+    #mission = get_mission_by_id(mission_id)
+    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission_id))
+
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/')
 # API onglet missions d'un ingé d'affaire
@@ -89,7 +96,8 @@ def process_form_data(id, missionId):
     update_besoin(missionId,listOfCompetencesEdit)
     save_object_to_db(mission)
 
-    return flask.redirect(flask.url_for("affaire_mission_edit", id=id, missionId=mission.id))
+    return flask.redirect(flask.url_for("affaire_mission_vue", id=id, missionId=mission.id))
+
 
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 # API pour voir mission à postuler
