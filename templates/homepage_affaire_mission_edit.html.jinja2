@@ -28,7 +28,8 @@
                 {% endif %}!
             </strong>
         </div>
-        <form action="{{ url_for("process_form_data", id=id, missionId=mission.id,is_new_mission=is_new_mission) }}" method="post"
+        <form action="{{ url_for("process_form_data", id=id, missionId=mission.id,is_new_mission=is_new_mission) }}"
+              method="post"
               class="needs-validation" novalidate="">
             <div class="d-flex flex-inline">
                 <div class="col mb-3 ml-2">
@@ -96,9 +97,15 @@
             <div class="row ml-2">
                 {% for competence in competences %}
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-primary ml-2 mb-2">
+                        <label class="btn btn-outline-primary ml-2 mb-2
+                                {% if competence in competencesMission %}
+                               active
+                                {% endif %}">
                             <input type="checkbox" name="competence_{{ competence.id }}" value="{{ competence.nom }}"
-                                   autocomplete="off"> {{ competence.nom }}
+                                   autocomplete="off"
+                                    {% if competence in competencesMission %}
+                                   checked
+                                    {% endif %}> {{ competence.nom }}
                         </label>
                     </div>
                 {% endfor %}

@@ -82,6 +82,11 @@ def affaire_mission_vue(id, missionId):
                            , coutTT=coutTT
                            )
 
+@app.route('/clore_mission/<id>/<missionId>/')
+def clore_mission(id,missionId):
+    clore_mission(missionId)
+    return flask.redirect(flask.url_for("onglet_affaire_mission",id=id,etat="aAffecter"))
+
 @app.route('/<id>/affaire/missions/vue/<missionId>/edit/')
 def affaire_mission_edit_get_mission(id, missionId):
     print("passage 1")
@@ -94,11 +99,14 @@ def affaire_mission_edit_get_mission(id, missionId):
 def affaire_mission_edit(id, mission,is_new_mission,error):
     print("passage 2")
     # competences = get_competence_of_mission(mission.id)
-    competences = get_all_competence()
+    allCompetences = get_all_competence()
+    competencesMission = get_competence_of_mission(mission.id)
+
     return render_template("homepage_affaire_mission_edit.html.jinja2"
                             , id=id
                             , mission=mission
-                            , competences=competences
+                            , competences=allCompetences
+                            , competencesMission=competencesMission
                             , is_new_mission=is_new_mission
                             , error = error
                             )

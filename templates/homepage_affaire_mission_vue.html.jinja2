@@ -28,7 +28,11 @@
                 </button>
             </div>
             <div class="col-md justify-content-end">
-                <button type="button" class="btn btn-danger" href="/TODO.php">
+                <button type="button" class="btn btn-danger"
+                        {% if mission.statut == "close" %}
+                            disabled
+                        {% endif %}
+                        onclick="location.href='{{ url_for("clore_mission",id=id, missionId=mission.id) }}';">
                         Clore
                 </button>
             </div>
